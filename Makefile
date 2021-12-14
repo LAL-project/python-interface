@@ -119,7 +119,7 @@ $(info .    LAL library files in:        $(LAL_LIB_DIR))
 # --------------------------
 # System libraries' location
 
-include Makefile.systemlibraries
+include Makefile.gmpsource
 
 $(info GMP source)
 $(info .    GMP include header files in: $(GMP_INC_DIR))
