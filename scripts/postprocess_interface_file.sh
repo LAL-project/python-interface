@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
@@ -25,8 +27,6 @@
 #           Webpage: https://cqllab.upc.edu/people/lalemany/
 #
 ###########################################################################
-
-#!/bin/bash
 
 echo -e "\e[1;1;34m* Clean up interface file\e[0m"
 scripts/clean_up_interfaces.sh $1 | sed 's/^/    /g'

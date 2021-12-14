@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
@@ -25,8 +27,6 @@
 #           Webpage: https://cqllab.upc.edu/people/lalemany/
 #
 ###########################################################################
-
-#!/bin/bash
 
 function prepend() {
 	doc=$1
