@@ -6,15 +6,11 @@ This library has been interfaced to [Python 3](https://www.python.org/) using th
 
 ## Installing the dependencies
 
-### Bibtex (optional, for the documentation)
+### ghostscript
 
-The easiest way to install the latest LaTeX distribution is by issuing the command
+### Bibtex
 
-	$ brew install --cask mactex
-
-### Doxygen (optional, for the documentation)
-
-[`doxygen`](https://www.doxygen.nl/index.html) can be installed by issuing the following command
+### [`doxygen`](https://www.doxygen.nl/index.html)
 
 	$ brew install doxygen
 
@@ -39,6 +35,12 @@ The installation instructions are summarised here:
 	$ make check # optional, but recommended
 	$ make install
 
+## Donwload the source code of the python interface
+
+In order to do so, you need to first download the sources of the linear arrangement library. First, navigate to a directory of your choice. Then in that directory, issue the commands
+
+	$ git clone https://github.com/LAL-project/linear-arrangement-library.git
+	$ git clone https://github.com/LAL-project/python-interface.git
 
 ## Configuring the _Makefile_
 
@@ -58,9 +60,6 @@ First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the loca
 
 Secondly, specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
 
-	# ----------------
-	# MACOS USERS ONLY
-	
 	# Python's minor version
 	MINOR_VERSION_PYTHON = 8
 	
@@ -90,9 +89,6 @@ Users who want to install LAL into *anaconda*'s installation directory may want 
 
 Last but not least, you must specify which compiler is to be used. One requirement is that the compiler used must have support for `C++17`'s standard.
 
-	# ----------------
-	# MACOS USERS ONLY
-	
 	CXX			= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	
 We have tested the compilation on `g++` (version 11.2.0). If you change the compiler, change also the flags correspondingly.
