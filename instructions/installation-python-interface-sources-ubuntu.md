@@ -120,12 +120,12 @@ It is OK if you want to skip this step. However, if you do so, you need to creat
 
 Now you can actually compile the Python interface.
 
-### `release` compilation and installation
+### Release compilation and installation
 
-	$ make BUILD=release ENVIR=dist -j4
+	$ make BUILD=release ENVIR=dist
 	$ make BUILD=release ENVIR=dist install
 
-### `debug` compilation and installation
+### Debug compilation and installation
 
-	$ make BUILD=debug ENVIR=dist -j4
+	$ make BUILD=debug ENVIR=dist
 	$ make BUILD=debug ENVIR=dist install
