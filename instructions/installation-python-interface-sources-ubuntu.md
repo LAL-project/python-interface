@@ -1,6 +1,6 @@
 # Installation of the interface for Python (Ubuntu)
 
-This library has been interfaced to [Python 3](https://www.python.org/) using the software [SWIG](http://www.swig.org/) (version 4.0.2). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` 
+This library has been interfaced to [Python 3](https://www.python.org/) using the software [SWIG](http://www.swig.org/) (version 4.0.2). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` and `doxygen`.
 
 All the instructions below require the use of a command-line terminal. Head over to [this basic tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) if you think you would like to feel more comfortable in using the terminal.
 
@@ -65,47 +65,23 @@ First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makef
 	# ----------------
 	# LINUX USERS ONLY
 	
-	# where are LAL's include files
-	LAL_INC_DIR = /usr/local/include
-	# where are LAL's library files
-	LAL_LIB_DIR = /usr/local/lib
+	# location of LAL's include files
+	LAL_INC_DIR = 
+	# location of LAL's library files
+	LAL_LIB_DIR = 
 
 (Modify the variables under the header `LINUX USERS ONLY`).
 
-Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default values are the following
+Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is the following
 
 	# Python's minor version
 	MINOR_VERSION_PYTHON = 8
-	
-	# Python 3 include dir
-	PYTHON_INC_DIR	= /usr/include/python3.$(MINOR_VERSION_PYTHON)
-	
-	# Python3 library directory
-	PYTHON_LIB_DIR	= /usr/lib/x86_64-linux-gnu/
 	
 Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is
 
 	# Directory where LAL's interface will be installed to
 	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
-
-Last but not least, you must specify which compiler is to be used. One requirement is that the compiler used must have support for `C++17`'s standard. Modify the [Makefile.compiler](https://github.com/LAL-project/python-interface/blob/main/Makefile.compiler) accordingly
-
-	CXX			= g++
 	
-We have tested the compilation on `g++` (version 11.1.0). If you change the compiler, change also the flags correspondingly.
-
-	FLAGS		= -std=c++17 -fPIC -fopenmp
-
-and also,
-
-	# for debug builds
-	FLAGS		+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llaldebug
-
-	# for release builds
-	FLAGS		+= -O3 -UDEBUG -DNDEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llal
-
 ## Compiling and installing the interface
 
 We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
