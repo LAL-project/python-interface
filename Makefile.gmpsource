@@ -31,18 +31,18 @@ ifeq ($(OS_ID),windows)
 	# WINDOWS USERS ONLY
 	
 	# include directory of gmp library
-	GMP_INC_DIR =
+	GMP_INC_DIR = 
 	# include directory of gmp library
-	GMP_LIB_DIR =
+	GMP_LIB_DIR = 
 
 else ifeq ($(OS_ID),linux)
 	# ----------------
 	# LINUX USERS ONLY
 	
 	# include directory of gmp library
-	GMP_INC_DIR = /usr/local/include
+	GMP_INC_DIR = 
 	# library directory of gmp library
-	GMP_LIB_DIR = /usr/local/lib
+	GMP_LIB_DIR = 
 
 else ifeq ($(OS_ID),macos)
 	# ----------------

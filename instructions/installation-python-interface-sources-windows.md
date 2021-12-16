@@ -1,28 +1,34 @@
 # Installation of the interface for Python (Windows)
 
-This library has been interfaced to [Python 3](https://www.python.org/) using the software [SWIG](http://www.swig.org/) (version 4.0.1). In order to compile the interface, you need to have the `SWIG` tool installed in your system. As for the rest, you only need the `make` tool.
+**NOTE** *We provide binaries for Windows that can be installed with an installer (those Next, Next clicky things). We recommend you install LAL using the installer, if possible.*
+
+We first describe the basic setup of the system for the compilation of the python interface.
+
+## Necessary tools and basic setup of the system
+
+We recommend installing the [`MSYS2`](https://www.msys2.org/) subsystem for simplicity. This can be done following the 7 steps in their webpage. These consist of downloading and executing the installer and executing some very well-explained commands. With a fast internet connection it should take no more than 15 minutes. If you already did it when install [LAL from sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md), you may skip this step.
 
 ## Installing the dependencies
 
-### ghostscript
+The dependencies should be installed using the `MSYS2 MSYS` program. In Windows' Start menu, launch `MSYS2 MSYS`, and type the following commands. The dependencies that are not installed by the default are the following.
 
-### Bibtex
+### git
 
-### doxygen
+	$ pacman -S git
 
-Download the binaries for Windows following [these instructions](https://www.doxygen.nl/download.html).
+#### epstopdf, ghostscript
 
-### Python 3
+The following command will install `epstopdf` and `ghostscript` and other software on which these two depend.
 
-Go to Python's [webpage](https://www.python.org/) and download one of the `3.x` builds for Windows. We have tested the interface with Python 3.6, but any `3.x` should work. Python builds for Windows can be found [here](https://www.python.org/downloads/windows/). When installing Python, make sure to check the box that says `Add Python 3.x to PATH`.
+	$ pacman -S mingw-w64-x86_64-texlive-font-utils
 
-### SWIG
+#### Bibtex
 
-Download and install `SWIG` from its webpage. Authors of `SWIG` already provide downloadable files with prebuilt executables for windows. Download these and install them in your system. It is key to include the path to the installation folder in the `PATH` environment variable. For example, you can install SWIG in
+	$ pacman -S mingw-w64-x86_64-texlive-bibtex-extra
 
-	C:/programming/swig
+#### [`doxygen`](https://www.doxygen.nl/index.html)
 
-and then add the path you used to the `PATH` environment variable.
+	$ pacman -S mingw-w64-x86_64-doxygen
 
 ## Donwload the source code of the python interface
 
@@ -30,6 +36,8 @@ In order to do so, you need to first download the sources of the linear arrangem
 
 	$ git clone https://github.com/LAL-project/linear-arrangement-library.git
 	$ git clone https://github.com/LAL-project/python-interface.git
+
+We need the source code of LAL to generate the documentation.
 
 ## Configuring the _Makefile_
 
@@ -44,47 +52,34 @@ In order to compile the interface, you have to configure one of the build files 
 	
 With this information, you have to modify some of the variables in the Makefile files accordingly, as explained below.
 
+If you want to install the python interface for [Anaconda](https://www.anaconda.com/), scroll down to the next section.
+
 First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makefile.lalsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource) by overwriting their values with the location of LAL's header files and LAL's binary files. The default values are
 	
 	# ------------------
 	# WINDOWS USERS ONLY
 	
-	# where are LAL's include files
-	LAL_INC_DIR = C:/programming/c++/include
-	# where are LAL's library files
-	LAL_LIB_DIR = C:/programming/c++/bin
+	# location of LAL's include files
+	LAL_INC_DIR = 
+	# location of LAL's library files
+	LAL_LIB_DIR = 
 
 (Modify the variables under the header `WINDOWS USERS ONLY`).
 
-Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default values are the following
+Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is the following
 
 	# Python's minor version
-	MINOR_VERSION_PYTHON = 8
+	MINOR_VERSION_PYTHON = 9
 
-Replace the `8` above with the minor version of Python installed in your system.
+Replace the `9` above with the minor version of Python installed in your system.
 
-Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is
+Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). If you are configuring this interface to work with Anaconda, do not change the default value. If not, you may change it, for example
 
-	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST		= C:/programming/python_lib_3.$(MINOR_VERSION_PYTHON)
-
-Last but not least, you must specify which compiler is to be used. One requirement is that the compiler used must have support for `C++17`'s standard. Modify the [Makefile.compiler](https://github.com/LAL-project/python-interface/blob/main/Makefile.compiler) accordingly
-
-	CXX			= g++
-
-If you change the compiler, change also the flags correspondingly.
-
-	FLAGS		= -std=c++17 -fPIC -fopenmp
-
-and also,
-
-	# for debug builds
-	FLAGS		+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llaldebug
-
-	# for release builds
-	FLAGS		+= -O3 -UDEBUG -DNDEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llal
+	else ifeq ($(ANACONDA),no)
+		...
+    
+		# Directory where LAL's interface will be installed to
+		LAL_PY_DEST		= C:/Users/$(USER)/Desktop
 
 ## Compiling and installing the interface
 
@@ -100,26 +95,31 @@ It is OK if you want to skip this step. However, if you do so, you need to creat
 
 Now you can actually compile the Python interface.
 
-### RELEASE compilation and installation
+### Release compilation and installation
 
-	$ cd python-interface
-	$ make BUILD=release ENVIR=dist -j4
-	$ make BUILD=release ENVIR=dist install
+	$ ./compile.sh --build=release --envir=distribution
+	$ ./compile.sh --build=release --envir=distribution --install
 
-### DEBUG compilation and installation
+### Debug compilation and installation
 
-	$ cd python-interface
-	$ make BUILD=debug ENVIR=dist -j4
-	$ make BUILD=debug ENVIR=dist install
+	$ ./compile.sh --build=debug --envir=distribution
+	$ ./compile.sh --build=debug --envir=distribution --install
 
-## Using the Python interface
+## Using the Python interface in Anaconda
 
-It only remains one final step. This step depends on the minor version of Python you have. You need to help Python find LAL's `.dll` files
+It remains one final step. This step is about moving the `.dll` to the appropriate directory within Anaconda, in particular within the directories
 
-	liblal.dll liblaldebug.dll
+	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
+	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
 
-Locate the destination directory of these files that you chose when installing LAL. Now add to the `PYTHONPATH` environment variable the directory to which the interface has been installed. This is the directory given to the variable `LAL_PY_DEST` in the Makefile (as explained above). This way, the python interpreter can find the `.py` files generated. This is sufficient for minor versions `6` and `7`. For minor version `8` copy the `.dll` files into your Python installation directory. For example,
+First, copy into directories (1) and (2) the file
 
-	C:/Users/%USERNAME%/AppData/Python/Python3.8/
+	C:/msys64/mingw64/bin/libstdc++-6.dll
 
-Note: this workaround does not look too good, but importing LAL does not work without this step.
+### For release builds
+
+Copy to (1) the `liblal.dll` file generated during the [release compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
+
+### For debug builds
+
+Copy to (1) the `liblaldebug.dll` file generated during the [debug compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).

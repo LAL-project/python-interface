@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
@@ -26,44 +28,60 @@
 #
 ###########################################################################
 
-ifeq ($(OS_ID),windows)
-	# ------------------
-	# WINDOWS USERS ONLY
-	
-	CXX			= g++
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+ANACONDA="no"
+BUILD="debug"
+ENVIRONMENT="development"
+INSTALL=0
 
-else ifeq ($(OS_ID),linux)
-	# ----------------
-	# LINUX USERS ONLY
-	
-	CXX			= g++
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+for i in "$@"; do
+	case $i in
+		--anaconda)
+		ANACONDA="yes"
+		shift
+		;;
+		
+		--build=*)
+		BUILD="${i#*=}"
+		shift
+		;;
+		
+		--envir=*)
+		ENVIRONMENT="${i#*=}"
+		shift
+		;;
+		
+		--install)
+		INSTALL=1
+		shift
+		;;
+		
+		*)
+		echo -e "\e[1;4;31mError:\e[0m Option $i unknown"
+		exit 1
+		;;
+	esac
+done
 
-else ifeq ($(OS_ID),macos)
-	# ----------------
-	# MACOS USERS ONLY
-	
-	CXX			= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+if [ "$ANACONDA" != "no" ] && [ "$ANACONDA" != "yes" ]; then
+	echo "Error: invalid value for 'ANACONDA' variable: '$ANACONDA'"
+	echo "    Valid values: yes/no"
+	exit 1
+fi
 
-endif
+if [ "$BUILD" != "debug" ] && [ "$BUILD" != "release" ]; then
+	echo "Error: invalid value for 'BUILD' variable: '$BUILD'"
+	echo "    Valid values: debug/release"
+	exit 1
+fi
 
-# set lib and flags according to the mode of compilation
-ifeq ($(BUILD),debug)
-	# -----------------
-	# compilation flags
+if [ "$ENVIRONMENT" != "development" ] && [ "$ENVIRONMENT" != "distribution" ]; then
+	echo "Error: invalid value for 'ENVIRONMENT' variable: '$ENVIRONMENT'"
+	echo "    Valid values: development/distribution"
+	exit 1
+fi
 
-	FLAGS		+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llaldebug
-	SWIG_FLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
-
-else ifeq ($(BUILD),release)
-	# -----------------
-	# compilation flags
-
-	FLAGS		+= -O3 -UDEBUG -DNDEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llal
-	SWIG_FLAGS	+= -DNDEBUG
-
-endif
+if [ $INSTALL == 1 ]; then
+	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA install
+else
+	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA
+fi

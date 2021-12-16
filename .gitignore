@@ -2,5 +2,6 @@ docshtml/
 *.html
 
 linux/
+windows/
 
 modules/documentation.i
