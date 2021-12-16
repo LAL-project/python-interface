@@ -80,7 +80,7 @@ Secondly, you have to specify the version of Python against which the interface 
 Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is
 
 	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
+	LAL_PY_DEST = /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
 	
 ## Compiling and installing the interface
 
