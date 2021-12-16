@@ -73,13 +73,13 @@ Secondly, you have to specify the version of Python against which the interface 
 
 Replace the `9` above with the minor version of Python installed in your system.
 
-Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). If you are configuring this interface to work with Anaconda, do not change the default value. If not, you may change it, for example
+Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). If you are configuring this interface to work with Anaconda, do not change the default value. If not, you may change it. The default value is
 
 	else ifeq ($(ANACONDA),no)
 		...
     
 		# Directory where LAL's interface will be installed to
-		LAL_PY_DEST		= C:/Users/$(USER)/Desktop
+		LAL_PY_DEST = /mingw64/lib/python3.$(MINOR_VERSION_PYTHON)
 
 ## Compiling and installing the interface
 
