@@ -107,7 +107,7 @@ Now you can actually compile the Python interface.
 
 ## Using the Python interface in Anaconda
 
-It remains one final step. This step is about moving the `.dll` to the appropriate directory within Anaconda, in particular within the directories
+It remains one final step. This step is about moving the `.dll` files to the appropriate directory within Anaconda, in particular within the directories
 
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
 	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
