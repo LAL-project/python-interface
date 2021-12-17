@@ -32,6 +32,7 @@ ANACONDA="no"
 BUILD="debug"
 ENVIRONMENT="development"
 INSTALL=0
+CLEAN=0
 
 for i in "$@"; do
 	case $i in
@@ -50,6 +51,11 @@ for i in "$@"; do
 		shift
 		;;
 		
+		--clean)
+		CLEAN=1
+		shift
+		;;
+		
 		--install)
 		INSTALL=1
 		shift
@@ -61,6 +67,13 @@ for i in "$@"; do
 		;;
 	esac
 done
+
+if [ $CLEAN == 1 ] && [ $INSTALL == 1 ]; then
+	echo "Error: conflict in options '--clean' and '--install'"
+	echo "    clean:   $CLEAN"
+	echo "    install: $INSTALL"
+	exit 1
+fi
 
 if [ "$ANACONDA" != "no" ] && [ "$ANACONDA" != "yes" ]; then
 	echo "Error: invalid value for 'ANACONDA' variable: '$ANACONDA'"
@@ -82,6 +95,8 @@ fi
 
 if [ $INSTALL == 1 ]; then
 	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA install
+elif [ $CLEAN == 1 ]; then
+	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA clean
 else
 	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA
 fi
