@@ -61,4 +61,3 @@ found2 = find_matching_strings(all_expressions, space_beginend)
 found3 = find_matching_strings(all_expressions, space_end)
 
 if found1 or found2 or found3: exit(1)
-exit(0)
