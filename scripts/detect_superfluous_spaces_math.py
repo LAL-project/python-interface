@@ -40,10 +40,10 @@ def find_matching_strings(all_expressions, regexpr):
 			found = True
 	return found
 
-f = open(argv[1], 'r')
 whole_file = ""
-for line in f: whole_file += line
-f.close()
+with open(argv[1], 'r') as f:
+	for line in f: whole_file += line
+	f.close()
 
 correct_expressions = re.compile('\$([^\$]*)\$', re.IGNORECASE)
 iterator_expressions = correct_expressions.finditer(whole_file)
