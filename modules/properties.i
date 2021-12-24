@@ -42,7 +42,7 @@
 %include "../linear-arrangement-library/lal/properties/C_rla.hpp"
 %include "../linear-arrangement-library/lal/properties/D_rla.hpp"
 %include "../linear-arrangement-library/lal/properties/degrees.hpp"
-%include "../linear-arrangement-library/lal/properties/mean_hierarchical_distance.hpp"
+%include "../linear-arrangement-library/lal/properties/hierarchical_distance.hpp"
 %include "../linear-arrangement-library/lal/properties/Q.hpp"
 %include "../linear-arrangement-library/lal/properties/tree_centre.hpp"
 %include "../linear-arrangement-library/lal/properties/tree_centroid.hpp"
