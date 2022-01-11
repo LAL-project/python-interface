@@ -1,4 +1,4 @@
-# python-interface
+# Python interface for the Linear Arrangement Library
 
 A SWIG-generated python wrapper for the [Linear Arrangement Library](https://github.com/LAL-project/linear-arrangement-library.git).
 
