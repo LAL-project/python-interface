@@ -110,7 +110,7 @@ else ifeq ($(OS_ID),macos)
 	MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
 	
 	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)
+	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
 	
 	# Other flags needed to compile against Python
 	EXTRA_FLAGS		= -flat_namespace

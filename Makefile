@@ -39,9 +39,9 @@
 ifeq ($(BUILD), )
 BUILD = debug
 endif
-# distribution is devel by default
-ifeq ($(ENVIR), )
-ENVIR = devel
+# distribution is development by default
+ifeq ($(ENVIRONMENT), )
+ENVIR = development
 endif
 # do not install for Anaconda
 ifeq ($(ANACONDA), )
@@ -115,7 +115,7 @@ $(info .    'distribution' = installed version)
 # ------------
 # LAL location
 
-ifeq ($(ENVIR), devel)
+ifeq ($(ENVIRONMENT),development)
 	# this assumes that development happens within the "python-interface/" directory
 	
 	LAL_INC_DIR = ../linear-arrangement-library
