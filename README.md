@@ -8,7 +8,6 @@ We wrote different sets of instructions for compiling and installing LAL's Pytho
 
 - [Ubuntu](https://github.com/LAL-project/python-interface/blob/main/instructions/installation-python-interface-binaries-ubuntu.md).
 - [Windows](https://github.com/LAL-project/python-interface/blob/main/instructions/installation-python-interface-binaries-windows.md).
-- [Mac OS](https://github.com/LAL-project/python-interface/blob/main/instructions/installation-python-interface-binaries-macos.md).
 
 ## Installation of the Python interface from sources
 
