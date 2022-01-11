@@ -16,17 +16,17 @@ The dependencies should be installed using the `MSYS2 MSYS` program. In Windows'
 
 	$ pacman -S git
 
-#### epstopdf, ghostscript
+### epstopdf, ghostscript
 
 The following command will install `epstopdf` and `ghostscript` and other software on which these two depend.
 
 	$ pacman -S mingw-w64-x86_64-texlive-font-utils
 
-#### Bibtex
+### Bibtex
 
 	$ pacman -S mingw-w64-x86_64-texlive-bibtex-extra
 
-#### [`doxygen`](https://www.doxygen.nl/index.html)
+### [`doxygen`](https://www.doxygen.nl/index.html)
 
 	$ pacman -S mingw-w64-x86_64-doxygen
 
@@ -47,12 +47,10 @@ In order to compile the interface, you have to configure one of the build files 
 - the compiler you want to use (we suggest GNU's `g++`),
 - the location of the python binaries and header development files,
 - the location of the GMP library in your system,
-- the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
+- the minor version of python installed (the interface has been tested on is `9` (i.e., we have been using `Python 3.9`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
 	
 With this information, you have to modify some of the variables in the Makefile files accordingly, as explained below.
-
-If you want to install the python interface for [Anaconda](https://www.anaconda.com/), scroll down to the next section.
 
 First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makefile.lalsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource) by overwriting their values with the location of LAL's header files and LAL's binary files. The default values are
 	
@@ -65,6 +63,8 @@ First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makef
 	LAL_LIB_DIR = 
 
 (Modify the variables under the header `WINDOWS USERS ONLY`).
+
+### Configuration not for Anaconda
 
 Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is the following
 
@@ -81,9 +81,13 @@ Thirdly, you can also choose the destination directory of LAL's python interface
 		# Directory where LAL's interface will be installed to
 		LAL_PY_DEST = /mingw64/lib/python3.$(MINOR_VERSION_PYTHON)
 
+## Configuration for Anaconda
+
+Technically, there should be no need to do any further configuration.
+
 ## Compiling and installing the interface
 
-We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
+There are two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
 First, you must make the documentation for the Python interface files. For this, issue the following commands.
 
@@ -95,31 +99,41 @@ It is OK if you want to skip this step. However, if you do so, you need to creat
 
 Now you can actually compile the Python interface.
 
-### Release compilation and installation
+### Not for Anaconda
+
+For a release compilation and installation of the python interface, issue the following commands
 
 	$ ./compile.sh --build=release --envir=distribution
 	$ ./compile.sh --build=release --envir=distribution --install
 
-### Debug compilation and installation
+For a debug compilation and installation of the python interface, issue the following commands
 
 	$ ./compile.sh --build=debug --envir=distribution
 	$ ./compile.sh --build=debug --envir=distribution --install
 
-## Using the Python interface in Anaconda
+### For Anaconda
 
+Similarly as before (but not exactly!), compile the library in debug and/or release mode.
+
+For a release compilation and installation of the python interface, issue the following commands
+
+	$ ./compile.sh --build=release --envir=distribution --anaconda
+	$ ./compile.sh --build=release --envir=distribution --anaconda --install
+
+For a debug compilation and installation of the python interface, issue the following commands
+
+	$ ./compile.sh --build=debug --envir=distribution --anaconda
+	$ ./compile.sh --build=debug --envir=distribution --anaconda --install
+	
 It remains one final step. This step is about moving the `.dll` files to the appropriate directory within Anaconda, in particular within the directories
 
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
 	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
 
-First, copy into directories (1) and (2) the file
+Now, copy the file
 
 	C:/msys64/mingw64/bin/libstdc++-6.dll
 
-### For release builds
+- (release builds) to directory (1) the `liblal.dll` file generated during the [release compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
 
-Copy to (1) the `liblal.dll` file generated during the [release compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
-
-### For debug builds
-
-Copy to (1) the `liblaldebug.dll` file generated during the [debug compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
+- (debug builds) to directory (2) the `liblaldebug.dll` file generated during the [debug compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
