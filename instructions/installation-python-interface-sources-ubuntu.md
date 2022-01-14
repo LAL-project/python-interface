@@ -98,10 +98,10 @@ Now you can actually compile the Python interface.
 
 ### Release compilation and installation
 
-	$ make BUILD=release ENVIR=dist
-	$ make BUILD=release ENVIR=dist install
+	$ ./compile.sh --build=release --environment=distribution
+	$ ./compile.sh --build=release --environment=distribution --install
 
 ### Debug compilation and installation
 
-	$ make BUILD=debug ENVIR=dist
-	$ make BUILD=debug ENVIR=dist install
+	$ ./compile.sh --build=debug --environment=distribution
+	$ ./compile.sh --build=debug --environment=distribution --install

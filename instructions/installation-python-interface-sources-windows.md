@@ -103,13 +103,13 @@ Now you can actually compile the Python interface.
 
 For a release compilation and installation of the python interface, issue the following commands
 
-	$ ./compile.sh --build=release --envir=distribution
-	$ ./compile.sh --build=release --envir=distribution --install
+	$ ./compile.sh --build=release --environment=distribution
+	$ ./compile.sh --build=release --environment=distribution --install
 
 For a debug compilation and installation of the python interface, issue the following commands
 
-	$ ./compile.sh --build=debug --envir=distribution
-	$ ./compile.sh --build=debug --envir=distribution --install
+	$ ./compile.sh --build=debug --environment=distribution
+	$ ./compile.sh --build=debug --environment=distribution --install
 
 ### For Anaconda
 
@@ -117,14 +117,14 @@ Similarly as before (but not exactly!), compile the library in debug and/or rele
 
 For a release compilation and installation of the python interface, issue the following commands
 
-	$ ./compile.sh --build=release --envir=distribution --anaconda
-	$ ./compile.sh --build=release --envir=distribution --anaconda --install
+	$ ./compile.sh --build=release --environment=distribution --anaconda
+	$ ./compile.sh --build=release --environment=distribution --anaconda --install
 
 For a debug compilation and installation of the python interface, issue the following commands
 
-	$ ./compile.sh --build=debug --envir=distribution --anaconda
-	$ ./compile.sh --build=debug --envir=distribution --anaconda --install
-	
+	$ ./compile.sh --build=debug --environment=distribution --anaconda
+	$ ./compile.sh --build=debug --environment=distribution --anaconda --install
+
 It remains one final step. This step is about moving the `.dll` files to the appropriate directory within Anaconda, in particular within the directories
 
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
