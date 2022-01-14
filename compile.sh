@@ -28,6 +28,52 @@
 #
 ###########################################################################
 
+function help() {
+	echo "Compilation of the Python wrapper for LAL"
+	echo "========================================="
+	echo ""
+	echo "Optional parameters:"
+	echo ""
+	echo "    --build=debug                (default)"
+	echo "    --build=release"
+	echo ""
+	echo "        Make either a debug or release compilation of the wrapper."
+	echo ""
+	echo "    --environment=development    (default)"
+	echo "    --environment=distribution"
+	echo ""
+	echo "        For developers only. 'distribution' will compile the wrapper"
+	echo "        against LAL installed in the system. 'development' will compile"
+	echo "        the wrapper against a local, non-installed version of LAL."
+	echo ""
+	echo "    --install"
+	echo ""
+	echo "        Copy the compiled binaries to the installation directory."
+	echo "        Deactivated by default."
+	echo ""
+	echo "    --anaconda"
+	echo ""
+	echo "        Compile the python wrapper for anaconda."
+	echo "        Deactivated by default."
+	echo ""
+	echo "Examples of usage:"
+	echo ""
+	echo "* Make a debug build in a development version of LAL"
+	echo ""
+	echo "    ./compile.sh --build=debug"
+	echo "    ./compile.sh --build=debug --environment=development"
+	echo ""
+	echo "* Make a release build in a distribution version of LAL"
+	echo ""
+	echo "    ./compile.sh --build=release --environment=distribution"
+	echo ""
+	echo "* Install a release compilation of LAL"
+	echo ""
+	echo "    ./compile.sh --build=release --install"
+	echo ""
+	exit
+}
+
 ANACONDA="no"
 BUILD="debug"
 ENVIRONMENT="development"
@@ -36,6 +82,10 @@ CLEAN=0
 
 for i in "$@"; do
 	case $i in
+		--help)
+		help
+		;;
+		
 		--anaconda)
 		ANACONDA="yes"
 		shift
@@ -46,7 +96,7 @@ for i in "$@"; do
 		shift
 		;;
 		
-		--envir=*)
+		--environment=*)
 		ENVIRONMENT="${i#*=}"
 		shift
 		;;
