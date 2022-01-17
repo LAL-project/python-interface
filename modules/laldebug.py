@@ -45,3 +45,4 @@ from laldebug import numeric
 from laldebug import properties
 from laldebug import utilities
 from laldebug import version
+from laldebug import types
