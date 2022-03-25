@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
