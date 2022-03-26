@@ -5,8 +5,10 @@ See below for information about authorship of this file and urls to the
 repositories that host this script.
 
 This file was added to the repository of the Linear Arrangement Library
-for convenience. No changes have been made to the script except for this
-header.
+for convenience.
+
+A few changes have been made:
+    - depending on the python version, write the file with utf-8 encoding or not.
 """
 
 """doxy2swig.py [options] index.xml output.i
@@ -168,7 +170,13 @@ class Doxy2SWIG:
 
     def write(self, fname):
         o = my_open_write(fname)
-        o.write(''.join(self.pieces).encode('utf-8'))
+        
+        # modified from the original
+        if sys.version_info.minor <= 8:
+            o.write(''.join(self.pieces))
+        elif sys.version_info.minor == 9:
+            o.write(''.join(self.pieces).encoding('utf-8'))
+
         o.write('\n')
         o.close()
 
