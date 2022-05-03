@@ -29,12 +29,14 @@
 #!/bin/bash
 
 PYTHON=""
-if ! command -v python &> /dev/null
+if command -v python3 &> /dev/null
 then
 	PYTHON=python3
 else
 	PYTHON=python
 fi
+
+echo "Python command to be used is: '$PYTHON'"
 
 # Remember that 
 #
