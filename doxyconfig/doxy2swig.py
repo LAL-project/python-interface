@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 See below for information about authorship of this file and urls to the
 repositories that host this script.
@@ -67,7 +65,7 @@ def my_open_read(source):
         return source
     else:
         try:
-            return open(source, encoding='utf-8')
+            return open(source, 'r', encoding="utf-8")
         except TypeError:
             return open(source)
 
@@ -76,7 +74,7 @@ def my_open_write(dest):
         return dest
     else:
         try:
-            return open(dest, 'w', encoding='utf-8')
+            return open(dest, 'w', encoding="utf-8")
         except TypeError:
             return open(dest, 'w')
 
@@ -171,10 +169,12 @@ class Doxy2SWIG:
     def write(self, fname):
         o = my_open_write(fname)
         
+        import sys
+        
         # modified from the original
-        if sys.version_info.minor <= 8:
+        if sys.getfilesystemencoding() == "utf-8":
             o.write(''.join(self.pieces))
-        elif sys.version_info.minor == 9:
+        else:
             o.write(''.join(self.pieces).encoding('utf-8'))
 
         o.write('\n')
@@ -228,7 +228,7 @@ class Doxy2SWIG:
             self.subnode_parse(node)
             #if name not in self.generics: self.generics.append(name)
 
-# MARK: Special format parsing
+    # MARK: Special format parsing
     def subnode_parse(self, node, pieces=None, indent=0, ignore=[], restrict=None):
         """Parse the subnodes of a given node. Subnodes with tags in the
         `ignore` list are ignored. If pieces is given, use this as target for
@@ -269,7 +269,7 @@ class Doxy2SWIG:
         self.subnode_parse(node)
         self.add_text(post_char)
     
-# MARK: Helper functions
+    # MARK: Helper functions
     def get_specific_subnodes(self, node, name, recursive=0):
         """Given a node and a name, return a list of child `ELEMENT_NODEs`, that
         have a `tagName` matching the `name`. Search recursively for `recursive`
@@ -365,7 +365,7 @@ class Doxy2SWIG:
             function_definition = function_definition + ' -> ' + type
         return '`' + function_definition + '`  '
 
-# MARK: Special parsing tasks (need to be called manually)
+    # MARK: Special parsing tasks (need to be called manually)
     def make_constructor_list(self, constructor_nodes, classname):
         """Produces the "Constructors" section and the constructor signatures
         (since swig does not do so for classes) for class docstrings."""
@@ -468,7 +468,7 @@ class Doxy2SWIG:
         self.add_text(['";', '\n'])
     
 
-# MARK: Tag handlers
+    # MARK: Tag handlers
     def do_linebreak(self, node):
         self.add_text('  ')
     
@@ -520,7 +520,7 @@ class Doxy2SWIG:
         self.subnode_parse(node)
         self.add_text('\n')
 
-# MARK: Para tag handler
+    # MARK: Para tag handler
     def do_para(self, node):
         """This is the only place where text wrapping is automatically performed.
         Generally, this function parses the node (locally), wraps the text, and
@@ -560,7 +560,7 @@ class Doxy2SWIG:
         pieces.extend(wrapped_para)
         self.pieces = pieces
 
-# MARK: List tag handlers
+    # MARK: List tag handlers
     def do_itemizedlist(self, node):
         if self.listitem == '':
             self.start_new_paragraph()
@@ -592,7 +592,7 @@ class Doxy2SWIG:
             item = str(self.listitem) + ' '
         self.subnode_parse(node, item, indent=4)
 
-# MARK: Parameter list tag handlers
+    # MARK: Parameter list tag handlers
     def do_parameterlist(self, node):
         self.start_new_paragraph()
         text = 'unknown'
@@ -629,7 +629,7 @@ class Doxy2SWIG:
     def do_parameterdescription(self, node):
         self.subnode_parse(node, pieces=[''], indent=4)
 
-# MARK: Section tag handler
+    # MARK: Section tag handler
     def do_simplesect(self, node):
         kind = node.attributes['kind'].value
         if kind in ('date', 'rcs', 'version'):
@@ -648,7 +648,7 @@ class Doxy2SWIG:
         else:
             self.subnode_parse(node, pieces=[kind + ': ',''], indent=4)
 
-# MARK: %feature("docstring") producing tag handlers
+    # MARK: %feature("docstring") producing tag handlers
     def do_compounddef(self, node):
         """This produces %feature("docstring") entries for classes, and handles
         class, namespace and file memberdef entries specially to allow for 
@@ -736,7 +736,7 @@ class Doxy2SWIG:
                 self.parse(n)
         self.add_text(['";', '\n'])
     
-# MARK: Entry tag handlers (dont print anything meaningful)
+    # MARK: Entry tag handlers (dont print anything meaningful)
     def do_sectiondef(self, node):
         kind = node.attributes['kind'].value
         if kind in ('public-func', 'func', 'user-defined', ''):
