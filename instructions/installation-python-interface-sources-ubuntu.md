@@ -41,11 +41,10 @@ The installation instructions are summarized here:
 	$ make check # optional, but recommended
 	$ sudo make install
 
-## Donwload the source code of the python interface
+## Download the source code of the python interface
 
-In order to do so, you need to first download the sources of the linear arrangement library. First, navigate to a directory of your choice. Then in that directory, issue the commands
+Navigate to a directory of your choice and issue the command
 
-	$ git clone https://github.com/LAL-project/linear-arrangement-library.git
 	$ git clone https://github.com/LAL-project/python-interface.git
 
 ## Configuring the _Makefile_
@@ -86,15 +85,16 @@ Thirdly, you can also choose the destination directory of LAL's python interface
 
 We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
-First, you must make the documentation for the Python interface files. This way you will enjoy the help of tooltips in the IDE of your choice (if you use an IDE for python, that is). For this, issue the following commands.
-
-	$ ./make_docs.sh
-
-It is OK if you want to skip this step. However, if you do so, you need to create a special file.
+In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, users have to generate an empty file:
 
 	$ touch modules/documentation.i
 
-Now you can actually compile the Python interface.
+In order to generate the documentation for the Python wrapper files, issue the following commands.
+
+	$ cd /path/to/linear-arrangement-library
+	$ ./make_docs.sh
+
+Now, we can actually compile the Python interface.
 
 ### Release compilation and installation
 

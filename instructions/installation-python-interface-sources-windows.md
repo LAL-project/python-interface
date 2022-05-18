@@ -30,14 +30,15 @@ The following command will install `epstopdf` and `ghostscript` and other softwa
 
 	$ pacman -S mingw-w64-x86_64-doxygen
 
-## Donwload the source code of the python interface
+### LAL
 
-In order to do so, you need to first download the sources of the linear arrangement library. First, navigate to a directory of your choice. Then in that directory, issue the commands
+Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/blob/master/README.md)) of that project.
 
-	$ git clone https://github.com/LAL-project/linear-arrangement-library.git
+## Download the source code of the python interface
+
+Navigate to a directory of your choice and issue the command
+
 	$ git clone https://github.com/LAL-project/python-interface.git
-
-We need the source code of LAL to generate the documentation.
 
 ## Configuring the _Makefile_
 
@@ -89,15 +90,16 @@ Technically, there should be no need to do any further configuration.
 
 There are two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
-First, you must make the documentation for the Python interface files. For this, issue the following commands.
-
-	$ ./make_docs.sh
-
-It is OK if you want to skip this step. However, if you do so, you need to create a special file.
+In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, users have to generate an empty file:
 
 	$ touch modules/documentation.i
 
-Now you can actually compile the Python interface.
+In order to generate the documentation for the Python wrapper files, issue the following commands.
+
+	$ cd /path/to/linear-arrangement-library
+	$ ./make_docs.sh
+
+Now, we can actually compile the Python interface.
 
 ### Not for Anaconda
 

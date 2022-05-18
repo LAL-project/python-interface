@@ -6,6 +6,8 @@ This library has been interfaced to [Python 3](https://www.python.org/) using th
 
 ## Installing the dependencies
 
+Users need to install the following dependencies.
+
 ### ghostscript
 
 ### Bibtex
@@ -26,39 +28,50 @@ According to [python-guide.org](https://docs.python-guide.org/starting/install3/
 
 ### SWIG
 
-Download the latest swig sources from [SWIG's official webpage](http://www.swig.org/) and uncompress the file in a directory, say `~/Desktop/swig`. Compile the sources following the instructions provided in the file named `INSTALL`; read it to see the complete set of options for configuration of SWIG's installation.
+Users can use `homebrew` to install SWIG
 
-The installation instructions are summarised here:
+	$ brew install swig
+	
+Please, ensure that the version of SWIG is 4.0.2 or newer:
+
+	SWIG Version 4.0.2
+	
+If not, users are recommended to either find a way to "force" homebrew to install the latest SWIG, or install it from sources.
+
+For the latter, download the latest release's sources from [SWIG's official webpage](http://www.swig.org/). Then, uncompress the file in a directory, say `~/Desktop/swig`. Compile the sources following the instructions provided in the file named `INSTALL`; read it to see the complete set of options for configuration of SWIG's installation. The installation instructions are summarized here:
 
 	$ ./configure
 	$ make
 	$ make check # optional, but recommended
 	$ make install
 
-## Donwload the source code of the python interface
+## Download the source code of the python interface
 
-In order to do so, you need to first download the sources of the linear arrangement library. First, navigate to a directory of your choice. Then in that directory, issue the commands
+Navigate to a directory of your choice and issue the command
 
-	$ git clone https://github.com/LAL-project/linear-arrangement-library.git
 	$ git clone https://github.com/LAL-project/python-interface.git
 
 ## Configuring the _Makefile_
 
-In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, it is required that you know the minor version of Python installed in your system. As stated above, the major version is required to be `3`. The minor version the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`. Moreover, one has to know where LAL has been installed in the system. With this information, you have to modify some of the variables in the [`linear-arrangement-library/python-interface/Makefile`](https://github.com/LAL-project/linear-arrangement-library/blob/master/python-interface/Makefile) accordingly.
+In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, it is required that you know the minor version of Python installed in your system. As stated above, the major version is required to be `3`. The minor version the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`. Moreover, one has to know where LAL has been installed in the system. With this information, you have to modify some of the variables in the corresponding Makefiles.
 
-First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the location of LAL's header files and LAL's binary files. For example,
+### Location of LAL
+
+First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the location of LAL's header files and LAL's binary files in [`Makefile.lalsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource). For example,
 
 	# ----------------
 	# MACOS USERS ONLY
 	
 	# where are LAL's include files
-	LAL_INC_DIR = /usr/local/include
+	LAL_INC_DIR = 
 	# where are LAL's library files
-	LAL_LIB_DIR = /usr/local/lib
+	LAL_LIB_DIR = 
 
-(Modify the variables under the header `MACOS USERS ONLY`).
+(Modify the variables under the header `MACOS USERS ONLY`). Users who **did** specify a special installation directory when installing LAL then they should put said directory in the variables above.
 
-Secondly, specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
+### Location of Python sources and libraries
+
+Secondly, specify the version of Python against which the interface is linked in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
 
 	# Python's minor version
 	MINOR_VERSION_PYTHON = 8
@@ -71,27 +84,34 @@ Secondly, specify the version of Python against which the interface is linked. I
 
 Users who installed *anaconda* may want to change the values for:
 
+    # Python's minor version
+	MINOR_VERSION_PYTHON = 8
+	
 	# Python 3 include dir
 	PYTHON_INC_DIR	= ~/opt/anaconda3/include/python3.$(MINOR_VERSION_PYTHON)
 	
 	# Python3 library directory
 	PYTHON_LIB_DIR	= ~/opt/anaconda3/lib/
 
-Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST`. The default value is
+### Destination of LAL's python wrapper
+
+Also in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource), users can also choose the destination directory of LAL's python interface by modifing the variable `LAL_PY_DEST`. The default value is
 
 	# Directory where LAL's interface will be installed to
 	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
 
-Users who want to install LAL into *anaconda*'s installation directory may want to change the default value for:
+Users who wish to install LAL into *anaconda*'s installation directory may want to change the default value for:
 
 	# Directory where LAL's interface will be installed to
 	LAL_PY_DEST		= ~/opt/anaconda3/lib/python3.$(MINOR_VERSION_PYTHON)/site-packages
 
-Last but not least, you must specify which compiler is to be used. One requirement is that the compiler used must have support for `C++17`'s standard.
+### Compiler
+
+Last but not least, users must specify which compiler is to be used in [`Makefile`](https://github.com/LAL-project/python-interface/blob/main/Makefile). One requirement is that the compiler used must have support for `C++17`'s standard.
 
 	CXX			= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	
-We have tested the compilation on `g++` (version 11.2.0). If you change the compiler, change also the flags correspondingly.
+We have tested the compilation on `g++` (version 11.2.0). Users who are willing to change the compiler, must also change the flags correspondingly.
 
 	FLAGS		= -std=c++17 -fPIC -fopenmp
 
@@ -109,21 +129,25 @@ and also,
 
 We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
-First, you must make the documentation for the Python interface files. For this, issue the following commands.
+In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, users have to generate an empty file:
+
+	$ touch modules/documentation.i
+
+In order to generate the documentation for the Python wrapper files, issue the following commands.
 
 	$ cd /path/to/linear-arrangement-library
-	$ ./make_docs.sh python # optional
+	$ ./make_docs.sh
 
-Now you can actually compile the Python interface.
+Now, we can actually compile the Python interface.
 
 ### `release` compilation and installation
 
 	$ cd python-interface
-	$ make BUILD=release ENVIR=dist -j4
-	$ make BUILD=release ENVIR=dist install
+	$ ./compile.sh --build=release --environment=distribution
+	$ ./compile.sh --build=release --environment=distribution --install
 
 ### `debug` compilation and installation
 
 	$ cd python-interface
-	$ make BUILD=debug ENVIR=dist -j4
-	$ make BUILD=debug ENVIR=dist install
+	$ ./compile.sh --build=debug --environment=distribution
+	$ ./compile.sh --build=debug --environment=distribution --install
