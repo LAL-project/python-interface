@@ -35,7 +35,7 @@ ifeq ($(OS_ID),windows)
 	
 	ifeq ($(ANACONDA),yes)
 		# Anaconda's directory
-		ANACONDA_DIR = C:/Users/$(USER)/anaconda3
+		ANACONDA_DIR	= C:/Users/$(USER)/anaconda3
 		
 		# Python 3 include dir
 		PYTHON_INC_DIR	= $(ANACONDA_DIR)/include

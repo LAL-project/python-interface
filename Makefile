@@ -227,22 +227,22 @@ ifeq ($(OS_ID),windows)
 	# ------------------
 	# WINDOWS USERS ONLY
 	
-	CXX			= g++
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+	CXX		= g++
+	FLAGS	= -std=c++17 -fPIC -fopenmp
 
 else ifeq ($(OS_ID),linux)
 	# ----------------
 	# LINUX USERS ONLY
 	
-	CXX			= g++
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+	CXX		= g++
+	FLAGS	= -std=c++17 -fPIC -fopenmp
 
 else ifeq ($(OS_ID),macos)
 	# ----------------
 	# MACOS USERS ONLY
 	
-	CXX			= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
-	FLAGS		= -std=c++17 -fPIC -fopenmp
+	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
+	FLAGS	= -std=c++17 -fPIC -fopenmp
 
 endif
 
@@ -251,13 +251,13 @@ ifeq ($(BUILD),debug)
 	# -----------------
 	# compilation flags
 
-	FLAGS		+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
+	FLAGS	+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
 	
 else ifeq ($(BUILD),release)
 	# -----------------
 	# compilation flags
 
-	FLAGS		+= -O3 -UDEBUG -DNDEBUG
+	FLAGS	+= -O3 -UDEBUG -DNDEBUG
 	
 endif
 
