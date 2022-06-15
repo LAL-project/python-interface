@@ -62,6 +62,7 @@ namespace std {
 %include "../linear-arrangement-library/lal/linarr/C.hpp"
 %include "../linear-arrangement-library/lal/linarr/D.hpp"
 %include "../linear-arrangement-library/lal/linarr/Dmin.hpp"
+%include "../linear-arrangement-library/lal/linarr/DMax.hpp"
 %include "../linear-arrangement-library/lal/linarr/head_initial.hpp"
 %include "../linear-arrangement-library/lal/linarr/formal_constraints.hpp"
 
