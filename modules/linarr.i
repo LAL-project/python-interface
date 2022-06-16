@@ -53,7 +53,8 @@
 
 namespace std {
 
-%template(value_arrangement) pair<uint64_t, lal::linear_arrangement>;
+%template(pair_value_arrangement) pair<uint64_t, lal::linear_arrangement>;
+%template(pair_list_value) pair<vector<uint64_t>, uint64_t>;
 
 } // -- namespace std
 
