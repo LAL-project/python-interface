@@ -220,8 +220,8 @@ else ifeq ($(BUILD),release)
 
 endif
 
-# -------------------
-# Compiler to be used
+# -----------------------------
+# Compiler to be used and flags
 
 ifeq ($(OS_ID),windows)
 	# ------------------
@@ -229,38 +229,47 @@ ifeq ($(OS_ID),windows)
 	
 	CXX		= g++
 	FLAGS	= -std=c++17 -fPIC -fopenmp
-
+	
+	LFLAGS	= -fPIC -flto -fno-fat-lto-objects
+	
 else ifeq ($(OS_ID),linux)
 	# ----------------
 	# LINUX USERS ONLY
 	
 	CXX		= g++
 	FLAGS	= -std=c++17 -fPIC -fopenmp
-
+	
+	LFLAGS	= -fPIC -flto -fno-fat-lto-objects
+	
 else ifeq ($(OS_ID),macos)
 	# ----------------
 	# MACOS USERS ONLY
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	FLAGS	= -std=c++17 -fPIC -fopenmp
-
+	
+	LFLAGS	= -fPIC -flto -fno-fat-lto-objects
+	
 endif
 
 # set lib and flags according to the mode of compilation
 ifeq ($(BUILD),debug)
 	# -----------------
 	# compilation flags
-
+	
 	FLAGS	+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
+	
+	LFLAGS	+= -DEBUG -O3 -D_GLIBCXX_DEBUG
 	
 else ifeq ($(BUILD),release)
 	# -----------------
 	# compilation flags
-
+	
 	FLAGS	+= -O3 -UDEBUG -DNDEBUG
 	
+	LFLAGS	+= -DNDEBUG -UDEBUG -O3
+	
 endif
-
 
 # ---------------------------------------------------------------------
 # set dependencies for the python modules and the destination directory
@@ -273,9 +282,9 @@ ifeq ($(BUILD),debug)
 		LIBRARY_SHARED_DEP +=
 	
 	endif
-
+	
 	INTERFACE_DIRECTORY	+= laldebug
-
+	
 else ifeq ($(BUILD),release)
 	ifeq ($(ENVIRONMENT),development)
 		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblal.$(LIBRARY_EXTENSION)
@@ -284,7 +293,7 @@ else ifeq ($(BUILD),release)
 		LIBRARY_SHARED_DEP +=
 	
 	endif
-
+	
 	INTERFACE_DIRECTORY	+= lal
 endif
 
@@ -317,7 +326,7 @@ ifeq ($(BUILD),debug)
 		LIBS += -llaldebug
 	
 	endif
-
+	
 else ifeq ($(BUILD),release)
 	ifneq ($(LAL_LIB_DIR), )
 		LIBS += -L $(LAL_LIB_DIR) -llal
@@ -326,7 +335,7 @@ else ifeq ($(BUILD),release)
 		LIBS += -llal
 	
 	endif
-
+	
 endif
 
 ifneq ($(GMP_LIB_DIR), )
@@ -373,6 +382,7 @@ $(info .    Path:             $(CXX))
 $(info .    Flags:            $(FLAGS))
 $(info .    Includes:         $(INCLUDES))
 $(info .    Linked libraries: $(LIBS))
+$(info .    Link flags:       $(LFLAGS))
 
 # ----------------------
 # DEPENDENCIES (headers)
