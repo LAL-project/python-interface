@@ -47,61 +47,42 @@ Navigate to a directory of your choice and issue the command
 
 	$ git clone https://github.com/LAL-project/python-interface.git
 
-## Configuring the _Makefile_
+## Configuring the _run_ script
 
-In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, it is required that you know
+In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
 - the minor version of Python installed in your system,
-- the compiler you want to use (we suggest GNU's `g++`),
 - the location of the python binaries and header development files,
 - the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
 
-With this information, you have to modify some of the variables in the Makefile files accordingly, as explained below.
-
-First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makefile.lalsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource) by overwriting their values with the location of LAL's header files and LAL's binary files. The default values are
-
-	# ----------------
-	# LINUX USERS ONLY
+With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script_ubuntu.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
-	# location of LAL's include files
-	LAL_INC_DIR = 
-	# location of LAL's library files
-	LAL_LIB_DIR = 
+	LAL_HEADERS=                        # directory of the header files of LAL
+	LAL_LIBRARY=                        # directory of the binary files of LAL (.so)
+	LAL_PYTHON_WRAPPER_DESTINATION=     # directory where to install LAL's python wrapper
+	GMP_HEADERS=                        # (?) directory of the header files of GMP
+	GMP_LIBRARY=                        # (?) directory of the binary files of GMP (.so)
+	PYTHON_HEADERS=                     # directory of the header (development) files of python
+	PYTHON_LIBRARY=                     # directory of the shared object (development) files of python
+	PYTHON_MINOR=                       # python's minor version (the 'x' in 3.x)
 
-(Modify the variables under the header `LINUX USERS ONLY`).
+Check the other [two](https://github.com/LAL-project/python-interface/blob/main/run_distribution_ubuntu.sh) [script](https://github.com/LAL-project/python-interface/blob/main/run_install_ubuntu.sh) files to see examples of contents.
 
-Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is the following
-
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 8
-	
-Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is
-
-	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST = /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)
-	
 ## Compiling and installing the interface
 
 We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
-In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, users have to generate an empty file:
+In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, run the command.
 
 	$ touch modules/documentation.i
 
-In order to generate the documentation for the Python wrapper files, issue the following commands.
+To generate the documentation for the Python wrapper files, run the following commands.
 
 	$ cd /path/to/linear-arrangement-library
 	$ ./make_docs.sh
 
-Now, we can actually compile the Python interface.
+Now, we can actually compile and install in one step the Python interface.
 
-### Release compilation and installation
+	$ ./sample_script_ubuntu.sh
 
-	$ ./compile.sh --build=release --environment=distribution
-	$ ./compile.sh --build=release --environment=distribution --install
-
-### Debug compilation and installation
-
-	$ ./compile.sh --build=debug --environment=distribution
-	$ ./compile.sh --build=debug --environment=distribution --install
