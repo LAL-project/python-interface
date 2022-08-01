@@ -6,14 +6,17 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 
 if [ -z $1 ]; then
 
+PYTHON_HEADERS="/usr/include/python3.8"
+PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
+
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
 	--lal-libs="$LAL_LIBRARY_RELEASE" \
 	--lal-destination="" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="/usr/include/python3.8" \
-	--python-libs="/usr/lib/x86_64-linux-gnu/" \
+	--python-headers="$PYTHON_HEADERS" \
+	--python-libs="$PYTHON_LIBRARY" \
 	--python-major="3" \
 	--python-minor="8" \
 	--build=release
@@ -24,8 +27,8 @@ if [ -z $1 ]; then
 	--lal-destination="" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="/usr/include/python3.8" \
-	--python-libs="/usr/lib/x86_64-linux-gnu/" \
+	--python-headers="$PYTHON_HEADERS" \
+	--python-libs="$PYTHON_LIBRARY" \
 	--python-major="3" \
 	--python-minor="8" \
 	--build=debug
