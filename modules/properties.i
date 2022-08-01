@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -39,14 +39,14 @@
 #include <lal/properties.hpp>
 %}
 
-%include "../linear-arrangement-library/lal/properties/C_rla.hpp"
-%include "../linear-arrangement-library/lal/properties/D_rla.hpp"
-%include "../linear-arrangement-library/lal/properties/degrees.hpp"
-%include "../linear-arrangement-library/lal/properties/hierarchical_distance.hpp"
-%include "../linear-arrangement-library/lal/properties/Q.hpp"
-%include "../linear-arrangement-library/lal/properties/tree_centre.hpp"
-%include "../linear-arrangement-library/lal/properties/tree_centroid.hpp"
-%include "../linear-arrangement-library/lal/properties/tree_diameter.hpp"
+%include "lal/properties/C_rla.hpp"
+%include "lal/properties/D_rla.hpp"
+%include "lal/properties/degrees.hpp"
+%include "lal/properties/hierarchical_distance.hpp"
+%include "lal/properties/Q.hpp"
+%include "lal/properties/tree_centre.hpp"
+%include "lal/properties/tree_centroid.hpp"
+%include "lal/properties/tree_diameter.hpp"
 
 %pythoncode %{
 __types = types

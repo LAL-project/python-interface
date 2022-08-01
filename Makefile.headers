@@ -26,7 +26,7 @@
 #
 ###########################################################################
 
-ifeq ($(ENVIRONMENT),development)
+ifeq ($(USER_ENVIRONMENT),development)
 
 # ENUMERATIONS
 
@@ -145,7 +145,7 @@ LAL_DPHDRS			=
 
 VERSION_DPHDRS		= $(LAL_INC_DIR)/lal/lal_version.hpp
 
-else ifeq ($(ENVIRONMENT),distribution)
+else ifeq ($(USER_ENVIRONMENT),distribution)
 
 TREEBANK_ERR_DPHDRS	=
 TREEBANK_FEATURE_DPHDRS	=

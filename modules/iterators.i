@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -38,7 +38,7 @@
 #include <lal/iterators.hpp>
 %}
 
-%include "../linear-arrangement-library/lal/iterators/E_iterator.hpp"
+%include "lal/iterators/E_iterator.hpp"
 
 namespace lal {
 namespace iterators {
@@ -51,7 +51,7 @@ namespace iterators {
 } // -- namespace iterators
 } // -- namespace lal
 
-%include "../linear-arrangement-library/lal/iterators/Q_iterator.hpp"
+%include "lal/iterators/Q_iterator.hpp"
 
 namespace lal {
 namespace iterators {

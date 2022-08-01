@@ -32,30 +32,6 @@ function help() {
 	echo "Compilation of the Python wrapper for LAL"
 	echo "========================================="
 	echo ""
-	echo "Optional parameters:"
-	echo ""
-	echo "    --build=debug                (default)"
-	echo "    --build=release"
-	echo ""
-	echo "        Make either a debug or release compilation of the wrapper."
-	echo ""
-	echo "    --environment=development    (default)"
-	echo "    --environment=distribution"
-	echo ""
-	echo "        For developers only. 'distribution' will compile the wrapper"
-	echo "        against LAL installed in the system. 'development' will compile"
-	echo "        the wrapper against a local, non-installed version of LAL."
-	echo ""
-	echo "    --install"
-	echo ""
-	echo "        Copy the compiled binaries to the installation directory."
-	echo "        Deactivated by default."
-	echo ""
-	echo "    --anaconda"
-	echo ""
-	echo "        Compile the python wrapper for anaconda."
-	echo "        Deactivated by default."
-	echo ""
 	echo "Examples of usage:"
 	echo ""
 	echo "* Make a debug build in a development version of LAL"
@@ -71,13 +47,107 @@ function help() {
 	echo ""
 	echo "    ./compile.sh --build=release --install"
 	echo ""
+	echo "For further information, read below the usage of all parameters."
+	echo ""
+	echo "----------"
+	echo "LAL SOURCE"
+	echo "----------"
+	echo ""
+	echo "    When necessary, the location of the Linear Arrangement Library's"
+	echo "    header files and library files can be specified with the following"
+	echo "    two commands:"
+	echo ""
+	echo "    --lal-headers=dir"
+	echo ""
+	echo "        Use it to specify the location of LAL's header files."
+	echo ""
+	echo "    --lal-libs=dir"
+	echo ""
+	echo "        Use it to specify the location of LAL's library files (.so, .dll, ...)."
+	echo ""
+	echo "----------"
+	echo "LAL SOURCE"
+	echo "----------"
+	echo ""
+	echo "    Specify the destination directory of LAL with the following command:"
+	echo ""
+	echo "    --lal-destination=dir"
+	echo ""
+	echo "    This is mandatory when using the option '--install'."
+	echo ""
+	echo "----------"
+	echo "GMP SOURCE"
+	echo "----------"
+	echo ""
+	echo "    When necessary, the location of the GNU Multiple Precision library"
+	echo "    header files and library files can be specified with the following"
+	echo "    two commands:"
+	echo ""
+	echo "    --gmp-headers=dir"
+	echo ""
+	echo "        Use it to specify the location of GMP's header files."
+	echo ""
+	echo "    --gmp-libs=dir"
+	echo ""
+	echo "        Use it to specify the location of GMP's library files (.so, .dll, ...)."
+	echo ""
+	echo "-------------"
+	echo "PYTHON SOURCE"
+	echo "-------------"
+	echo ""
+	echo "    When necessary, the location of python's header files and library"
+	echo "    files can be specified with the following two commands:"
+	echo ""
+	echo "    --python-headers=dir"
+	echo ""
+	echo "        Use it to specify the location of GMP's header files."
+	echo ""
+	echo "    --python-libs=dir"
+	echo ""
+	echo "        Use it to specify the location of GMP's library files (.so, .dll, ...)."
+	echo ""
+	echo "    It is mandatory to specify the version of python that is to be used"
+	echo ""
+	echo "    --python-major=x    (default: 3)"
+	echo "    --python-minor=x"
+	echo ""
+	echo "----------------"
+	echo "BUILD PARAMETERS"
+	echo "----------------"
+	echo ""
+	echo "    --build=debug                (default)"
+	echo "    --build=release"
+	echo ""
+	echo "        Make either a debug or release compilation of the wrapper."
+	echo ""
+	echo "------------------"
+	echo "INSTALL PARAMETERS"
+	echo "------------------"
+	echo ""
+	echo "    --install"
+	echo ""
+	echo "        Copy the compiled binaries to the installation directory."
+	echo ""
+	echo "    --anaconda"
+	echo ""
+	echo "        Install for anaconda"
+	echo ""
 	exit
 }
 
-ANACONDA="no"
+LAL_HEADERS=""
+LAL_LIBRARY=""
+LAL_DESTINATION=""
+GMP_HEADERS=""
+GMP_LIBRARY=""
+PYTHON_HEADERS=""
+PYTHON_LIBRARY=""
+PYTHON_MAJOR="3"
+PYTHON_MINOR=""
 BUILD="debug"
 ENVIRONMENT="development"
 INSTALL=0
+ANACONDA="no"
 CLEAN=0
 
 for i in "$@"; do
@@ -86,8 +156,48 @@ for i in "$@"; do
 		help
 		;;
 		
-		--anaconda)
-		ANACONDA="yes"
+		--lal-headers=*)
+		LAL_HEADERS="${i#*=}"
+		shift
+		;;
+		
+		--lal-libs=*)
+		LAL_LIBRARY="${i#*=}"
+		shift
+		;;
+		
+		--lal-destination=*)
+		LAL_DESTINATION="${i#*=}"
+		shift
+		;;
+		
+		--gmp-headers=*)
+		GMP_HEADERS="${i#*=}"
+		shift
+		;;
+		
+		--gmp-libs=*)
+		GMP_LIBRARY="${i#*=}"
+		shift
+		;;
+		
+		--python-headers=*)
+		PYTHON_HEADERS="${i#*=}"
+		shift
+		;;
+		
+		--python-libs=*)
+		PYTHON_LIBRARY="${i#*=}"
+		shift
+		;;
+		
+		--python-major=*)
+		PYTHON_MAJOR="${i#*=}"
+		shift
+		;;
+		
+		--python-minor=*)
+		PYTHON_MINOR="${i#*=}"
 		shift
 		;;
 		
@@ -111,6 +221,11 @@ for i in "$@"; do
 		shift
 		;;
 		
+		--anaconda)
+		ANACONDA="yes"
+		shift
+		;;
+		
 		*)
 		echo -e "\e[1;4;31mError:\e[0m Option $i unknown"
 		exit 1
@@ -125,10 +240,13 @@ if [ $CLEAN == 1 ] && [ $INSTALL == 1 ]; then
 	exit 1
 fi
 
-if [ "$ANACONDA" != "no" ] && [ "$ANACONDA" != "yes" ]; then
-	echo "Error: invalid value for 'ANACONDA' variable: '$ANACONDA'"
-	echo "    Valid values: yes/no"
-	exit 1
+if [ $INSTALL == 1 ]; then
+	if [ $LAL_DESTINATION == "" ]; then
+		echo "Error: missing mandatory value for option 'install'."
+		echo "    Missing: --lal-destination"
+		echo "    Current value: $LAL_DESTINATION"
+		exit 1
+	fi
 fi
 
 if [ "$BUILD" != "debug" ] && [ "$BUILD" != "release" ]; then
@@ -143,10 +261,27 @@ if [ "$ENVIRONMENT" != "development" ] && [ "$ENVIRONMENT" != "distribution" ]; 
 	exit 1
 fi
 
+MAKE_COMMAND="\
+make \
+USER_LAL_INC_DIR=$LAL_HEADERS \
+USER_LAL_LIB_DIR=$LAL_LIBRARY \
+USER_LAL_DESTINATION=$LAL_DESTINATION \
+USER_GMP_INC_DIR=$GMP_HEADERS \
+USER_GMP_LIB_DIR=$GMP_LIBRARY \
+USER_PYTHON_HEADERS=$PYTHON_HEADERS \
+USER_PYTHON_LIBRARY=$PYTHON_LIBRARY \
+USER_PYTHON_MAJOR_VERSION=$PYTHON_MAJOR \
+USER_PYTHON_MINOR_VERSION=$PYTHON_MINOR \
+USER_ENVIRONMENT=$ENVIRONMENT \
+USER_BUILD=$BUILD \
+USER_ANACONDA=$ANACONDA"
+
+echo "Make command: '$MAKE_COMMAND'"
+
 if [ $INSTALL == 1 ]; then
-	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA install
+	$MAKE_COMMAND install
 elif [ $CLEAN == 1 ]; then
-	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA clean
+	$MAKE_COMMAND clean
 else
-	make ENVIRONMENT=$ENVIRONMENT BUILD=$BUILD ANACONDA=$ANACONDA
+	$MAKE_COMMAND
 fi

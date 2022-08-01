@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -122,28 +122,28 @@ namespace generate {
 
 // This is a base class of all tree generators. It must be put before
 // all other classes.
-%include "../linear-arrangement-library/lal/generate/tree_generator.hpp"
+%include "lal/generate/tree_generator.hpp"
 %template(free_tree_gen) lal::generate::_tree_generator<lal::graphs::free_tree>;
 %template(rooted_tree_gen) lal::generate::_tree_generator<lal::graphs::rooted_tree>;
 
-%include "../linear-arrangement-library/lal/generate/all_lab_free_trees.hpp"
-%include "../linear-arrangement-library/lal/generate/all_lab_rooted_trees.hpp"
-%include "../linear-arrangement-library/lal/generate/all_ulab_free_trees.hpp"
-%include "../linear-arrangement-library/lal/generate/all_ulab_rooted_trees.hpp"
+%include "lal/generate/all_lab_free_trees.hpp"
+%include "lal/generate/all_lab_rooted_trees.hpp"
+%include "lal/generate/all_ulab_free_trees.hpp"
+%include "lal/generate/all_ulab_rooted_trees.hpp"
 
 // This is a base class! It needs to be put before 'rand_lab_free_trees'.
-%include "../linear-arrangement-library/lal/generate/rand_ulab_rooted_trees.hpp"
+%include "lal/generate/rand_ulab_rooted_trees.hpp"
 
-%include "../linear-arrangement-library/lal/generate/rand_lab_free_trees.hpp"
-%include "../linear-arrangement-library/lal/generate/rand_lab_rooted_trees.hpp"
-%include "../linear-arrangement-library/lal/generate/rand_ulab_free_trees.hpp"
+%include "lal/generate/rand_lab_free_trees.hpp"
+%include "lal/generate/rand_lab_rooted_trees.hpp"
+%include "lal/generate/rand_ulab_free_trees.hpp"
 
-%include "../linear-arrangement-library/lal/generate/all_arrangements.hpp"
-%include "../linear-arrangement-library/lal/generate/all_planar_arrangements.hpp"
-%include "../linear-arrangement-library/lal/generate/all_projective_arrangements.hpp"
-%include "../linear-arrangement-library/lal/generate/rand_arrangements.hpp"
-%include "../linear-arrangement-library/lal/generate/rand_planar_arrangements.hpp"
-%include "../linear-arrangement-library/lal/generate/rand_projective_arrangements.hpp"
+%include "lal/generate/all_arrangements.hpp"
+%include "lal/generate/all_planar_arrangements.hpp"
+%include "lal/generate/all_projective_arrangements.hpp"
+%include "lal/generate/rand_arrangements.hpp"
+%include "lal/generate/rand_planar_arrangements.hpp"
+%include "lal/generate/rand_projective_arrangements.hpp"
 
 namespace lal {
 namespace generate {

@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -36,7 +36,7 @@
 
 %include std_string.i
 
-%include "../linear-arrangement-library/lal/lal_version.hpp"
+%include "lal/lal_version.hpp"
 
 %pythoncode %{
 cvar = _version.cvar

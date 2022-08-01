@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -233,7 +233,7 @@ namespace io {
 } // -- namespace io
 } // -- namespace lal
 
-%include "../linear-arrangement-library/lal/io/report_correctness.hpp"
+%include "lal/io/report_correctness.hpp"
 
 namespace lal {
 namespace io {
@@ -272,7 +272,7 @@ namespace std {
 
 } // -- namespace std
 
-%include "../linear-arrangement-library/lal/io/check_correctness.hpp"
+%include "lal/io/check_correctness.hpp"
 
 /* -------------------------------------------------------------------------- */
 
@@ -287,7 +287,7 @@ namespace io {
 } // -- namespace io
 } // -- namespace lal
 
-%include "../linear-arrangement-library/lal/io/treebank_error.hpp"
+%include "lal/io/treebank_error.hpp"
 
 %extend lal::io::treebank_error {
 
@@ -302,13 +302,13 @@ namespace io {
 
 }
 
-%include "../linear-arrangement-library/lal/io/process_treebank_base.hpp"
+%include "lal/io/process_treebank_base.hpp"
 
-%include "../linear-arrangement-library/lal/io/treebank_reader.hpp"
-%include "../linear-arrangement-library/lal/io/treebank_collection_reader.hpp"
+%include "lal/io/treebank_reader.hpp"
+%include "lal/io/treebank_collection_reader.hpp"
 
-%include "../linear-arrangement-library/lal/io/treebank_processor.hpp"
-%include "../linear-arrangement-library/lal/io/treebank_collection_processor.hpp"
+%include "lal/io/treebank_processor.hpp"
+%include "lal/io/treebank_collection_processor.hpp"
 
 /* -------------------------------------------------------------------------- */
 

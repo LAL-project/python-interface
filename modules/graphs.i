@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -77,13 +77,13 @@ namespace graphs {
 // ----------------
 // lal header files
 
-%include "../linear-arrangement-library/lal/graphs/graph.hpp"
-%include "../linear-arrangement-library/lal/graphs/undirected_graph.hpp"
-%include "../linear-arrangement-library/lal/graphs/directed_graph.hpp"
+%include "lal/graphs/graph.hpp"
+%include "lal/graphs/undirected_graph.hpp"
+%include "lal/graphs/directed_graph.hpp"
 
-%include "../linear-arrangement-library/lal/graphs/tree.hpp"
-%include "../linear-arrangement-library/lal/graphs/free_tree.hpp"
-%include "../linear-arrangement-library/lal/graphs/rooted_tree.hpp"
+%include "lal/graphs/tree.hpp"
+%include "lal/graphs/free_tree.hpp"
+%include "lal/graphs/rooted_tree.hpp"
 
 // -------------------------
 // Extendind the C++ classes
@@ -155,7 +155,7 @@ namespace std {
 
 } // -- namespace std
 
-%include "../linear-arrangement-library/lal/graphs/conversions.hpp"
+%include "lal/graphs/conversions.hpp"
 
 /* ---------- CALL from_edge_list_to_graph ------------- */
 

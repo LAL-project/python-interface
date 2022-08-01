@@ -26,7 +26,7 @@
 #
 ###########################################################################
 
-# BUILD: debug/release
+# USER_BUILD: debug/release
 # ENVIR: devel (development) / dist (distribution)
 #	* development: only for developers
 #	* distribution: used to install the python interface to your
@@ -36,11 +36,11 @@
 ########################################################################
 
 # compilation is debug by default
-ifeq ($(BUILD), )
-BUILD = debug
+ifeq ($(USER_BUILD), )
+USER_BUILD = debug
 endif
 # distribution is development by default
-ifeq ($(ENVIRONMENT), )
+ifeq ($(USER_ENVIRONMENT), )
 ENVIR = development
 endif
 # do not install for Anaconda
@@ -50,25 +50,17 @@ endif
 
 ########################################################################
 
-ifneq ($(BUILD),debug)
-ifneq ($(BUILD),release)
-$(info Error: invalid value for BUILD variable: $(BUILD))
+ifneq ($(USER_BUILD),debug)
+ifneq ($(USER_BUILD),release)
+$(info Error: invalid value for USER_BUILD variable: $(USER_BUILD))
 $(info .    https://github.com/LAL-project/linear-arrangement-library.git)
 $(info .    https://github.com/LAL-project/python-interface.git)
 endif
 endif
 
-ifneq ($(ENVIRONMENT),development)
-ifneq ($(ENVIRONMENT),distribution)
-$(info Error: invalid value for ENVIRONMENT variable: $(ENVIR))
-$(info .    https://github.com/LAL-project/linear-arrangement-library.git)
-$(info .    https://github.com/LAL-project/python-interface.git)
-endif
-endif
-
-ifneq ($(ANACONDA),yes)
-ifneq ($(ANACONDA),no)
-$(info Error: invalid value for ANACONDA variable: $(ANACONDA))
+ifneq ($(USER_ENVIRONMENT),development)
+ifneq ($(USER_ENVIRONMENT),distribution)
+$(info Error: invalid value for USER_ENVIRONMENT variable: $(USER_ENVIRONMENT))
 $(info .    https://github.com/LAL-project/linear-arrangement-library.git)
 $(info .    https://github.com/LAL-project/python-interface.git)
 endif
@@ -102,34 +94,27 @@ endif
 ########################################################################
 # OUTPUT DEBUG INFORMATION
 
-$(info Compilation mode: $(BUILD))
-$(info .    'release' = produces faster binaries)
-$(info .    'debug'   = slower binaries, but errors are caught with self-explanatory error messages)
+$(info Compilation mode: $(USER_BUILD))
+ifeq ($(USER_BUILD),debug)
+$(info .    'debug':   slower binaries, but errors are caught with "self-explanatory" error messages)
+else
+$(info .    'release': produces faster binaries)
+endif
+
 $(info Link against: $(ENVIR))
-$(info .    'development'  = development distribution)
-$(info .    'distribution' = installed version)
+ifeq ($(USER_BUILD),development)
+$(info .    'development':  LAL's development distribution)
+else
+$(info .    'distribution': LAL's installed version)
+endif
 
 ########################################################################
 # VARIABLES
 
 # ------------
 # LAL location
-
-ifeq ($(ENVIRONMENT),development)
-	# this assumes that development happens within the "python-interface/" directory
-	
-	LAL_INC_DIR = ../linear-arrangement-library
-	ifeq ($(BUILD), debug)
-		LAL_LIB_DIR = ../linear-arrangement-library/lal-debug
-		
-	else
-		LAL_LIB_DIR = ../linear-arrangement-library/lal-release
-		
-	endif
-else
-	include Makefile.lalsource
-	
-endif
+LAL_INC_DIR = $(USER_LAL_INC_DIR)
+LAL_LIB_DIR = $(USER_LAL_LIB_DIR)
 
 $(info LAL source)
 $(info .    LAL include header files in: $(LAL_INC_DIR))
@@ -138,7 +123,8 @@ $(info .    LAL library files in:        $(LAL_LIB_DIR))
 # --------------------------
 # System libraries' location
 
-include Makefile.gmpsource
+GMP_INC_DIR=$(USER_GMP_INC_DIR)
+GMP_LIB_DIR=$(USER_GMP_LIB_DIR)
 
 $(info GMP source)
 $(info .    GMP include header files in: $(GMP_INC_DIR))
@@ -168,8 +154,21 @@ else ifeq ($(OS_ID),macos)
 
 endif
 
-# ---------------
-# Python location
+# ------------------
+# Python information
+
+# Python directories
+PYTHON_INC_DIR = $(USER_PYTHON_HEADERS)
+PYTHON_LIB_DIR = $(USER_PYTHON_LIBRARY)
+
+MAJOR_VERSION_PYTHON = $(USER_PYTHON_MAJOR_VERSION)
+MINOR_VERSION_PYTHON = $(USER_PYTHON_MINOR_VERSION)
+
+# Directory where LAL's interface will be installed to
+LAL_PY_DEST = $(USER_LAL_DESTINATION)
+
+# install LAL for anaconda?
+ANACONDA = $(USER_ANACONDA)
 
 include Makefile.pythonsource
 
@@ -179,6 +178,7 @@ $(info .    Python modules extension: $(SO_EXT))
 
 $(info Python linkage)
 $(info .    Install for Anaconda:       $(ANACONDA))
+$(info .    Major version of python:    $(MAJOR_VERSION_PYTHON))
 $(info .    Minor version of python:    $(MINOR_VERSION_PYTHON))
 $(info .    Python include directory:   $(PYTHON_INC_DIR))
 $(info .    Python library directory:   $(PYTHON_LIB_DIR))
@@ -203,22 +203,19 @@ SWIG_FLAGS_64 	= -DSWIGWORDSIZE64
 
 ifeq ($(OS_ID),windows)
 	SWIG_FLAGS	+= $(SWIG_FLAGS_32)
-
 else ifeq ($(OS_ID),linux)
 	SWIG_FLAGS	+= $(SWIG_FLAGS_$(ARCH))
-
 else ifeq ($(OS_ID),macos)
 	SWIG_FLAGS	+= 
-
 endif
 
-ifeq ($(BUILD),debug)
+ifeq ($(USER_BUILD),debug)
 	SWIG_FLAGS	+= -DDEBUG
-
-else ifeq ($(BUILD),release)
+else ifeq ($(USER_BUILD),release)
 	SWIG_FLAGS	+= -DNDEBUG
-
 endif
+
+SWIG_FLAGS += -I$(LAL_INC_DIR)
 
 # -----------------------------
 # Compiler to be used and flags
@@ -250,14 +247,14 @@ else ifeq ($(OS_ID),macos)
 endif
 
 # set lib and flags according to the mode of compilation
-ifeq ($(BUILD),debug)
+ifeq ($(USER_BUILD),debug)
 	# -----------------
 	# compilation flags
 	
 	FLAGS	+= -g -DDEBUG -D_GLIBCXX_DEBUG
 	LFLAGS	+= -DEBUG -D_GLIBCXX_DEBUG
 	
-else ifeq ($(BUILD),release)
+else ifeq ($(USER_BUILD),release)
 	# -----------------
 	# compilation flags
 	
@@ -269,27 +266,19 @@ endif
 # ---------------------------------------------------------------------
 # set dependencies for the python modules and the destination directory
 
-ifeq ($(BUILD),debug)
-	ifeq ($(ENVIRONMENT),development)
+ifeq ($(USER_BUILD),debug)
+	ifneq ($(LAL_LIB_DIR), )
 		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblaldebug.$(LIBRARY_EXTENSION)
-	
-	else
-		LIBRARY_SHARED_DEP +=
-	
 	endif
 	
-	INTERFACE_DIRECTORY	+= laldebug
+	INTERFACE_DIRECTORY	= laldebug
 	
-else ifeq ($(BUILD),release)
-	ifeq ($(ENVIRONMENT),development)
+else ifeq ($(USER_BUILD),release)
+	ifneq ($(LAL_LIB_DIR), )
 		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblal.$(LIBRARY_EXTENSION)
-	
-	else
-		LIBRARY_SHARED_DEP +=
-	
 	endif
 	
-	INTERFACE_DIRECTORY	+= lal
+	INTERFACE_DIRECTORY	= lal
 endif
 
 # ----------------------
@@ -313,62 +302,44 @@ endif
 # ----------------------
 # complete linkage flags
 
-ifeq ($(BUILD),debug)
+ifeq ($(USER_BUILD),debug)
 	ifneq ($(LAL_LIB_DIR), )
-		LIBS += -L $(LAL_LIB_DIR) -llaldebug
-	
-	else
-		LIBS += -llaldebug
-	
+		LIBS += -L $(LAL_LIB_DIR)
 	endif
+	LIBS += -llaldebug
 	
-else ifeq ($(BUILD),release)
+else ifeq ($(USER_BUILD),release)
 	ifneq ($(LAL_LIB_DIR), )
-		LIBS += -L $(LAL_LIB_DIR) -llal
-	
-	else
-		LIBS += -llal
-	
+		LIBS += -L $(LAL_LIB_DIR)
 	endif
+	LIBS += -llal
 	
 endif
 
 ifneq ($(GMP_LIB_DIR), )
-	LIBS += -L $(GMP_LIB_DIR) -lgmp
-	
-else
-	LIBS += -lgmp
-	
+	LIBS += -L $(GMP_LIB_DIR)
 endif
+LIBS += -lgmp
 
 LIBS += -fopenmp
 LIBS += -lpthread
 LIBS += $(EXTRA_FLAGS)
 
-ifeq ($(ANACONDA),yes)
-	LIBS += $(MAJOR_PY_LINK) $(MINOR_PY_LINK)
-
-else ifeq ($(ANACONDA),no)
-	ifeq ($(PYTHON_LIB_DIR), )
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += $(MAJOR_PY_LINK)
-			
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += $(MINOR_PY_LINK)
-			
-		endif
-	else
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
-			
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
-			
-		endif
+ifeq ($(PYTHON_LIB_DIR), )
+	ifneq ($(MAJOR_PY_LINK), )
+		LIBS += $(MAJOR_PY_LINK)
+	endif
+	
+	ifneq ($(MINOR_PY_LINK), )
+		LIBS += $(MINOR_PY_LINK)
+	endif
+else
+	ifneq ($(MAJOR_PY_LINK), )
+		LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
+	endif
+	
+	ifneq ($(MINOR_PY_LINK), )
+		LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
 	endif
 endif
 

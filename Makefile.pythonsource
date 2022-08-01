@@ -27,43 +27,18 @@
 ###########################################################################
 
 ifeq ($(OS_ID),windows)
-	# ------------------
-	# WINDOWS USERS ONLY
+	# ------------
+	# WINDOWS ONLY
 
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 9
-	
 	ifeq ($(ANACONDA),yes)
-		# Anaconda's directory
-		ANACONDA_DIR	= C:/Users/$(USER)/anaconda3
-		
-		# Python 3 include dir
-		PYTHON_INC_DIR	= $(ANACONDA_DIR)/include
-		
-		# Python3 library directory
-		PYTHON_LIB_DIR	= $(ANACONDA_DIR)
-		
 		# Python3 linkage
 		MAJOR_PY_LINK	= $(PYTHON_LIB_DIR)/python3.dll
 		MINOR_PY_LINK	= $(PYTHON_LIB_DIR)/python3$(MINOR_VERSION_PYTHON).dll
 		
-		# Directory where LAL's interface will be installed to
-		LAL_PY_DEST		= $(ANACONDA_DIR)/Lib/site-packages
-	
 	else ifeq ($(ANACONDA),no)
-		# Python 3 include dir
-		PYTHON_INC_DIR	= /mingw64/include/python3.$(MINOR_VERSION_PYTHON)
-		
-		# Python3 library directory
-		PYTHON_LIB_DIR	= 
-		
 		# Python3 linkage
 		MAJOR_PY_LINK	= 
 		MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
-		
-		# Directory where LAL's interface will be installed to
-		LAL_PY_DEST		= /mingw64/lib/python3.$(MINOR_VERSION_PYTHON)
-	
 	endif
 	
 	# Other flags needed to compile against Python
@@ -73,21 +48,9 @@ else ifeq ($(OS_ID),linux)
 	# ----------------
 	# LINUX USERS ONLY
 	
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 8
-	
-	# Python 3 include dir
-	PYTHON_INC_DIR	= /usr/include/python3.$(MINOR_VERSION_PYTHON)
-	
-	# Python3 library directory
-	PYTHON_LIB_DIR	= /usr/lib/x86_64-linux-gnu/
-	
 	# Python3 linkage
 	MAJOR_PY_LINK	=
 	MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
-	
-	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
 	
 	# Other flags needed to compile against Python
 	EXTRA_FLAGS		= 
@@ -96,21 +59,9 @@ else ifeq ($(OS_ID),macos)
 	# ----------------
 	# MACOS USERS ONLY
 	
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 8
-	
-	# Python 3 include dir
-	PYTHON_INC_DIR	= /usr/include/python3.$(MINOR_VERSION_PYTHON)
-	
-	# Python3 library directory
-	PYTHON_LIB_DIR	= /usr/lib/x86_64-linux-gnu/
-	
 	# Python3 linkage
 	MAJOR_PY_LINK	=
 	MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
-	
-	# Directory where LAL's interface will be installed to
-	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
 	
 	# Other flags needed to compile against Python
 	EXTRA_FLAGS		= -flat_namespace

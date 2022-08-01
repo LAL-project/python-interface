@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  *   SWIG-generated python wrapper for the Linear Arrangement Library
- *   Copyright (C) 2021 Lluís Alemany Puig
+ *   Copyright (C) 2021-2022 Lluís Alemany Puig
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU Affero General Public License as published
@@ -58,14 +58,14 @@ namespace std {
 
 } // -- namespace std
 
-%include "../linear-arrangement-library/lal/linarr/1level.hpp"
-%include "../linear-arrangement-library/lal/linarr/2level.hpp"
-%include "../linear-arrangement-library/lal/linarr/C.hpp"
-%include "../linear-arrangement-library/lal/linarr/D.hpp"
-%include "../linear-arrangement-library/lal/linarr/Dmin.hpp"
-%include "../linear-arrangement-library/lal/linarr/DMax.hpp"
-%include "../linear-arrangement-library/lal/linarr/head_initial.hpp"
-%include "../linear-arrangement-library/lal/linarr/formal_constraints.hpp"
+%include "lal/linarr/1level.hpp"
+%include "lal/linarr/2level.hpp"
+%include "lal/linarr/C.hpp"
+%include "lal/linarr/D.hpp"
+%include "lal/linarr/Dmin.hpp"
+%include "lal/linarr/DMax.hpp"
+%include "lal/linarr/head_initial.hpp"
+%include "lal/linarr/formal_constraints.hpp"
 
 namespace lal {
 namespace linarr {
@@ -79,7 +79,7 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
-%include "../linear-arrangement-library/lal/linarr/dependency_flux.hpp"
+%include "lal/linarr/dependency_flux.hpp"
 
 namespace std {
 
@@ -87,7 +87,7 @@ namespace std {
 
 } // -- namespace std
 
-%include "../linear-arrangement-library/lal/linarr/flux.hpp"
+%include "lal/linarr/flux.hpp"
 
 namespace std {
 
@@ -95,7 +95,7 @@ namespace std {
 
 } // -- namespace std
 
-%include "../linear-arrangement-library/lal/linarr/classify_syntactic_dependency_structure.hpp"
+%include "lal/linarr/classify_syntactic_dependency_structure.hpp"
 
 // --------------------------------
 // Extendind the function templates
