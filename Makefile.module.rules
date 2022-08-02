@@ -35,7 +35,7 @@
 
 # treebank_error module
 $(TREEBANK_ERR_INSTALL_SO_FILE): $(TREEBANK_ERR_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(TREEBANK_ERR_WRAP).o: $(TREEBANK_ERR_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(TREEBANK_ERR_WRAP).cxx: $(TREEBANK_ERR_MOD_DEPS) $(TREEBANK_ERR_MAIN_INT)
@@ -52,7 +52,7 @@ endif
 
 # treebank_feature module
 $(TREEBANK_FEATURE_INSTALL_SO_FILE): $(TREEBANK_FEATURE_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(TREEBANK_FEATURE_WRAP).o: $(TREEBANK_FEATURE_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(TREEBANK_FEATURE_WRAP).cxx: $(TREEBANK_FEATURE_MOD_DEPS) $(TREEBANK_FEATURE_MAIN_INT)
@@ -69,7 +69,7 @@ endif
 
 # syntactic dependency structure type module
 $(SYN_DEP_STR_INSTALL_SO_FILE): $(SYN_DEP_STR_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(SYN_DEP_STR_WRAP).o: $(SYN_DEP_STR_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(SYN_DEP_STR_WRAP).cxx: $(SYN_DEP_STR_MOD_DEPS) $(SYN_DEP_STR_MAIN_INT)
@@ -86,7 +86,7 @@ endif
 
 # type module
 $(TREE_TYPE_INSTALL_SO_FILE): $(TREE_TYPE_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(TREE_TYPE_WRAP).o: $(TREE_TYPE_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(TREE_TYPE_WRAP).cxx: $(TREE_TYPE_MOD_DEPS) $(TREE_TYPE_MAIN_INT)
@@ -103,7 +103,7 @@ endif
 
 # algorithms_C module
 $(ALG_C_INSTALL_SO_FILE): $(ALG_C_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(ALG_C_WRAP).o: $(ALG_C_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(ALG_C_WRAP).cxx: $(ALG_C_MOD_DEPS) $(ALG_C_MAIN_INT)
@@ -120,7 +120,7 @@ endif
 
 # algorithms_Dmin module
 $(ALG_DMIN_INSTALL_SO_FILE): $(ALG_DMIN_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(ALG_DMIN_WRAP).o: $(ALG_DMIN_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(ALG_DMIN_WRAP).cxx: $(ALG_DMIN_MOD_DEPS) $(ALG_DMIN_MAIN_INT)
@@ -137,7 +137,7 @@ endif
 
 # algorithms_Dmin_planar module
 $(ALG_DMIN_PL_INSTALL_SO_FILE): $(ALG_DMIN_PL_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(ALG_DMIN_PL_WRAP).o: $(ALG_DMIN_PL_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(ALG_DMIN_PL_WRAP).cxx: $(ALG_DMIN_PL_MOD_DEPS) $(ALG_DMIN_PL_MAIN_INT)
@@ -154,7 +154,7 @@ endif
 
 # algorithms_Dmin_projective module
 $(ALG_DMIN_PR_INSTALL_SO_FILE): $(ALG_DMIN_PR_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(ALG_DMIN_PR_WRAP).o: $(ALG_DMIN_PR_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(ALG_DMIN_PR_WRAP).cxx: $(ALG_DMIN_PR_MOD_DEPS) $(ALG_DMIN_PR_MAIN_INT)
@@ -174,7 +174,7 @@ endif
 
 # types module
 $(TYPES_INSTALL_SO_FILE): $(TYPES_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(TYPES_WRAP).o: $(TYPES_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(TYPES_WRAP).cxx: $(TYPES_MOD_DEPS) $(TYPES_MAIN_INT)
@@ -194,7 +194,7 @@ endif
 
 # generate
 $(GENERATE_INSTALL_SO_FILE): $(GENERATE_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(GENERATE_WRAP).o: $(GENERATE_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(GENERATE_WRAP).cxx: $(GENERATE_MOD_DEPS) $(GENERATE_MAIN_INT)
@@ -211,7 +211,7 @@ endif
 
 # graphs module
 $(GRAPHS_INSTALL_SO_FILE): $(GRAPHS_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(GRAPHS_WRAP).o: $(GRAPHS_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(GRAPHS_WRAP).cxx: $(GRAPHS_MOD_DEPS) $(GRAPHS_MAIN_INT)
@@ -228,7 +228,7 @@ endif
 
 # io module
 $(IO_INSTALL_SO_FILE): $(IO_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(IO_WRAP).o: $(IO_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(IO_WRAP).cxx: $(IO_MOD_DEPS) $(IO_MAIN_INT)
@@ -245,7 +245,7 @@ endif
 
 # iterators module
 $(ITERATORS_INSTALL_SO_FILE): $(ITERATORS_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(ITERATORS_WRAP).o: $(ITERATORS_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(ITERATORS_WRAP).cxx: $(ITERATORS_MOD_DEPS) $(ITERATORS_MAIN_INT)
@@ -262,7 +262,7 @@ endif
 
 # linarr module
 $(LINARR_INSTALL_SO_FILE): $(LINARR_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(LINARR_WRAP).o: $(LINARR_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(LINARR_WRAP).cxx: $(LINARR_MOD_DEPS) $(LINARR_MAIN_INT)
@@ -279,7 +279,7 @@ endif
 
 # numeric module
 $(NUMERIC_INSTALL_SO_FILE): $(NUMERIC_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(NUMERIC_WRAP).o: $(NUMERIC_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(NUMERIC_WRAP).cxx: $(NUMERIC_MOD_DEPS) $(NUMERIC_MAIN_INT)
@@ -296,7 +296,7 @@ endif
 
 # properties module
 $(PROPERTIES_INSTALL_SO_FILE): $(PROPERTIES_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(PROPERTIES_WRAP).o: $(PROPERTIES_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(PROPERTIES_WRAP).cxx: $(PROPERTIES_MOD_DEPS) $(PROPERTIES_MAIN_INT)
@@ -312,7 +312,7 @@ endif
 
 # utilities module
 $(UTILS_INSTALL_SO_FILE): $(UTILS_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(UTILS_WRAP).o: $(UTILS_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(UTILS_WRAP).cxx: $(UTILS_MOD_DEPS) $(UTILS_MAIN_INT)
@@ -329,7 +329,7 @@ endif
 
 # version module
 $(VERSION_INSTALL_SO_FILE): $(VERSION_WRAP).o $(LIBRARY_SHARED_DEP)
-	$(CXX) $(LFLAGS) $(FLAGS) -shared -o $@ $< $(LIBS)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
 $(VERSION_WRAP).o: $(VERSION_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(VERSION_WRAP).cxx: $(VERSION_MOD_DEPS) $(VERSION_MAIN_INT)

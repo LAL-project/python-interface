@@ -6,8 +6,8 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.8"
-PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
+PYTHON_HEADERS="C:/programming/msys64/mingw64/include/python3.10"
+PYTHON_LIBRARY="C:/programming/msys64/mingw64/lib"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -17,7 +17,7 @@ PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 	--python-headers="$PYTHON_HEADERS" \
 	--python-libs="$PYTHON_LIBRARY" \
 	--python-major="3" \
-	--python-minor="8" \
+	--python-minor="10" \
 	--build=release
 
 ./compile.sh \
@@ -28,13 +28,13 @@ PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 	--python-headers="$PYTHON_HEADERS" \
 	--python-libs="$PYTHON_LIBRARY" \
 	--python-major="3" \
-	--python-minor="8" \
+	--python-minor="10" \
 	--build=debug
 
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="/home/$USER/miniconda3"
+miniconda_dir="C:/Users/Usuari/miniconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -63,7 +63,7 @@ miniconda_dir="/home/$USER/miniconda3"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="/home/$USER/anaconda3"
+anaconda_dir="C:/Users/Usuari/anaconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \

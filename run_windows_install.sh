@@ -4,29 +4,29 @@ if [ -z $1 ]; then
 
 sudo \
 ./compile.sh \
-	--lal-destination="/usr/local/lib/python3.8/dist-packages" \
+	--lal-destination="C:/programming/msys64/mingw64/local/lib/python3.10/site-packages" \
 	--build=release \
 	--install
 
 sudo \
 ./compile.sh \
-	--lal-destination="/usr/local/lib/python3.8/dist-packages" \
+	--lal-destination="C:/programming/msys64/mingw64/local/lib/python3.10/site-packages" \
 	--build=debug \
 	--install
 
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="/home/$USER/miniconda3"
+miniconda_dir="C:/Users/Usuari/miniconda3/Lib/site-packages"
 
 ./compile.sh \
-	--lal-destination="$miniconda_dir/lib" \
+	--lal-destination="$miniconda_dir" \
 	--build=release \
 	--anaconda \
 	--install
 
 ./compile.sh \
-	--lal-destination="$miniconda_dir/lib" \
+	--lal-destination="$miniconda_dir" \
 	--build=debug \
 	--anaconda \
 	--install
@@ -34,16 +34,16 @@ miniconda_dir="/home/$USER/miniconda3"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="/home/$USER/anaconda3"
+anaconda_dir="C:/Users/Usuari/anaconda3/Lib/site-packages"
 
 ./compile.sh \
-	--lal-destination="$anaconda_dir/lib" \
+	--lal-destination="$anaconda_dir" \
 	--build=release \
 	--anaconda \
 	--install
 
 ./compile.sh \
-	--lal-destination="$anaconda_dir/lib" \
+	--lal-destination="$anaconda_dir" \
 	--build=debug \
 	--anaconda \
 	--install

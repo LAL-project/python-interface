@@ -49,7 +49,7 @@ In order to compile the interface, you have to configure two build scripts (chan
 - the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
 
-With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script_windows.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
+With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
 	LAL_HEADERS=                        # directory of the header files of LAL
 	LAL_LIBRARY=                        # directory of the binary files of LAL (.so)

@@ -225,8 +225,8 @@ ifeq ($(OS_ID),windows)
 	# WINDOWS USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -flto -fno-fat-lto-objects -O3
-	LFLAGS	= -fPIC -flto -fno-fat-lto-objects -O3 -Wl,-O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),linux)
 	# ----------------
@@ -252,7 +252,7 @@ ifeq ($(USER_BUILD),debug)
 	# compilation flags
 	
 	FLAGS	+= -g -DDEBUG -D_GLIBCXX_DEBUG
-	LFLAGS	+= -DEBUG -D_GLIBCXX_DEBUG
+	LFLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
 	
 else ifeq ($(USER_BUILD),release)
 	# -----------------

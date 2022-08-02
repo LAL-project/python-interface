@@ -12,7 +12,6 @@ PYTHON_MINOR=                   # python's minor version (the 'x' in 3.x)
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
 	--lal-libs="$LAL_LIBRARY" \
-	--lal-destination="$LAL_PYTHON_WRAPPER_DESTINATION" \
 	--gmp-headers="$GMP_HEADERS" \
 	--gmp-libs="$GMP_LIBRARY" \
 	--python-headers="$PYTHON_HEADERS" \
@@ -24,7 +23,6 @@ PYTHON_MINOR=                   # python's minor version (the 'x' in 3.x)
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
 	--lal-libs="$LAL_LIBRARY" \
-	--lal-destination="$LAL_PYTHON_WRAPPER_DESTINATION" \
 	--gmp-headers="$GMP_HEADERS" \
 	--gmp-libs="$GMP_LIBRARY" \
 	--python-headers="$PYTHON_HEADERS" \
