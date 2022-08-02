@@ -40,102 +40,61 @@ Navigate to a directory of your choice and issue the command
 
 	$ git clone https://github.com/LAL-project/python-interface.git
 
-## Configuring the _Makefile_
+## Configuring the _run_ script
 
-In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, it is required that you know
+In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
 - the minor version of Python installed in your system,
-- the compiler you want to use (we suggest GNU's `g++`),
 - the location of the python binaries and header development files,
-- the location of the GMP library in your system,
-- the minor version of python installed (the interface has been tested on is `9` (i.e., we have been using `Python 3.9`), but should work on any version `3.x`)
+- the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
+
+With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script_windows.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
-With this information, you have to modify some of the variables in the Makefile files accordingly, as explained below.
+	LAL_HEADERS=                        # directory of the header files of LAL
+	LAL_LIBRARY=                        # directory of the binary files of LAL (.so)
+	LAL_PYTHON_WRAPPER_DESTINATION=     # directory where to install LAL's python wrapper
+	GMP_HEADERS=                        # (?) directory of the header files of GMP
+	GMP_LIBRARY=                        # (?) directory of the binary files of GMP (.so)
+	PYTHON_HEADERS=                     # directory of the header (development) files of python
+	PYTHON_LIBRARY=                     # directory of the shared object (development) files of python
+	PYTHON_MINOR=                       # python's minor version (the 'x' in 3.x)
 
-First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` within [Makefile.lalsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource) by overwriting their values with the location of LAL's header files and LAL's binary files. The default values are
-	
-	# ------------------
-	# WINDOWS USERS ONLY
-	
-	# location of LAL's include files
-	LAL_INC_DIR = 
-	# location of LAL's library files
-	LAL_LIB_DIR = 
-
-(Modify the variables under the header `WINDOWS USERS ONLY`).
-
-### Configuration not for Anaconda
-
-Secondly, you have to specify the version of Python against which the interface is linked. Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON` in [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). The default value is the following
-
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 9
-
-Replace the `9` above with the minor version of Python installed in your system.
-
-Thirdly, you can also choose the destination directory of LAL's python interface. Modify the variable `LAL_PY_DEST` in the same [Makefile.pythonsource](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). If you are configuring this interface to work with Anaconda, do not change the default value. If not, you may change it. The default value is
-
-	else ifeq ($(ANACONDA),no)
-		...
-    
-		# Directory where LAL's interface will be installed to
-		LAL_PY_DEST = /mingw64/lib/python3.$(MINOR_VERSION_PYTHON)
-
-## Configuration for Anaconda
-
-Technically, there should be no need to do any further configuration.
+Check the other [two](https://github.com/LAL-project/python-interface/blob/main/run_distribution_windows.sh) [script](https://github.com/LAL-project/python-interface/blob/main/run_install_windows.sh) files to see examples of contents.
 
 ## Compiling and installing the interface
 
-There are two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
+We offer two different builds for the python interface `debug` and `release`. Each build is linked against the corresponding compilation of the library.
 
-In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, users have to generate an empty file:
+In order to have a more enjoyable, less frustrating experience using LAL, users should make the documentation for the Python wrapper files. This step, however, is completely optional and can be skipped. If skipped, run the command.
 
 	$ touch modules/documentation.i
 
-In order to generate the documentation for the Python wrapper files, issue the following commands.
+To generate the documentation for the Python wrapper files, run the following commands.
 
 	$ cd /path/to/linear-arrangement-library
 	$ ./make_docs.sh
 
-Now, we can actually compile the Python interface.
+Now, we can actually compile and install in one step the Python interface.
 
-### Not for Anaconda
+	$ ./sample_script_windows.sh
 
-For a release compilation and installation of the python interface, issue the following commands
+### Last steps of the installation for `conda`
 
-	$ ./compile.sh --build=release --environment=distribution
-	$ ./compile.sh --build=release --environment=distribution --install
+**Note** These steps assume that the library was compiled and linked against the python development files distributed with conda.
 
-For a debug compilation and installation of the python interface, issue the following commands
-
-	$ ./compile.sh --build=debug --environment=distribution
-	$ ./compile.sh --build=debug --environment=distribution --install
-
-### For Anaconda
-
-Similarly as before (but not exactly!), compile the library in debug and/or release mode.
-
-For a release compilation and installation of the python interface, issue the following commands
-
-	$ ./compile.sh --build=release --environment=distribution --anaconda
-	$ ./compile.sh --build=release --environment=distribution --anaconda --install
-
-For a debug compilation and installation of the python interface, issue the following commands
-
-	$ ./compile.sh --build=debug --environment=distribution --anaconda
-	$ ./compile.sh --build=debug --environment=distribution --anaconda --install
-
-It remains one final step. This step is about moving the `.dll` files to the appropriate directory within Anaconda, in particular within the directories
+Move the `.dll` files to the appropriate directory within Anaconda/Miniconda, in particular within the directories
 
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
 	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
 
-Now, copy the file
+(replace `anaconda3` with `miniconda3` where appropriate)
+
+Now, copy the files
 
 	C:/msys64/mingw64/bin/libstdc++-6.dll
 
-- (release builds) to directory (1) the `liblal.dll` file generated during the [release compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
+to the directories `lal` and `laldebug` inside conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
 
-- (debug builds) to directory (2) the `liblaldebug.dll` file generated during the [debug compilation of the sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md).
+- `liblal.dll` into `lal` (within conda), and
+- `liblaldebug.dll` into `laldebug` (within conda).
