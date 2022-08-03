@@ -2,15 +2,13 @@
 
 if [ -z $1 ]; then
 
-sudo \
 ./compile.sh \
-	--lal-destination="C:/programming/msys64/mingw64/local/lib/python3.10/site-packages" \
+	--lal-destination="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
 	--build=release \
 	--install
 
-sudo \
 ./compile.sh \
-	--lal-destination="C:/programming/msys64/mingw64/local/lib/python3.10/site-packages" \
+	--lal-destination="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
 	--build=debug \
 	--install
 

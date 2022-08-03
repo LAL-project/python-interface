@@ -7,7 +7,7 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 if [ -z $1 ]; then
 
 PYTHON_HEADERS="C:/programming/msys64/mingw64/include/python3.10"
-PYTHON_LIBRARY="C:/programming/msys64/mingw64/lib"
+PYTHON_LIBRARY=""
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -41,8 +41,8 @@ miniconda_dir="C:/Users/Usuari/miniconda3"
 	--lal-libs="$LAL_LIBRARY_RELEASE" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$miniconda_dir/include/python3.9" \
-	--python-libs="$miniconda_dir/lib" \
+	--python-headers="$miniconda_dir/include" \
+	--python-libs="$miniconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
 	--build=release \
@@ -53,8 +53,8 @@ miniconda_dir="C:/Users/Usuari/miniconda3"
 	--lal-libs="$LAL_LIBRARY_DEBUG" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$miniconda_dir/include/python3.9" \
-	--python-libs="$miniconda_dir/lib" \
+	--python-headers="$miniconda_dir/include" \
+	--python-libs="$miniconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
 	--build=debug \
@@ -70,10 +70,10 @@ anaconda_dir="C:/Users/Usuari/anaconda3"
 	--lal-libs="$LAL_LIBRARY_RELEASE" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
+	--python-headers="$anaconda_dir/include" \
+	--python-libs="$anaconda_dir" \
 	--python-major="3" \
-	--python-minor="9" \
+	--python-minor="8" \
 	--build=release \
 	--anaconda
 
@@ -82,10 +82,10 @@ anaconda_dir="C:/Users/Usuari/anaconda3"
 	--lal-libs="$LAL_LIBRARY_DEBUG" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
+	--python-headers="$anaconda_dir/include" \
+	--python-libs="$anaconda_dir" \
 	--python-major="3" \
-	--python-minor="9" \
+	--python-minor="8" \
 	--build=debug \
 	--anaconda
 

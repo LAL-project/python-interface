@@ -88,13 +88,22 @@ Move the `.dll` files to the appropriate directory within Anaconda/Miniconda, in
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
 	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
 
-(replace `anaconda3` with `miniconda3` where appropriate)
+(replace `anaconda3` with `miniconda3` where appropriate).
 
-Now, copy the files
+For this, copy the necessary dll files for LAL. These can be checked with the command
 
+	$ ldd liblal.dll
+	$ ldd liblaldebug.dll
+
+In our most recent build, these were:
+
+	C:/msys64/mingw64/bin/libgcc_s_seh-1.dll
+	C:/msys64/mingw64/bin/libgmp-10.dll
+	C:/msys64/mingw64/bin/libgomp-1.dll
 	C:/msys64/mingw64/bin/libstdc++-6.dll
+	C:/msys64/mingw64/bin/libwinpthread-1.dll
 
-to the directories `lal` and `laldebug` inside conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
+Copy the dll files to both directories `lal` and `laldebug` within conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
 
 - `liblal.dll` into `lal` (within conda), and
 - `liblaldebug.dll` into `laldebug` (within conda).

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-LAL_HEADERS="C:/Users/Usuari/Documents/LAL-DISTRIBUTION/latest/lal-c++-libs/include"
-LAL_LIBRARY="C:/Users/Usuari/Documents/LAL-DISTRIBUTION/latest/lal-c++-libs/bin"
+LAL_HEADERS="C:/programming/msys64/home/Usuari/LAL-DISTRIBUTION/latest/lal-c++-libs/include"
+LAL_LIBRARY="C:/programming/msys64/home/Usuari/LAL-DISTRIBUTION/latest/lal-c++-libs/bin"
 
 if [ -z $1 ]; then
 
 PYTHON_HEADERS="C:/programming/msys64/mingw64/include/python3.10"
-PYTHON_LIBRARY="C:/programming/msys64/mingw64/lib"
+PYTHON_LIBRARY=""
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
