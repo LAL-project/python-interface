@@ -102,7 +102,7 @@ $(info .    'release': produces faster binaries)
 endif
 
 $(info Link against: $(ENVIR))
-ifeq ($(USER_BUILD),development)
+ifeq ($(USER_ENVIRONMENT),development)
 $(info .    'development':  LAL's development distribution)
 else
 $(info .    'distribution': LAL's installed version)
