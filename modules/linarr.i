@@ -51,12 +51,8 @@
 #include <lal/linarr.hpp>
 %}
 
-namespace std {
-
-%template(pair_value_arrangement) pair<uint64_t, lal::linear_arrangement>;
-%template(pair_list_value) pair<vector<uint64_t>, uint64_t>;
-
-} // -- namespace std
+%template(pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
+%template(pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
 
 %include "lal/linarr/1level.hpp"
 %include "lal/linarr/2level.hpp"
@@ -79,21 +75,12 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
+%template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
+
 %include "lal/linarr/dependency_flux.hpp"
-
-namespace std {
-
-%template(list_dependency_flux) vector<lal::linarr::dependency_flux>;
-
-} // -- namespace std
-
 %include "lal/linarr/flux.hpp"
 
-namespace std {
-
-%template(array_of_bools_tree_structure_type) array<bool, lal::linarr::__syntactic_dependency_structure_size>;
-
-} // -- namespace std
+%template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_structure_size>;
 
 %include "lal/linarr/classify_syntactic_dependency_structure.hpp"
 

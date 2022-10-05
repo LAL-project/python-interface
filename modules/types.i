@@ -52,12 +52,10 @@
 // renaming of C++ templates
 // (C++ types)
 
-namespace std {
-	%template(_list_uint32) vector<uint32_t>;
-	%template(_list_uint64) vector<uint64_t>;
-	%template(_list_bool) vector<bool>;
-	%template(_list_string) vector<string>;
-}
+%template(_list_uint32) std::vector<uint32_t>;
+%template(_list_uint64) std::vector<uint64_t>;
+%template(_list_bool) std::vector<bool>;
+%template(_list_string) std::vector<std::string>;
 
 // ----------------
 // ignore operators
@@ -91,15 +89,11 @@ namespace lal {
 // renaming of C++ templates
 // (lal types)
 
-namespace std {
+%template(_edge) std::pair<lal::node, lal::node>;
+%template(_edge_pair) std::pair<lal::edge, lal::edge>;
 
-%template(_edge) pair<lal::node, lal::node>;
-%template(_edge_pair) pair<lal::edge, lal::edge>;
-
-%template(_list_edge) vector<lal::edge>;
-%template(_list_edge_pair) vector<lal::edge_pair>;
-
-} // -- namespace std
+%template(_list_edge) std::vector<lal::edge>;
+%template(_list_edge_pair) std::vector<lal::edge_pair>;
 
 namespace lal {
 

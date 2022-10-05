@@ -265,12 +265,8 @@ namespace io {
 } // -- namespace io
 } // -- namespace lal
 
-namespace std {
-
-%template(_list_report_treebank_file) vector<lal::io::report_treebank_file>;
-%template(_list_report_treebank_collection) vector<lal::io::report_treebank_collection>;
-
-} // -- namespace std
+%template(_list_report_treebank_file) std::vector<lal::io::report_treebank_file>;
+%template(_list_report_treebank_collection) std::vector<lal::io::report_treebank_collection>;
 
 %include "lal/io/check_correctness.hpp"
 
