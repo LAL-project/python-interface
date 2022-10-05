@@ -78,7 +78,6 @@ namespace linarr {
 %template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
 %include "lal/linarr/dependency_flux.hpp"
-%include "lal/linarr/flux.hpp"
 
 %template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_structure_size>;
 
