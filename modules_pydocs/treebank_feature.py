@@ -23,6 +23,7 @@ Structural properties
 - ``tree_centre`` : Centre of the tree. This feature spans two columns, one for each possible central vertex. Each column contains an index: the first is always strictly less than the number of vertices, and the second is only valid when its value is strictly less than the number of vertices. See ``lal.properties.tree_centre`` for details on the definition of centre of a tree.
 - ``tree_centroid`` : Centroid of the tree. This feature spans two columns, one for each possible centroidal vertex. Each column contains an index: the first is always strictly less than the number of vertices, and the second is only valid when its value is strictly less than the number of vertices. See ``lal.properties.tree_centroid`` for details on the definition of centroid of a tree.
 - ``tree_diameter`` : Diameter of the tree. See ``lal.properties.tree_diameter`` for details.
+- ``tree_caterpillar_distance`` : Caterpillar distance of the tree. See ``lal.properties.tree_caterpillar_distance`` for details.
 
 C
 -----

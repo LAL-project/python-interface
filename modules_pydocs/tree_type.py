@@ -1,6 +1,14 @@
 r"""
 The different types of trees.
 
+- ``empty`` Empty tree.
+
+	A tree with no vertices at all.
+
+- ``singleton`` Singleton tree.
+
+	A tree of a single vertex.
+
 - ``caterpillar`` Caterpillar trees
 
 	These are the trees such that a linear tree is produced when its leaves are removed [2].
@@ -8,10 +16,6 @@ The different types of trees.
 - ``linear`` Linear trees
 
 	A linear tree has only two leaves, and the rest of the vertices have degree exactly two. This is, precisely, a path graph.
-
-- ``quasistar`` Quasi star trees
-
-	Also quasi star graphs, trees where all vertices but two have degree 1. One of these two vertices has degree exactly two, the other has degree at least two.
 
 - ``spider`` Spider trees
 
@@ -27,13 +31,17 @@ The different types of trees.
 
 	Also star graphs, trees where all vertices but one have degree 1.
 
+- ``quasistar`` Quasi star trees
+
+	Also quasi star graphs, trees where all vertices but two have degree 1. One of these two vertices has degree exactly two, the other has degree at least two.
+
 - ``bistar`` Bi-star trees
 
 	These trees are made of two star trees joined by an edge at their centers.
 
 - ``unknown``
 
-	The tree could not be classified
+	Used when a tree does not fall in any of the categories above.
 
 References
 ----------
