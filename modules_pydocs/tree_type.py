@@ -17,7 +17,7 @@ The different types of trees.
 
 	A linear tree has only two leaves, and the rest of the vertices have degree exactly two. This is, precisely, a path graph.
 
-- ``twolinear`` 2-linear trees.
+- ``two_linear`` 2-linear trees.
 
 	A 2-linear tree is a tree in which there are at most two vertices of degree 3 or larger; the other vertices have degree 2 or 1 [4].
 	
