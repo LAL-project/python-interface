@@ -249,7 +249,7 @@ def is_arrangement(g, arr):
 	-------
 	Whether or not the input arrangement is a valid permutation.
 	"""
-	__full_type = str(type(L[0]))
+	__full_type = str(type(g))
 	__pos_graph = __full_type.find(".graphs.")
 	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
 	
@@ -274,7 +274,7 @@ def is_planar(g, arr):
 	-------
 	Whether or not the input graph arranged with the input arrangement is planar.
 	"""
-	__full_type = str(type(L[0]))
+	__full_type = str(type(g))
 	__pos_graph = __full_type.find(".graphs.")
 	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
 	
