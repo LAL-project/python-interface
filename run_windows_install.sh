@@ -15,7 +15,7 @@ if [ -z $1 ]; then
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="C:/Users/Usuari/miniconda3/Lib/site-packages"
+miniconda_dir="C:/Users/lluis/miniconda3/Lib/site-packages"
 
 ./compile.sh \
 	--lal-destination="$miniconda_dir" \
@@ -32,7 +32,7 @@ miniconda_dir="C:/Users/Usuari/miniconda3/Lib/site-packages"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="C:/Users/Usuari/anaconda3/Lib/site-packages"
+anaconda_dir="C:/Users/lluis/anaconda3/Lib/site-packages"
 
 ./compile.sh \
 	--lal-destination="$anaconda_dir" \
@@ -42,6 +42,23 @@ anaconda_dir="C:/Users/Usuari/anaconda3/Lib/site-packages"
 
 ./compile.sh \
 	--lal-destination="$anaconda_dir" \
+	--build=debug \
+	--anaconda \
+	--install
+
+# for developers only
+elif [ "$1" == "package" ]; then
+
+destdir="C:/Users/lluis/Desktop/LAL-DISTRIBUTION/latest/windows10-python3.9-libs-anaconda"
+
+./compile.sh \
+	--lal-destination="$destdir" \
+	--build=release \
+	--anaconda \
+	--install
+
+./compile.sh \
+	--lal-destination="$destdir" \
 	--build=debug \
 	--anaconda \
 	--install

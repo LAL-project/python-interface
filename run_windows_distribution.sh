@@ -1,11 +1,11 @@
 #!/bin/bash
 
-LAL_HEADERS="C:/programming/msys64/home/Usuari/LAL-DISTRIBUTION/latest/lal-c++-libs/include"
-LAL_LIBRARY="C:/programming/msys64/home/Usuari/LAL-DISTRIBUTION/latest/lal-c++-libs/bin"
+LAL_HEADERS="C:/Users/lluis/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/include"
+LAL_LIBRARY="C:/Users/lluis/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/bin"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="C:/programming/msys64/mingw64/include/python3.10"
+PYTHON_HEADERS="C:/msys64/mingw64/include/python3.10"
 PYTHON_LIBRARY=""
 
 ./compile.sh \
@@ -33,7 +33,7 @@ PYTHON_LIBRARY=""
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="C:/Users/Usuari/miniconda3"
+miniconda_dir="C:/Users/lluis/miniconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -62,15 +62,15 @@ miniconda_dir="C:/Users/Usuari/miniconda3"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="C:/Users/Usuari/anaconda3"
+anaconda_dir="C:/Users/lluis/anaconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
 	--lal-libs="$LAL_LIBRARY" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
+	--python-headers="$anaconda_dir/include/" \
+	--python-libs="$anaconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
 	--build=release \
@@ -81,8 +81,8 @@ anaconda_dir="C:/Users/Usuari/anaconda3"
 	--lal-libs="$LAL_LIBRARY" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
+	--python-headers="$anaconda_dir/include/" \
+	--python-libs="$anaconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
 	--build=debug \
