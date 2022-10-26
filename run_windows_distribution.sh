@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LAL_HEADERS="C:/Users/lluis/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/include"
-LAL_LIBRARY="C:/Users/lluis/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/bin"
+LAL_HEADERS="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/include"
+LAL_LIBRARY="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/bin"
 
 if [ -z $1 ]; then
 
@@ -33,7 +33,7 @@ PYTHON_LIBRARY=""
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="C:/Users/lluis/miniconda3"
+miniconda_dir="C:/Users/$USER/miniconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -62,7 +62,7 @@ miniconda_dir="C:/Users/lluis/miniconda3"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="C:/Users/lluis/anaconda3"
+anaconda_dir="C:/Users/$USER/anaconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \

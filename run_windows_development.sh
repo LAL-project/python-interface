@@ -34,7 +34,7 @@ PYTHON_LIBRARY=""
 # for miniconda users only
 elif [ "$1" == "miniconda" ]; then
 
-miniconda_dir="C:/Users/lluis/miniconda3"
+miniconda_dir="C:/Users/$USER/miniconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -63,7 +63,7 @@ miniconda_dir="C:/Users/lluis/miniconda3"
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
-anaconda_dir="C:/Users/lluis/anaconda3"
+anaconda_dir="C:/Users/$USER/anaconda3"
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
