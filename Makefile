@@ -196,6 +196,8 @@ ARCH_DIR 		= $(OS_DIR)/$(ARCH)
 # ---------------
 # SWIG executable
 
+$(info Python linkage)
+
 SWIG_EXE		= swig
 # SWIG flags
 SWIG_FLAGS_32	= -DSWIGWORDSIZE32
@@ -214,6 +216,19 @@ ifeq ($(USER_BUILD),debug)
 else ifeq ($(USER_BUILD),release)
 	SWIG_FLAGS	+= -DNDEBUG
 endif
+
+SWIG_VERSION = $(shell $(SWIG_EXE) -version | grep ^SWIG | sed 's/^.* //g')
+SWIG_VERSION_LTE_402 = $(shell ./compare_versions.sh swig $(SWIG_VERSION) "<=" 4.0.2)
+
+SWIG_LANG_FLAGS = -c++ -python
+# Add '-py3' flag for versions 4.0.2 or lower
+ifeq ($(SWIG_VERSION_LTE_402),1)
+	SWIG_LANG_FLAGS += -py3
+endif
+
+$(info Swig information)
+$(info .    Version:        '$(SWIG_VERSION)')
+$(info .    Language flags: '$(SWIG_LANG_FLAGS)')
 
 SWIG_FLAGS += -I$(LAL_INC_DIR)
 
