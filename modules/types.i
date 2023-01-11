@@ -179,7 +179,4 @@ setattr(linear_arrangement, swap_positions.__name__, swap_positions)
 
 del swap_nodes
 del swap_positions
-
-del linear_arrangement_from_direct
-del linear_arrangement_from_inverse
 %}
