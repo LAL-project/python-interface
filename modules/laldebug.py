@@ -36,8 +36,8 @@ del path_to_this_init
 del os
 del sys
 
-from laldebug import generate
 from laldebug import graphs
+from laldebug import generate
 from laldebug import io
 from laldebug import iterators
 from laldebug import linarr
