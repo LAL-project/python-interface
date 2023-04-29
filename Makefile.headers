@@ -34,7 +34,7 @@ TREEBANK_ERR_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_error_type.hpp
 
 TREEBANK_FEATURE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_feature.hpp
 
-TREE_STR_DPHDRS		= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_structure.hpp
+SYN_DEP_STR_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_structure.hpp
 
 TREE_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/graphs/tree_type.hpp
 
@@ -46,7 +46,7 @@ ALG_DMIN_PR_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/algorithms_Dmin_projective.hpp
 
 # TYPES
 
-TYPES_DPHDRS		= $(LAL_INC_DIR)/lal/basic_types.hpp \
+BASIC_TYPES_DPHDRS	= $(LAL_INC_DIR)/lal/basic_types.hpp \
 					  $(LAL_INC_DIR)/lal/linear_arrangement.hpp
 
 # NAMESPACES
@@ -147,20 +147,21 @@ VERSION_DPHDRS		= $(LAL_INC_DIR)/lal/lal_version.hpp
 
 else ifeq ($(USER_ENVIRONMENT),distribution)
 
-TREEBANK_ERR_DPHDRS	=
+TREEBANK_ERR_DPHDRS		=
 TREEBANK_FEATURE_DPHDRS	=
-TREE_STR_DPHDRS		=
-ALG_C_DPHDRS		=
-ALG_DMIN_DPHDRS		=
-TREE_STR_DPHDRS		=
-DEFINITIONS_DPHDRS	=
-GENERATE_DPHDRS		=
-GRAPHS_DPHDRS		=
-IO_DPHDRS			=
-ITERATORS_DPHDRS	=
-LINARR_DPHDRS 		=
-NUMERIC_DPHDRS		=
-PROPERTIES_DPHDRS	=
-UTILS_DPHDRS		=
+SYN_DEP_STR_DPHDRS		=
+ALG_C_DPHDRS			=
+ALG_DMIN_DPHDRS			=
+TREE_TYPE_DPHDRS		=
+BASIC_TYPES_DPHDRS		=
+DEFINITIONS_DPHDRS		=
+GENERATE_DPHDRS			=
+GRAPHS_DPHDRS			=
+IO_DPHDRS				=
+ITERATORS_DPHDRS		=
+LINARR_DPHDRS 			=
+NUMERIC_DPHDRS			=
+PROPERTIES_DPHDRS		=
+UTILS_DPHDRS			=
 
 endif
