@@ -82,6 +82,9 @@ if [ "$line" != "r\"\"\"" ]; then
 	elif [[ "$f" == *"algorithms_C"* ]]; then
 		prepend modules_pydocs/algorithms_C.py $f
 	
+	elif [[ "$f" == *"algorithms_chunking"* ]]; then
+		prepend modules_pydocs/algorithms_chunking.py $f
+	
 	elif [[ "$f" == *"algorithms_Dmin_projective"* ]]; then
 		prepend modules_pydocs/algorithms_Dmin_projective.py $f
 	

@@ -118,6 +118,23 @@ else
 endif
 	scripts/postprocess_interface_file.sh $@ | sed "s/^/    /g"
 
+# algorithms_chunking module
+$(ALG_CHUNKING_INSTALL_SO_FILE): $(ALG_CHUNKING_WRAP).o $(LIBRARY_SHARED_DEP)
+	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
+$(ALG_CHUNKING_WRAP).o: $(ALG_CHUNKING_WRAP).cxx
+	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
+$(ALG_CHUNKING_WRAP).cxx: $(ALG_CHUNKING_MOD_DEPS) $(ALG_CHUNKING_MAIN_INT)
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(ALG_CHUNKING_WRAP).cxx $(ALG_CHUNKING_MAIN_INT)
+	scripts/postprocess_interface_file.sh $(ALG_CHUNKING_INSTALL_PY_FILE) | sed "s/^/    /g"
+
+$(ALG_CHUNKING_INSTALL_PY_FILE): $(ALG_CHUNKING_MOD_DEPS) $(ALG_CHUNKING_MOD_DOCS) $(DOCUMENTATION_FILE)
+ifeq (,$(wildcard $(ALG_CHUNKING_WRAP).cxx))
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(ALG_CHUNKING_WRAP).cxx $(ALG_CHUNKING_MAIN_INT)
+else
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(ARCH_DIR)/$(INTERFACE_DIRECTORY)/temp.cxx $(ALG_CHUNKING_MAIN_INT)
+endif
+	scripts/postprocess_interface_file.sh $@ | sed "s/^/    /g"
+
 # algorithms_Dmin module
 $(ALG_DMIN_INSTALL_SO_FILE): $(ALG_DMIN_WRAP).o $(LIBRARY_SHARED_DEP)
 	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)

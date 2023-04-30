@@ -37,6 +37,7 @@
 %import types.i // this is necessary for the wrapper
 %import enums/syntactic_dependency_structure.i
 %import enums/algorithms_C.i
+%import enums/algorithms_chunking.i
 %import enums/algorithms_Dmin.i
 %import enums/algorithms_Dmin_planar.i
 %import enums/algorithms_Dmin_projective.i
@@ -83,8 +84,33 @@ namespace linarr {
 
 %include "lal/linarr/classify_syntactic_dependency_structure.hpp"
 
+// Add chunking algorithms
+
+namespace lal {
+namespace linarr {
+
+// ignore non-const
+%ignore chunk_sequence::get_chunk(std::size_t) noexcept;
+
+} // -- namespace linarr
+} // -- namespace lal
+
+%include "lal/linarr/chunk.hpp"
+%include "lal/linarr/chunking.hpp"
+
+
+
+
+
+
+
+
+
+
+
+
 // --------------------------------
-// Extendind the function templates
+// Extending the function templates
 
 namespace lal {
 namespace linarr {
