@@ -29,9 +29,9 @@
 %module algorithms_C
 
 %{
-#include <lal/linarr/algorithms_C.hpp>
+#include <lal/linarr/C/algorithms_C.hpp>
 %}
-%include "lal/linarr/algorithms_C.hpp"
+%include "lal/linarr/C/algorithms_C.hpp"
 
 %pythoncode %{
 __mod_name = "algorithms_C"

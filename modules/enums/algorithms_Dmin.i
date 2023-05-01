@@ -29,9 +29,9 @@
 %module algorithms_Dmin
 
 %{
-#include <lal/linarr/algorithms_Dmin.hpp>
+#include <lal/linarr/D/algorithms_Dmin.hpp>
 %}
-%include "lal/linarr/algorithms_Dmin.hpp"
+%include "lal/linarr/D/algorithms_Dmin.hpp"
 
 %pythoncode %{
 __mod_name = "algorithms_Dmin"

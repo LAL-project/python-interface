@@ -29,9 +29,9 @@
 %module algorithms_Dmin_projective
 
 %{
-#include <lal/linarr/algorithms_Dmin_projective.hpp>
+#include <lal/linarr/D/algorithms_Dmin_projective.hpp>
 %}
-%include "lal/linarr/algorithms_Dmin_projective.hpp"
+%include "lal/linarr/D/algorithms_Dmin_projective.hpp"
 
 %pythoncode %{
 __mod_name = "algorithms_Dmin_projective"

@@ -34,17 +34,17 @@ TREEBANK_ERR_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_error_type.hpp
 
 TREEBANK_FEATURE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_feature.hpp
 
-SYN_DEP_STR_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_structure.hpp
+SYN_DEP_TREE_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/type.hpp
 
 TREE_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/graphs/tree_type.hpp
 
-ALG_C_DPHDRS		= $(LAL_INC_DIR)/lal/linarr/algorithms_C.hpp
+ALG_C_DPHDRS		= $(LAL_INC_DIR)/lal/linarr/C/algorithms_C.hpp
 
-ALG_CHUNKING_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/algorithms_chunking.hpp
+ALG_CHUNKING_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/chunking/algorithms.hpp
 
-ALG_DMIN_DPHDRS		= $(LAL_INC_DIR)/lal/linarr/algorithms_Dmin.hpp
-ALG_DMIN_PL_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/algorithms_Dmin_planar.hpp
-ALG_DMIN_PR_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/algorithms_Dmin_projective.hpp
+ALG_DMIN_DPHDRS		= $(LAL_INC_DIR)/lal/linarr/D/algorithms_Dmin.hpp
+ALG_DMIN_PL_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/D/algorithms_Dmin_planar.hpp
+ALG_DMIN_PR_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/D/algorithms_Dmin_projective.hpp
 
 # TYPES
 
@@ -108,23 +108,24 @@ ITERATORS_DPHDRS	= $(GRAPHS_DPHDRS) \
 
 LINARR_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(NUMERIC_DPHDRS) \
-					  $(LAL_INC_DIR)/lal/linarr/1level.hpp \
-					  $(LAL_INC_DIR)/lal/linarr/2level.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/aggregations/1level.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/aggregations/2level.hpp \
 					  $(ALG_C_DPHDRS) \
+					  $(LAL_INC_DIR)/lal/linarr/C/C.hpp \
 					  $(ALG_CHUNKING_DPHDRS) \
+					  $(LAL_INC_DIR)/lal/linarr/chunking/chunk.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/chunking/chunking.hpp \
 					  $(ALG_DMIN_DPHDRS) \
 					  $(ALG_DMIN_PL_DPHDRS) \
 					  $(ALG_DMIN_PR_DPHDRS) \
-					  $(LAL_INC_DIR)/lal/linarr/C.hpp \
-					  $(LAL_INC_DIR)/lal/linarr/chunk.hpp \
-					  $(LAL_INC_DIR)/lal/linarr/chunking.hpp \
-					  $(LAL_INC_DIR)/lal/linarr/D.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/D/D.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/D/DMax.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/D/Dmin.hpp \
+					  $(SYN_DEP_TREE_DPHDRS) \
+					  $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/classify.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/dependency_flux.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/formal_constraints.hpp \
-					  $(LAL_INC_DIR)/lal/linarr/Dmin.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/head_initial.hpp \
-					  $(SYN_DEP_STR_DPHDRS) \
-					  $(LAL_INC_DIR)/lal/linarr/classify_syntactic_dependency_structure.hpp \
 					  $(LAL_INC_DIR)/lal/linarr.hpp
 
 PROPERTIES_DPHDRS	= $(GRAPHS_DPHDRS) \
@@ -154,7 +155,7 @@ else ifeq ($(USER_ENVIRONMENT),distribution)
 
 TREEBANK_ERR_DPHDRS		=
 TREEBANK_FEATURE_DPHDRS	=
-SYN_DEP_STR_DPHDRS		=
+SYN_DEP_TREE_DPHDRS		=
 ALG_C_DPHDRS			=
 ALG_DMIN_DPHDRS			=
 TREE_TYPE_DPHDRS		=

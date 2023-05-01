@@ -68,19 +68,19 @@ endif
 	scripts/postprocess_interface_file.sh $@ | sed "s/^/    /g"
 
 # syntactic dependency structure type module
-$(SYN_DEP_STR_INSTALL_SO_FILE): $(SYN_DEP_STR_WRAP).o $(LIBRARY_SHARED_DEP)
+$(SYN_DEP_TREE_INSTALL_SO_FILE): $(SYN_DEP_TREE_WRAP).o $(LIBRARY_SHARED_DEP)
 	$(CXX) $(LFLAGS) -shared -o $@ $< $(LIBS)
-$(SYN_DEP_STR_WRAP).o: $(SYN_DEP_STR_WRAP).cxx
+$(SYN_DEP_TREE_WRAP).o: $(SYN_DEP_TREE_WRAP).cxx
 	$(CXX) $(FLAGS) -o $@ -c $< $(INCLUDES)
-$(SYN_DEP_STR_WRAP).cxx: $(SYN_DEP_STR_MOD_DEPS) $(SYN_DEP_STR_MAIN_INT)
-	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(SYN_DEP_STR_WRAP).cxx $(SYN_DEP_STR_MAIN_INT)
-	scripts/postprocess_interface_file.sh $(SYN_DEP_STR_INSTALL_PY_FILE) | sed "s/^/    /g"
+$(SYN_DEP_TREE_WRAP).cxx: $(SYN_DEP_TREE_MOD_DEPS) $(SYN_DEP_TREE_MAIN_INT)
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(SYN_DEP_TREE_WRAP).cxx $(SYN_DEP_TREE_MAIN_INT)
+	scripts/postprocess_interface_file.sh $(SYN_DEP_TREE_INSTALL_PY_FILE) | sed "s/^/    /g"
 
-$(SYN_DEP_STR_INSTALL_PY_FILE): $(SYN_DEP_STR_MOD_DEPS) $(SYN_DEP_STR_MOD_DOCS) $(DOCUMENTATION_FILE)
-ifeq (,$(wildcard $(SYN_DEP_STR_WRAP).cxx))
-	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(SYN_DEP_STR_WRAP).cxx $(SYN_DEP_STR_MAIN_INT)
+$(SYN_DEP_TREE_INSTALL_PY_FILE): $(SYN_DEP_TREE_MOD_DEPS) $(SYN_DEP_TREE_MOD_DOCS) $(DOCUMENTATION_FILE)
+ifeq (,$(wildcard $(SYN_DEP_TREE_WRAP).cxx))
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(SYN_DEP_TREE_WRAP).cxx $(SYN_DEP_TREE_MAIN_INT)
 else
-	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(ARCH_DIR)/$(INTERFACE_DIRECTORY)/temp.cxx $(SYN_DEP_STR_MAIN_INT)
+	$(SWIG_EXE) $(SWIG_FLAGS) -Wall $(SWIG_LANG_FLAGS) -o $(ARCH_DIR)/$(INTERFACE_DIRECTORY)/temp.cxx $(SYN_DEP_TREE_MAIN_INT)
 endif
 	scripts/postprocess_interface_file.sh $@ | sed "s/^/    /g"
 

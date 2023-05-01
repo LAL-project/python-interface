@@ -35,7 +35,7 @@
 %implicitconv lal::linear_arrangement;
 
 %import types.i // this is necessary for the wrapper
-%import enums/syntactic_dependency_structure.i
+%import enums/syntactic_dependency_tree.i
 %import enums/algorithms_C.i
 %import enums/algorithms_chunking.i
 %import enums/algorithms_Dmin.i
@@ -55,12 +55,12 @@
 %template(pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
 %template(pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
 
-%include "lal/linarr/1level.hpp"
-%include "lal/linarr/2level.hpp"
-%include "lal/linarr/C.hpp"
-%include "lal/linarr/D.hpp"
-%include "lal/linarr/Dmin.hpp"
-%include "lal/linarr/DMax.hpp"
+%include "lal/linarr/aggregations/1level.hpp"
+%include "lal/linarr/aggregations/2level.hpp"
+%include "lal/linarr/C/C.hpp"
+%include "lal/linarr/D/D.hpp"
+%include "lal/linarr/D/Dmin.hpp"
+%include "lal/linarr/D/DMax.hpp"
 %include "lal/linarr/head_initial.hpp"
 %include "lal/linarr/formal_constraints.hpp"
 
@@ -80,9 +80,9 @@ namespace linarr {
 
 %include "lal/linarr/dependency_flux.hpp"
 
-%template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_structure_size>;
+%template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
 
-%include "lal/linarr/classify_syntactic_dependency_structure.hpp"
+%include "lal/linarr/syntactic_dependency_tree/classify.hpp"
 
 // Add chunking algorithms
 
@@ -95,8 +95,8 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
-%include "lal/linarr/chunk.hpp"
-%include "lal/linarr/chunking.hpp"
+%include "lal/linarr/chunking/chunk.hpp"
+%include "lal/linarr/chunking/chunking.hpp"
 
 
 

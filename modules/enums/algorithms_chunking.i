@@ -29,9 +29,9 @@
 %module algorithms_chunking
 
 %{
-#include <lal/linarr/algorithms_chunking.hpp>
+#include <lal/linarr/chunking/algorithms.hpp>
 %}
-%include "lal/linarr/algorithms_chunking.hpp"
+%include "lal/linarr/chunking/algorithms.hpp"
 
 %pythoncode %{
 __mod_name = "algorithms_chunking"

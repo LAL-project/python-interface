@@ -29,9 +29,9 @@
 %module algorithms_Dmin_planar
 
 %{
-#include <lal/linarr/algorithms_Dmin_planar.hpp>
+#include <lal/linarr/D/algorithms_Dmin_planar.hpp>
 %}
-%include "lal/linarr/algorithms_Dmin_planar.hpp"
+%include "lal/linarr/D/algorithms_Dmin_planar.hpp"
 
 %pythoncode %{
 __mod_name = "algorithms_Dmin_planar"
