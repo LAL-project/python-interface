@@ -48,6 +48,10 @@
 %include documentation.i
 
 %{
+// C++ includes
+#include <sstream>
+
+// lal includes
 #include <lal/graphs.hpp>
 #include <lal/linarr.hpp>
 %}
@@ -99,6 +103,30 @@ namespace linarr {
 %include "lal/linarr/chunking/chunking.hpp"
 
 
+// -------------------------
+// Extendind the C++ classes
+
+namespace lal {
+namespace linarr {
+
+%extend chunk {
+	std::string __repr__() const {
+		std::ostringstream out;
+		out << *$self;
+		return out.str();
+	}
+}
+
+%extend chunk_sequence {
+	std::string __repr__() const {
+		std::ostringstream out;
+		out << *$self;
+		return out.str();
+	}
+}
+
+} // -- namespace linarr
+} // -- namespace lal
 
 
 
