@@ -40,7 +40,7 @@ Navigate to a directory of your choice and issue the command
 
 	$ git clone https://github.com/LAL-project/python-interface.git
 
-## Configuring the _run_ script
+## Configuring the _compile_ script
 
 In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 

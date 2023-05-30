@@ -47,7 +47,7 @@ Navigate to a directory of your choice and issue the command
 
 	$ git clone https://github.com/LAL-project/python-interface.git
 
-## Configuring the _run_ script
+## Configuring the _compile_ script
 
 In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
@@ -64,8 +64,6 @@ With this information, you will have to edit the [sample script file](https://gi
 	GMP_HEADERS=                        # (?) directory of the header files of GMP
 	GMP_LIBRARY=                        # (?) directory of the binary files of GMP (.so)
 	PYTHON_HEADERS=                     # directory of the header (development) files of python
-	PYTHON_LIBRARY=                     # directory of the shared object (development) files of python
-	PYTHON_MINOR=                       # python's minor version (the 'x' in 3.x)
 
 Check the other [two](https://github.com/LAL-project/python-interface/blob/main/run_distribution_ubuntu.sh) [script](https://github.com/LAL-project/python-interface/blob/main/run_install_ubuntu.sh) files to see examples of contents.
 
