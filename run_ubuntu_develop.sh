@@ -16,9 +16,6 @@ PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$PYTHON_HEADERS" \
-	--python-libs="$PYTHON_LIBRARY" \
-	--python-major="3" \
-	--python-minor="8" \
 	--build=release
 
 ./compile.sh \
@@ -28,9 +25,6 @@ PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$PYTHON_HEADERS" \
-	--python-libs="$PYTHON_LIBRARY" \
-	--python-major="3" \
-	--python-minor="8" \
 	--build=debug
 
 # for miniconda users only
@@ -45,9 +39,6 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--python-libs="$miniconda_dir/lib" \
-	--python-major="3" \
-	--python-minor="9" \
 	--build=release \
 	--anaconda
 
@@ -58,9 +49,6 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--python-libs="$miniconda_dir/lib" \
-	--python-major="3" \
-	--python-minor="9" \
 	--build=debug \
 	--anaconda
 
@@ -76,9 +64,6 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
-	--python-major="3" \
-	--python-minor="9" \
 	--build=release \
 	--anaconda
 
@@ -89,9 +74,6 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--python-libs="$anaconda_dir/lib" \
-	--python-major="3" \
-	--python-minor="9" \
 	--build=debug \
 	--anaconda
 

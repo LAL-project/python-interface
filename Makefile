@@ -37,15 +37,15 @@
 
 # compilation is debug by default
 ifeq ($(USER_BUILD), )
-USER_BUILD = debug
+	USER_BUILD = debug
 endif
 # distribution is development by default
 ifeq ($(USER_ENVIRONMENT), )
-ENVIR = development
+	ENVIR = development
 endif
 # do not install for Anaconda
 ifeq ($(ANACONDA), )
-ANACONDA = no
+	ANACONDA = no
 endif
 
 ########################################################################
@@ -340,22 +340,26 @@ LIBS += -fopenmp
 LIBS += -lpthread
 LIBS += $(EXTRA_FLAGS)
 
-ifeq ($(PYTHON_LIB_DIR), )
-	ifneq ($(MAJOR_PY_LINK), )
-		LIBS += $(MAJOR_PY_LINK)
+ifeq ($(OS_ID),windows)
+
+	ifeq ($(PYTHON_LIB_DIR), )
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += $(MINOR_PY_LINK)
+		endif
+	else
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
+		endif
 	endif
-	
-	ifneq ($(MINOR_PY_LINK), )
-		LIBS += $(MINOR_PY_LINK)
-	endif
-else
-	ifneq ($(MAJOR_PY_LINK), )
-		LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
-	endif
-	
-	ifneq ($(MINOR_PY_LINK), )
-		LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
-	endif
+
 endif
 
 $(info Compiler)
