@@ -32,8 +32,8 @@ ifeq ($(OS_ID),windows)
 
 	ifeq ($(ANACONDA),yes)
 		# Python3 linkage
-		MAJOR_PY_LINK	= $(PYTHON_LIB_DIR)/python3.dll
-		MINOR_PY_LINK	= $(PYTHON_LIB_DIR)/python3$(MINOR_VERSION_PYTHON).dll
+		MAJOR_PY_LINK	= -lpython$MAJOR_VERSION_PYTHON)
+		MINOR_PY_LINK	= -lpython$MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
 		
 	else ifeq ($(ANACONDA),no)
 		# Python3 linkage
