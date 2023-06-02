@@ -36,8 +36,8 @@ del path_to_this_init
 del os
 del sys
 
-from lal import generate
 from lal import graphs
+from lal import generate
 from lal import io
 from lal import iterators
 from lal import linarr

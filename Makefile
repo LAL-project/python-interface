@@ -248,16 +248,16 @@ else ifeq ($(OS_ID),linux)
 	# LINUX USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -flto -fno-fat-lto-objects -O3
-	LFLAGS	= -fPIC -flto -fno-fat-lto-objects -O3 -Wl,-O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),macos)
 	# ----------------
 	# MACOS USERS ONLY
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
-	FLAGS	= -std=c++17 -fPIC -fopenmp -flto -fno-fat-lto-objects -O3
-	LFLAGS	= -fPIC -flto -fno-fat-lto-objects -O3 -Wl,-O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 endif
 
