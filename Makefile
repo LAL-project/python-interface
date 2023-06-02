@@ -37,15 +37,15 @@
 
 # compilation is debug by default
 ifeq ($(USER_BUILD), )
-USER_BUILD = debug
+	USER_BUILD = debug
 endif
 # distribution is development by default
 ifeq ($(USER_ENVIRONMENT), )
-ENVIR = development
+	ENVIR = development
 endif
 # do not install for Anaconda
 ifeq ($(ANACONDA), )
-ANACONDA = no
+	ANACONDA = no
 endif
 
 ########################################################################
@@ -283,17 +283,17 @@ endif
 
 ifeq ($(USER_BUILD),debug)
 	ifneq ($(LAL_LIB_DIR), )
-		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblaldebug.$(LIBRARY_EXTENSION)
-	endif
-	
-	INTERFACE_DIRECTORY	= laldebug
-	
-else ifeq ($(USER_BUILD),release)
-	ifneq ($(LAL_LIB_DIR), )
 		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblal.$(LIBRARY_EXTENSION)
 	endif
 	
 	INTERFACE_DIRECTORY	= lal
+	
+else ifeq ($(USER_BUILD),release)
+	ifneq ($(LAL_LIB_DIR), )
+		LIBRARY_SHARED_DEP += $(LAL_LIB_DIR)/liblaloptimized.$(LIBRARY_EXTENSION)
+	endif
+	
+	INTERFACE_DIRECTORY	= laloptimized
 endif
 
 # ----------------------
@@ -321,13 +321,13 @@ ifeq ($(USER_BUILD),debug)
 	ifneq ($(LAL_LIB_DIR), )
 		LIBS += -L $(LAL_LIB_DIR)
 	endif
-	LIBS += -llaldebug
+	LIBS += -llal
 	
 else ifeq ($(USER_BUILD),release)
 	ifneq ($(LAL_LIB_DIR), )
 		LIBS += -L $(LAL_LIB_DIR)
 	endif
-	LIBS += -llal
+	LIBS += -llaloptimized
 	
 endif
 
@@ -340,22 +340,26 @@ LIBS += -fopenmp
 LIBS += -lpthread
 LIBS += $(EXTRA_FLAGS)
 
-ifeq ($(PYTHON_LIB_DIR), )
-	ifneq ($(MAJOR_PY_LINK), )
-		LIBS += $(MAJOR_PY_LINK)
+ifeq ($(OS_ID),windows)
+
+	ifeq ($(PYTHON_LIB_DIR), )
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += $(MINOR_PY_LINK)
+		endif
+	else
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
+		endif
 	endif
-	
-	ifneq ($(MINOR_PY_LINK), )
-		LIBS += $(MINOR_PY_LINK)
-	endif
-else
-	ifneq ($(MAJOR_PY_LINK), )
-		LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
-	endif
-	
-	ifneq ($(MINOR_PY_LINK), )
-		LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
-	endif
+
 endif
 
 $(info Compiler)
@@ -381,11 +385,11 @@ include Makefile.module.variables
 all: directories $(ALL_INSTALL_SO_FILES) $(ALL_INSTALL_PY_FILES)
 python_interfaces: directories $(ALL_INSTALL_PY_FILES)
 	rm -f $(ARCH_DIR)/temp.cxx	# clean up after yourself
-directories: $(ARCH_DIR)/lal $(ARCH_DIR)/laldebug
+directories: $(ARCH_DIR)/laloptimized $(ARCH_DIR)/lal
+$(ARCH_DIR)/laloptimized:
+	mkdir -p $(ARCH_DIR)/laloptimized
 $(ARCH_DIR)/lal:
 	mkdir -p $(ARCH_DIR)/lal
-$(ARCH_DIR)/laldebug:
-	mkdir -p $(ARCH_DIR)/laldebug
 
 ########################################################################
 # BUILDING RULES
