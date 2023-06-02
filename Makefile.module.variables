@@ -92,8 +92,8 @@ VERSION_INTERFACE_NAME		= version
 #			$(INTERFACE_DIRECTORY)/$(name_INTERFACE_NAME)
 #
 #		INSTANTIATIONS:
+#			laloptimized/dataset_error
 #			lal/dataset_error
-#			laldebug/dataset_error
 #
 # name_RAW_PY_FILE
 #
@@ -102,8 +102,8 @@ VERSION_INTERFACE_NAME		= version
 #			$(name_PREFIX).py
 #
 #		INSTANTIATIONS:
+#			laloptimized/dataset_error.py
 #			lal/dataset_error.py
-#			laldebug/dataset_error.py
 #
 # name_INSTALL_PY_FILE
 #
@@ -112,10 +112,10 @@ VERSION_INTERFACE_NAME		= version
 #			$(ARCH_DIR)/$(name_RAW_PY_FILE)
 #
 #		INSTANTIATIONS:
+#			linux/64/laloptimized/dataset_error.py
 #			linux/64/lal/dataset_error.py
-#			linux/64/laldebug/dataset_error.py
+#			win/64/laloptimized/dataset_error.py
 #			win/64/lal/dataset_error.py
-#			win/64/laldebug/dataset_error.py
 #
 # name_WRAP	
 #
@@ -124,10 +124,10 @@ VERSION_INTERFACE_NAME		= version
 #			$(ARCH_DIR)/$(name_PREFIX)_wrap
 #
 #		INSTANTIATIONS:
+#			linux/64/laloptimized/dataset_error_wrap
 #			linux/64/lal/dataset_error_wrap
-#			linux/64/laldebug/dataset_error_wrap
+#			win/64/laloptimized/dataset_error_wrap
 #			win/64/lal/dataset_error_wrap
-#			win/64/laldebug/dataset_error_wrap
 #
 # name_RAW_SO_FILE
 #
@@ -136,10 +136,10 @@ VERSION_INTERFACE_NAME		= version
 #			$(INTERFACE_DIRECTORY)/_$(name_INTERFACE_NAME).$(SO_EXT)
 #
 #		INSTANTIATIONS:
+#			laloptimized/_dataset_error.so
 #			lal/_dataset_error.so
-#			laldebug/_dataset_error.so
+#			laloptimized/_dataset_error.pyd
 #			lal/_dataset_error.pyd
-#			laldebug/_dataset_error.pyd
 #
 # name_INSTALL_SO_FILE
 #
@@ -148,10 +148,10 @@ VERSION_INTERFACE_NAME		= version
 #			$(ARCH_DIR)/$(name_RAW_SO_FILE)
 #
 #		INSTANTIATIONS:
+#			linux/64/laloptimized/_dataset_error.so
 #			linux/64/lal/_dataset_error.so
-#			linux/64/laldebug/_dataset_error.so
+#			win/64/laloptimized/_dataset_error.pyd
 #			win/64/lal/_dataset_error.pyd
-#			win/64/laldebug/_dataset_error.pyd
 #
 # name_MOD_DOCS
 #

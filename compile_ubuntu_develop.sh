@@ -6,7 +6,7 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.8"
+PYTHON_HEADERS="/usr/include/python3.10"
 PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 
 ./compile.sh \

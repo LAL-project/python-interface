@@ -36,13 +36,13 @@ del path_to_this_init
 del os
 del sys
 
-from laldebug import graphs
-from laldebug import generate
-from laldebug import io
-from laldebug import iterators
-from laldebug import linarr
-from laldebug import numeric
-from laldebug import properties
-from laldebug import utilities
-from laldebug import version
-from laldebug import types
+from laloptimized import graphs
+from laloptimized import generate
+from laloptimized import io
+from laloptimized import iterators
+from laloptimized import linarr
+from laloptimized import numeric
+from laloptimized import properties
+from laloptimized import utilities
+from laloptimized import version
+from laloptimized import types
