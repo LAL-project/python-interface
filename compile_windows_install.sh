@@ -49,7 +49,7 @@ anaconda_dir="C:/Users/$USER/anaconda3/Lib/site-packages"
 # for developers only
 elif [ "$1" == "package" ]; then
 
-destdir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-python3.9-libs-anaconda"
+destdir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/23.01/windows10-python3.9-libs-anaconda"
 
 ./compile.sh \
 	--lal-destination="$destdir" \
