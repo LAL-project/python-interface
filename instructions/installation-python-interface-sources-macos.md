@@ -2,7 +2,7 @@
 
 **NOTE** *The instructions below will install LAL for anaconda. Therefore, it is assumed that you have [anaconda](https://www.anaconda.com/) installed in your computer.*
 
-This library has been interfaced to [Python 3](https://www.python.org/) using the software [SWIG](http://www.swig.org/) (version 4.0.2). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` 
+LAL is interfaced to [Python 3](https://www.python.org/) via [SWIG](http://www.swig.org/). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` and `doxygen`.
 
 ## Installing the dependencies
 
@@ -119,11 +119,11 @@ and also,
 
 	# for debug builds
 	FLAGS		+= -g -O3 -DDEBUG -D_GLIBCXX_DEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llaldebug
+	LIBS		+= -L $(LAL_LIB_DIR) -llal
 
 	# for release builds
 	FLAGS		+= -O3 -UDEBUG -DNDEBUG
-	LIBS		+= -L $(LAL_LIB_DIR) -llal
+	LIBS		+= -L $(LAL_LIB_DIR) -llaloptimized
 
 ## Compiling and installing the interface
 

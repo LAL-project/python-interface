@@ -26,9 +26,13 @@ The following command will install `epstopdf` and `ghostscript` and other softwa
 
 	$ pacman -S mingw-w64-x86_64-texlive-bibtex-extra
 
-### [`doxygen`](https://www.doxygen.nl/index.html)
+### [doxygen](https://www.doxygen.nl/index.html)
 
 	$ pacman -S mingw-w64-x86_64-doxygen
+
+### [SWIG](https://www.swig.org/)
+
+	$ pacman -S mingw-w64-x86_64-swig
 
 ### LAL
 
@@ -40,7 +44,7 @@ Navigate to a directory of your choice and issue the command
 
 	$ git clone https://github.com/LAL-project/python-interface.git
 
-## Configuring the _run_ script
+## Configuring the _compile_ script
 
 In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
@@ -86,14 +90,14 @@ Now, we can actually compile and install in one step the Python interface.
 Move the `.dll` files to the appropriate directory within Anaconda/Miniconda, in particular within the directories
 
 	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
-	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laldebug
+	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laloptimized
 
 (replace `anaconda3` with `miniconda3` where appropriate).
 
 For this, copy the necessary dll files for LAL. These can be checked with the command
 
 	$ ldd liblal.dll
-	$ ldd liblaldebug.dll
+	$ ldd liblaloptimized.dll
 
 In our most recent build, these were:
 
@@ -103,7 +107,7 @@ In our most recent build, these were:
 	C:/msys64/mingw64/bin/libstdc++-6.dll
 	C:/msys64/mingw64/bin/libwinpthread-1.dll
 
-Copy the dll files to both directories `lal` and `laldebug` within conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
+Copy the dll files to both directories `lal` and `laloptimized` within conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
 
 - `liblal.dll` into `lal` (within conda), and
-- `liblaldebug.dll` into `laldebug` (within conda).
+- `liblaloptimized.dll` into `laloptimized` (within conda).
