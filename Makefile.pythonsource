@@ -33,8 +33,8 @@ ifeq ($(OS_ID),windows)
 
 	ifeq ($(ANACONDA),yes)
 		# Python3 linkage
-		MAJOR_PY_LINK	= -lpython$MAJOR_VERSION_PYTHON)
-		MINOR_PY_LINK	= -lpython$MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
+		MAJOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)
+		MINOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
 		
 	else ifeq ($(ANACONDA),no)
 		# Python3 linkage
