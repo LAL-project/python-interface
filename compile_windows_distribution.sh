@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LAL_HEADERS="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/include"
-LAL_LIBRARY="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-c++-libs-msys64/bin"
+LAL_HEADERS="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/23.01/windows10-c++-libs-msys64/include"
+LAL_LIBRARY="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/23.01/windows10-c++-libs-msys64/bin"
 
 if [ -z $1 ]; then
 
