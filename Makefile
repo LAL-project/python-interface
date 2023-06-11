@@ -181,9 +181,11 @@ $(info .    Install for Anaconda:       $(ANACONDA))
 $(info .    Major version of python:    $(MAJOR_VERSION_PYTHON))
 $(info .    Minor version of python:    $(MINOR_VERSION_PYTHON))
 $(info .    Python include directory:   $(PYTHON_INC_DIR))
+ifneq ($(OS_ID),linux)
 $(info .    Python library directory:   $(PYTHON_LIB_DIR))
 $(info .    Linkage flag against major: $(MAJOR_PY_LINK))
 $(info .    Linkage flag against minor: $(MINOR_PY_LINK))
+endif
 $(info .    Installation directory:     $(LAL_PY_DEST))
 $(info .    Other linkage flags:        $(EXTRA_FLAGS))
 
