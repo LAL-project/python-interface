@@ -3,12 +3,12 @@
 if [ -z $1 ]; then
 
 ./compile.sh \
-	--lal-destination="/home/lluis/Documents/projects/LAL-dev/23.01/python-libs" \
+	--lal-destination="/home/$USER/Documents/projects/LAL-dev/23.01/python-libs" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--lal-destination="/home/lluis/Documents/projects/LAL-dev/23.01/python-libs" \
+	--lal-destination="/home/$USER/Documents/projects/LAL-dev/23.01/python-libs" \
 	--build=debug \
 	--install
 
