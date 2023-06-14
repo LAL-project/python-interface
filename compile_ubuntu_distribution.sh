@@ -1,11 +1,11 @@
 #!/bin/bash
 
-LAL_HEADERS="/usr/local/include"
-LAL_LIBRARY="/usr/local/lib"
+LAL_HEADERS="/home/lluis/Documents/projects/LAL-dev/latest/c++-libs/include"
+LAL_LIBRARY="/home/lluis/Documents/projects/LAL-dev/latest/c++-libs/lib"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.10"
+PYTHON_HEADERS="/usr/include/python3.8"
 PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 
 ./compile.sh \
@@ -38,8 +38,7 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--environment=distribution \
@@ -48,8 +47,7 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
@@ -63,8 +61,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--environment=distribution \
@@ -73,7 +70,6 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 fi

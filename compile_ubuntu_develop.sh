@@ -39,8 +39,7 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--environment=development \
@@ -49,8 +48,7 @@ miniconda_dir="/home/$USER/miniconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
@@ -64,8 +62,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--environment=development \
@@ -74,7 +71,6 @@ anaconda_dir="/home/$USER/anaconda3"
 	--gmp-headers="" \
 	--gmp-libs="" \
 	--python-headers="$anaconda_dir/include/python3.9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 fi
