@@ -44,8 +44,7 @@ miniconda_dir="C:/Users/$USER/miniconda3"
 	--python-libs="$miniconda_dir/lib" \
 	--python-major="3" \
 	--python-minor="9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -56,8 +55,7 @@ miniconda_dir="C:/Users/$USER/miniconda3"
 	--python-libs="$miniconda_dir/lib" \
 	--python-major="3" \
 	--python-minor="9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
@@ -73,8 +71,7 @@ anaconda_dir="C:/Users/$USER/anaconda3"
 	--python-libs="$anaconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
-	--build=release \
-	--anaconda
+	--build=release
 
 ./compile.sh \
 	--lal-headers="$LAL_HEADERS" \
@@ -85,7 +82,6 @@ anaconda_dir="C:/Users/$USER/anaconda3"
 	--python-libs="$anaconda_dir" \
 	--python-major="3" \
 	--python-minor="9" \
-	--build=debug \
-	--anaconda
+	--build=debug
 
 fi

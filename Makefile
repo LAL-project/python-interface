@@ -32,7 +32,6 @@
 #	* development: only for developers
 #	* distribution: used to install the python interface to your
 #		system.
-# ANACONDA: yes/no
 
 ########################################################################
 
@@ -43,10 +42,6 @@ endif
 # distribution is development by default
 ifeq ($(USER_ENVIRONMENT), )
 	ENVIR = development
-endif
-# do not install for Anaconda
-ifeq ($(ANACONDA), )
-	ANACONDA = no
 endif
 
 ########################################################################
@@ -166,10 +161,7 @@ MAJOR_VERSION_PYTHON = $(USER_PYTHON_MAJOR_VERSION)
 MINOR_VERSION_PYTHON = $(USER_PYTHON_MINOR_VERSION)
 
 # Directory where LAL's interface will be installed to
-LAL_PY_DEST = $(USER_LAL_DESTINATION)
-
-# install LAL for anaconda?
-ANACONDA = $(USER_ANACONDA)
+LAL_INSTALLATION_DIR = $(USER_INSTALLATION_DIR)
 
 include Makefile.pythonsource
 
@@ -178,7 +170,6 @@ $(info .    LAL's library extension:  $(LIBRARY_EXTENSION))
 $(info .    Python modules extension: $(SO_EXT))
 
 $(info Python linkage)
-$(info .    Install for Anaconda:       $(ANACONDA))
 $(info .    Major version of python:    $(MAJOR_VERSION_PYTHON))
 $(info .    Minor version of python:    $(MINOR_VERSION_PYTHON))
 $(info .    Python include directory:   $(PYTHON_INC_DIR))
@@ -187,7 +178,7 @@ $(info .    Python library directory:   $(PYTHON_LIB_DIR))
 $(info .    Linkage flag against major: $(MAJOR_PY_LINK))
 $(info .    Linkage flag against minor: $(MINOR_PY_LINK))
 endif
-$(info .    Installation directory:     $(LAL_PY_DEST))
+$(info .    Installation directory:     $(LAL_INSTALLATION_DIR))
 $(info .    Other linkage flags:        $(EXTRA_FLAGS))
 
 # --------------------------
@@ -260,7 +251,7 @@ else ifeq ($(OS_ID),macos)
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
-	LFLAGS	= -fPIC -O3 -Wl,-O3
+	LFLAGS	= -fPIC -O3 -Wl
 	
 endif
 
@@ -363,6 +354,26 @@ ifeq ($(OS_ID),windows)
 		endif
 	endif
 
+else ifeq ($(OS_ID),macos)
+
+	ifeq ($(PYTHON_LIB_DIR), )
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += $(MINOR_PY_LINK)
+		endif
+	else
+		ifneq ($(MAJOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
+		endif
+		
+		ifneq ($(MINOR_PY_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
+		endif
+	endif
+
 endif
 
 $(info Compiler)
@@ -416,10 +427,10 @@ distclean:
 	rm -rf $(ARCH_DIR)
 
 install: $(LAL_SO)
-	mkdir -p $(LAL_PY_DEST)/$(INTERFACE_DIRECTORY)
-	cp $(ALL_INSTALL_SO_FILES) $(LAL_PY_DEST)/$(INTERFACE_DIRECTORY)/
-	cp $(ALL_INSTALL_PY_FILES) $(LAL_PY_DEST)/$(INTERFACE_DIRECTORY)/
+	mkdir -p $(LAL_INSTALLATION_DIR)/$(INTERFACE_DIRECTORY)
+	cp $(ALL_INSTALL_SO_FILES) $(LAL_INSTALLATION_DIR)/$(INTERFACE_DIRECTORY)/
+	cp $(ALL_INSTALL_PY_FILES) $(LAL_INSTALLATION_DIR)/$(INTERFACE_DIRECTORY)/
 
 uninstall:
-	rm -rf $(LAL_PY_DEST)/$(INTERFACE_DIRECTORY)/
-	rm -rf $(LAL_PY_DEST)/$(INTERFACE_DIRECTORY)/
+	rm -rf $(LAL_INSTALLATION_DIR)/$(INTERFACE_DIRECTORY)/
+	rm -rf $(LAL_INSTALLATION_DIR)/$(INTERFACE_DIRECTORY)/

@@ -31,16 +31,11 @@ ifeq ($(OS_ID),windows)
 	# ------------
 	# WINDOWS ONLY
 
-	ifeq ($(ANACONDA),yes)
-		# Python3 linkage
+	# Python3 linkage
+	ifneq ($(MAJOR_VERSION_PYTHON),"")
 		MAJOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)
-		MINOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
-		
-	else ifeq ($(ANACONDA),no)
-		# Python3 linkage
-		MAJOR_PY_LINK	= 
-		MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
 	endif
+	MINOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
 	
 	# Other flags needed to compile against Python
 	EXTRA_FLAGS		= 
