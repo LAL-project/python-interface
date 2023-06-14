@@ -2,15 +2,13 @@
 
 if [ -z $1 ]; then
 
-sudo \
 ./compile.sh \
-	--lal-destination="/usr/local/lib/python3.8/dist-packages" \
+	--lal-destination="/home/lluis/Documents/projects/LAL-dev/23.01/python-libs" \
 	--build=release \
 	--install
 
-sudo \
 ./compile.sh \
-	--lal-destination="/usr/local/lib/python3.8/dist-packages" \
+	--lal-destination="/home/lluis/Documents/projects/LAL-dev/23.01/python-libs" \
 	--build=debug \
 	--install
 
@@ -22,13 +20,11 @@ miniconda_dir="/home/$USER/miniconda3"
 ./compile.sh \
 	--lal-destination="$miniconda_dir/lib" \
 	--build=release \
-	--anaconda \
 	--install
 
 ./compile.sh \
 	--lal-destination="$miniconda_dir/lib" \
 	--build=debug \
-	--anaconda \
 	--install
 
 # for anaconda users only
@@ -39,13 +35,11 @@ anaconda_dir="/home/$USER/anaconda3"
 ./compile.sh \
 	--lal-destination="$anaconda_dir/lib" \
 	--build=release \
-	--anaconda \
 	--install
 
 ./compile.sh \
 	--lal-destination="$anaconda_dir/lib" \
 	--build=debug \
-	--anaconda \
 	--install
 
 fi

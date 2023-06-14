@@ -20,13 +20,11 @@ miniconda_dir="C:/Users/$USER/miniconda3/Lib/site-packages"
 ./compile.sh \
 	--lal-destination="$miniconda_dir" \
 	--build=release \
-	--anaconda \
 	--install
 
 ./compile.sh \
 	--lal-destination="$miniconda_dir" \
 	--build=debug \
-	--anaconda \
 	--install
 
 # for anaconda users only
@@ -37,13 +35,11 @@ anaconda_dir="C:/Users/$USER/anaconda3/Lib/site-packages"
 ./compile.sh \
 	--lal-destination="$anaconda_dir" \
 	--build=release \
-	--anaconda \
 	--install
 
 ./compile.sh \
 	--lal-destination="$anaconda_dir" \
 	--build=debug \
-	--anaconda \
 	--install
 
 # for developers only
@@ -54,13 +50,11 @@ destdir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/23.01/windows10-python3.9-libs-
 ./compile.sh \
 	--lal-destination="$destdir" \
 	--build=release \
-	--anaconda \
 	--install
 
 ./compile.sh \
 	--lal-destination="$destdir" \
 	--build=debug \
-	--anaconda \
 	--install
 
 fi

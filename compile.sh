@@ -3,7 +3,8 @@
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
-#    Copyright (C) 2021 Lluís Alemany Puig
+#    Copyright (C) 2021-2023 LAL-project developers
+#         Lluís Alemany Puig
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -71,7 +72,7 @@ function help() {
 	echo ""
 	echo "    Specify the destination directory of LAL with the following command:"
 	echo ""
-	echo "    --lal-destination=dir"
+	echo "    --destination-directory=dir"
 	echo ""
 	echo "    This is mandatory when using the option '--install'."
 	echo ""
@@ -128,16 +129,12 @@ function help() {
 	echo ""
 	echo "        Copy the compiled binaries to the installation directory."
 	echo ""
-	echo "    --anaconda"
-	echo ""
-	echo "        Install for anaconda"
-	echo ""
 	exit
 }
 
 LAL_HEADERS=""
 LAL_LIBRARY=""
-LAL_DESTINATION=""
+INSTALLATION_DIR=""
 GMP_HEADERS=""
 GMP_LIBRARY=""
 PYTHON_HEADERS=""
@@ -166,8 +163,8 @@ for i in "$@"; do
 		shift
 		;;
 		
-		--lal-destination=*)
-		LAL_DESTINATION="${i#*=}"
+		--destination-directory=*)
+		INSTALLATION_DIR="${i#*=}"
 		shift
 		;;
 		
@@ -241,10 +238,10 @@ if [ $CLEAN == 1 ] && [ $INSTALL == 1 ]; then
 fi
 
 if [ $INSTALL == 1 ]; then
-	if [ $LAL_DESTINATION == "" ]; then
+	if [ $INSTALLATION_DIR == "" ]; then
 		echo "Error: missing mandatory value for option 'install'."
 		echo "    Missing: --lal-destination"
-		echo "    Current value: $LAL_DESTINATION"
+		echo "    Current value: $INSTALLATION_DIR"
 		exit 1
 	fi
 fi
@@ -265,7 +262,7 @@ MAKE_COMMAND="\
 make \
 USER_LAL_INC_DIR=$LAL_HEADERS \
 USER_LAL_LIB_DIR=$LAL_LIBRARY \
-USER_LAL_DESTINATION=$LAL_DESTINATION \
+USER_INSTALLATION_DIR=$INSTALLATION_DIR \
 USER_GMP_INC_DIR=$GMP_HEADERS \
 USER_GMP_LIB_DIR=$GMP_LIBRARY \
 USER_PYTHON_HEADERS=$PYTHON_HEADERS \
@@ -273,8 +270,7 @@ USER_PYTHON_LIBRARY=$PYTHON_LIBRARY \
 USER_PYTHON_MAJOR_VERSION=$PYTHON_MAJOR \
 USER_PYTHON_MINOR_VERSION=$PYTHON_MINOR \
 USER_ENVIRONMENT=$ENVIRONMENT \
-USER_BUILD=$BUILD \
-USER_ANACONDA=$ANACONDA"
+USER_BUILD=$BUILD"
 
 echo "Make command: '$MAKE_COMMAND'"
 
