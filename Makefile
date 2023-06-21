@@ -260,7 +260,7 @@ ifeq ($(USER_BUILD),debug)
 	# -----------------
 	# compilation flags
 	
-	FLAGS	+= -g -DDEBUG -D_GLIBCXX_DEBUG
+	FLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
 	LFLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
 	
 else ifeq ($(USER_BUILD),release)
