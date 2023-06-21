@@ -240,7 +240,7 @@ fi
 if [ $INSTALL == 1 ]; then
 	if [ $INSTALLATION_DIR == "" ]; then
 		echo "Error: missing mandatory value for option 'install'."
-		echo "    Missing: --lal-destination"
+		echo "    Missing: --destination-directory"
 		echo "    Current value: $INSTALLATION_DIR"
 		exit 1
 	fi

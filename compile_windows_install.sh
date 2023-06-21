@@ -3,12 +3,12 @@
 if [ -z $1 ]; then
 
 ./compile.sh \
-	--lal-destination="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
+	--destination-directory="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--lal-destination="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
+	--destination-directory="C:/programming/msys64/mingw64/lib/python3.10/site-packages" \
 	--build=debug \
 	--install
 
@@ -18,12 +18,12 @@ elif [ "$1" == "miniconda" ]; then
 miniconda_dir="C:/Users/$USER/miniconda3/Lib/site-packages"
 
 ./compile.sh \
-	--lal-destination="$miniconda_dir" \
+	--destination-directory="$miniconda_dir" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--lal-destination="$miniconda_dir" \
+	--destination-directory="$miniconda_dir" \
 	--build=debug \
 	--install
 
@@ -33,12 +33,12 @@ elif [ "$1" == "anaconda" ]; then
 anaconda_dir="C:/Users/$USER/anaconda3/Lib/site-packages"
 
 ./compile.sh \
-	--lal-destination="$anaconda_dir" \
+	--destination-directory="$anaconda_dir" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--lal-destination="$anaconda_dir" \
+	--destination-directory="$anaconda_dir" \
 	--build=debug \
 	--install
 
@@ -48,12 +48,12 @@ elif [ "$1" == "package" ]; then
 destdir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-python3.9-libs-anaconda"
 
 ./compile.sh \
-	--lal-destination="$destdir" \
+	--destination-directory="$destdir" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--lal-destination="$destdir" \
+	--destination-directory="$destdir" \
 	--build=debug \
 	--install
 
