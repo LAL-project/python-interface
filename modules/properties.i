@@ -49,6 +49,22 @@
 %include "lal/properties/tree_centroid.hpp"
 %include "lal/properties/tree_diameter.hpp"
 
+namespace lal {
+namespace properties {
+
+%ignore bipartite_graph_coloring::bipartite_graph_coloring(bipartite_graph_coloring&&) noexcept;
+%ignore bipartite_graph_coloring::operator= (const bipartite_graph_coloring&) noexcept;
+%ignore bipartite_graph_coloring::operator= (bipartite_graph_coloring&&) noexcept;
+%ignore bipartite_graph_coloring::operator[] noexcept;
+%ignore bipartite_graph_coloring::operator[] noexcept;
+%ignore bipartite_graph_coloring::get_color_of(node) noexcept;
+
+} // -- namespace properties
+} // -- namespace lal
+
+%include "lal/properties/bipartite_graph_coloring.hpp"
+%include "lal/properties/bipartite_graph_colorability.hpp"
+
 %pythoncode %{
 __types = types
 del types
