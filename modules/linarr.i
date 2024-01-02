@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  * SWIG-generated python wrapper for the Linear Arrangement Library
- * Copyright (C) 2021 - 2023 Lluís Alemany Puig
+ * Copyright (C) 2021 - 2024 Lluís Alemany Puig
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -19,7 +19,7 @@
  * Contact:
  *
  *     Lluís Alemany Puig (lalemany@cs.upc.edu)
- *         LARCA (Laboratory for Relational Algorithmics, Complexity and Learning)
+ *         LQMC (Quantitative, Mathematical, and Computational Linguisitcs)
  *         CQL (Complexity and Quantitative Linguistics Lab)
  *         Jordi Girona St 1-3, Campus Nord UPC, 08034 Barcelona.   CATALONIA, SPAIN
  *         Webpage: https://cqllab.upc.edu/people/lalemany/
@@ -44,6 +44,7 @@
 // these are necessary for the wrapper
 %import graphs.i
 %import numeric.i
+%import properties.i
 
 %include documentation.i
 
@@ -54,6 +55,7 @@
 // lal includes
 #include <lal/graphs.hpp>
 #include <lal/linarr.hpp>
+#include <lal/properties.hpp>
 %}
 
 %template(pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
@@ -173,6 +175,11 @@ namespace linarr {
 %template(__is_planar_free_tree)					is_planar<graphs::free_tree>;
 %template(__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
 
+%template(__is_bipartite_undirected_graph)			is_bipartite<graphs::undirected_graph>;
+%template(__is_bipartite_directed_graph)			is_bipartite<graphs::directed_graph>;
+%template(__is_bipartite_free_tree)					is_bipartite<graphs::free_tree>;
+%template(__is_bipartite_rooted_tree)				is_bipartite<graphs::rooted_tree>;
+
 } // -- namespace linarr
 } // -- namespace lal
 
@@ -201,8 +208,8 @@ def mean_dependency_distance_1level_rational(L, P):
 	Jing and Liu's 1-level :math:`MDD` for an ensemble of graphs as an exact rational value.
 	"""
 	__full_type = str(type(L[0]))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__MDD_1level_rational_" + __type_graph ](L, P)
 
@@ -229,8 +236,8 @@ def mean_dependency_distance_1level(L, P):
 	Jing and Liu's 1-level :math:`MDD` for an ensemble of graphs as a floating point value.
 	"""
 	__full_type = str(type(L[0]))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__MDD_1level_" + __type_graph ](L, P)
 
@@ -254,8 +261,8 @@ def mean_dependency_distance_2level_rational(L, P):
 	Jing and Liu's 2-level :math:`MDD` for an ensemble of graphs as an exact rational value.
 	"""
 	__full_type = str(type(L[0]))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__MDD_2level_rational_" + __type_graph ](L, P)
 
@@ -279,8 +286,8 @@ def mean_dependency_distance_2level(L, P):
 	Jing and Liu's 2-level :math:`MDD` for an ensemble of graphs as a floating point value.
 	"""
 	__full_type = str(type(L[0]))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__MDD_2level_" + __type_graph ](L, P)
 
@@ -304,8 +311,8 @@ def is_arrangement(g, arr):
 	Whether or not the input arrangement is a valid permutation.
 	"""
 	__full_type = str(type(g))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__is_arrangement_" + __type_graph ](g,arr)
 
@@ -329,10 +336,36 @@ def is_planar(g, arr):
 	Whether or not the input graph arranged with the input arrangement is planar.
 	"""
 	__full_type = str(type(g))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	return globals()[ "__is_planar_" + __type_graph ](g,arr)
+
+def is_bipartite_no_coloring(g, arr):
+	r"""
+	Is a given arrangement bipartite?
+	
+	A bipartite arrangement of a (bipartite) graph \f$G=(v_1\cup V_2, E)\$f
+	is an arrangement in which the vertices of \f$V_1\f$ are arranged
+	consecutively starting at the leftmost position, and then are arranged
+	the vertices of \f$V_2\f$, or vice versa.
+	
+	Parameters
+	----------
+	* `g` :
+		Input graph.
+	* `arr` :
+		Input arrangement.
+
+	Returns
+	-------
+	Whether or not the input graph arranged with the input arrangement is planar.
+	"""
+	__full_type = str(type(g))
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	return globals()[ "__is_bipartite_" + __type_graph ](g,arr)
 
 %}
 
