@@ -1,8 +1,7 @@
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
-#    Copyright (C) 2021-2023 LAL-project developers
-#         Lluís Alemany Puig
+#    Copyright (C) 2021 - 2024 Lluís Alemany Puig
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -20,7 +19,7 @@
 #    Contact:
 #
 #       Lluís Alemany Puig (lalemany@cs.upc.edu)
-#           LARCA (Laboratory for Relational Algorithmics, Complexity and Learning)
+#           LQMC (Quantitative, Mathematical, and Computational Linguisitcs)
 #           CQL (Complexity and Quantitative Linguistics Lab)
 #           Jordi Girona St 1-3, Campus Nord UPC, 08034 Barcelona.   CATALONIA, SPAIN
 #           Webpage: https://cqllab.upc.edu/people/lalemany/
