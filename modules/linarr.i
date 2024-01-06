@@ -82,14 +82,21 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
+// ---------------
+// Dependency flux
+
 %template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
 %include "lal/linarr/dependency_flux.hpp"
+
+// -------------------------
+// syntactic dependency tree
 
 %template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
 
 %include "lal/linarr/syntactic_dependency_tree/classify.hpp"
 
+// -----------------------
 // Add chunking algorithms
 
 namespace lal {
@@ -103,7 +110,6 @@ namespace linarr {
 
 %include "lal/linarr/chunking/chunk.hpp"
 %include "lal/linarr/chunking/chunking.hpp"
-
 
 // -------------------------
 // Extendind the C++ classes
@@ -129,15 +135,6 @@ namespace linarr {
 
 } // -- namespace linarr
 } // -- namespace lal
-
-
-
-
-
-
-
-
-
 
 // --------------------------------
 // Extending the function templates
@@ -183,6 +180,8 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
+
+
 %pythoncode %{
 
 def mean_dependency_distance_1level_rational(L, P):
@@ -207,9 +206,14 @@ def mean_dependency_distance_1level_rational(L, P):
 	-------
 	Jing and Liu's 1-level :math:`MDD` for an ensemble of graphs as an exact rational value.
 	"""
+	
 	__full_type = str(type(L[0]))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__MDD_1level_rational_" + __type_graph ](L, P)
 
@@ -235,9 +239,14 @@ def mean_dependency_distance_1level(L, P):
 	-------
 	Jing and Liu's 1-level :math:`MDD` for an ensemble of graphs as a floating point value.
 	"""
+	
 	__full_type = str(type(L[0]))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__MDD_1level_" + __type_graph ](L, P)
 
@@ -260,9 +269,14 @@ def mean_dependency_distance_2level_rational(L, P):
 	-------
 	Jing and Liu's 2-level :math:`MDD` for an ensemble of graphs as an exact rational value.
 	"""
+	
 	__full_type = str(type(L[0]))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__MDD_2level_rational_" + __type_graph ](L, P)
 
@@ -285,9 +299,14 @@ def mean_dependency_distance_2level(L, P):
 	-------
 	Jing and Liu's 2-level :math:`MDD` for an ensemble of graphs as a floating point value.
 	"""
+	
 	__full_type = str(type(L[0]))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__MDD_2level_" + __type_graph ](L, P)
 
@@ -310,9 +329,14 @@ def is_arrangement(g, arr):
 	-------
 	Whether or not the input arrangement is a valid permutation.
 	"""
+	
 	__full_type = str(type(g))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__is_arrangement_" + __type_graph ](g,arr)
 
@@ -335,9 +359,14 @@ def is_planar(g, arr):
 	-------
 	Whether or not the input graph arranged with the input arrangement is planar.
 	"""
+	
 	__full_type = str(type(g))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__is_planar_" + __type_graph ](g,arr)
 
@@ -359,11 +388,16 @@ def is_bipartite_no_coloring(g, arr):
 
 	Returns
 	-------
-	Whether or not the input graph arranged with the input arrangement is planar.
+	Whether or not the input graph arranged with the input arrangement is bipartite.
 	"""
+	
 	__full_type = str(type(g))
 	__pos_graph = __full_type.find("graphs.")
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % gtype)
+		return None
 	
 	return globals()[ "__is_bipartite_" + __type_graph ](g,arr)
 

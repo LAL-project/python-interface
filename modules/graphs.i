@@ -74,8 +74,8 @@ namespace graphs {
 } // -- namespace graphs
 } // -- namespace lal
 
-// ----------------
-// lal header files
+// -------------
+// graph classes
 
 %include "lal/graphs/graph.hpp"
 %include "lal/graphs/undirected_graph.hpp"
