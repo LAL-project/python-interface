@@ -32,8 +32,10 @@
 
 %import types.i
 %import graphs.i
+%import properties.i
 
 %{
+#include <lal/graphs.hpp>
 #include <lal/generate.hpp>
 %}
 
@@ -107,14 +109,15 @@ namespace generate {
 
 // -- EXHAUSTIVE
 
+%ignore all_arrangements::all_arrangements(all_arrangements&&) noexcept;
+%ignore all_bipartite_arrangements::all_bipartite_arrangements(all_bipartite_arrangements&&) noexcept;
 %ignore all_planar_arrangements::all_planar_arrangements(all_planar_arrangements&&) noexcept;
-
 %ignore all_projective_arrangements::all_projective_arrangements(all_projective_arrangements&&) noexcept;
 
 // -- RANDOM
 
+%ignore rand_arrangements::rand_arrangements(rand_arrangements&&) noexcept;
 %ignore rand_planar_arrangements::rand_planar_arrangements(rand_planar_arrangements&&) noexcept;
-
 %ignore rand_projective_arrangements::rand_projective_arrangements(rand_projective_arrangements&&) noexcept;
 
 } // -- namespace generate
@@ -138,10 +141,18 @@ namespace generate {
 %include "lal/generate/rand_lab_rooted_trees.hpp"
 %include "lal/generate/rand_ulab_free_trees.hpp"
 
+
 %include "lal/generate/all_arrangements.hpp"
+
+%include "lal/generate/all_bipartite_arrangements.hpp"
+// Instantiate the templated constructors of 'all_bipartite_arrangements'
+%template(all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::undirected_graph>;
+%template(all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::directed_graph>;
+
 %include "lal/generate/all_planar_arrangements.hpp"
 %include "lal/generate/all_projective_arrangements.hpp"
 %include "lal/generate/rand_arrangements.hpp"
+%include "lal/generate/rand_bipartite_arrangements.hpp"
 %include "lal/generate/rand_planar_arrangements.hpp"
 %include "lal/generate/rand_projective_arrangements.hpp"
 
