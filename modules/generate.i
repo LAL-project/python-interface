@@ -37,6 +37,7 @@
 %{
 #include <lal/graphs.hpp>
 #include <lal/generate.hpp>
+#include <lal/properties/bipartite_graph_coloring.hpp>
 %}
 
 %include stdint.i
@@ -111,12 +112,16 @@ namespace generate {
 
 %ignore all_arrangements::all_arrangements(all_arrangements&&) noexcept;
 %ignore all_bipartite_arrangements::all_bipartite_arrangements(all_bipartite_arrangements&&) noexcept;
+%ignore all_bipartite_arrangements::all_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
 %ignore all_planar_arrangements::all_planar_arrangements(all_planar_arrangements&&) noexcept;
 %ignore all_projective_arrangements::all_projective_arrangements(all_projective_arrangements&&) noexcept;
 
 // -- RANDOM
 
 %ignore rand_arrangements::rand_arrangements(rand_arrangements&&) noexcept;
+%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(rand_bipartite_arrangements&&) noexcept;
+%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
+%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&, uint64_t) noexcept;
 %ignore rand_planar_arrangements::rand_planar_arrangements(rand_planar_arrangements&&) noexcept;
 %ignore rand_projective_arrangements::rand_projective_arrangements(rand_projective_arrangements&&) noexcept;
 
