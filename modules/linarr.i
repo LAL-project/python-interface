@@ -396,7 +396,7 @@ def is_bipartite_no_coloring(g, arr):
 	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
 	
 	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
-		print("Error: graph type '%s' is not valid" % gtype)
+		print("Error: graph type '%s' is not valid" % __type_graph)
 		return None
 	
 	return globals()[ "__is_bipartite_" + __type_graph ](g,arr)
