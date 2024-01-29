@@ -75,9 +75,15 @@ def E_iterator(g):
 	* `g` :
 		Input graph.
 	"""
+	
 	__full_type = str(type(g))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % __type_graph)
+		return None
+	
 	return globals()[ "E_iterator_" + __type_graph ](g)
 
 def Q_iterator(g):
@@ -90,9 +96,15 @@ def Q_iterator(g):
 	* `g` :
 		Input graph.
 	"""
+	
 	__full_type = str(type(g))
-	__pos_graph = __full_type.find(".graphs.")
-	__type_graph = __full_type[__pos_graph + len(".graphs."):-2]
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["undirected_graph", "directed_graph", "free_tree", "rooted_tree"]:
+		print("Error: graph type '%s' is not valid" % __type_graph)
+		return None
+	
 	return globals()[ "Q_iterator_" + __type_graph ](g)
 %}
 
