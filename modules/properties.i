@@ -65,9 +65,46 @@ namespace properties {
 %include "lal/properties/bipartite_graph_coloring.hpp"
 %include "lal/properties/bipartite_graph_colorability.hpp"
 
+%include "lal/properties/branchless_path.hpp"
+// Instantiate the (only) templated function of 'branchless_path'
+%template(__is_antenna_free_tree) lal::properties::branchless_path::is_antenna<lal::graphs::free_tree>;
+%template(__is_antenna_rooted_tree) lal::properties::branchless_path::is_antenna<lal::graphs::rooted_tree>;
+
 %pythoncode %{
 __types = types
 del types
+
+def is_antenna(self, t):
+	r"""
+	Is the given path an antenna?
+	
+	A branchless path is an antenna if any of its two endpoints is a degree-1 vertex.
+	
+	Parameters
+	----------
+	* `t` :
+		Input tree.
+	
+	Returns
+	-------
+	Whether or not the input graph arranged with the input arrangement is bipartite.
+	"""
+	
+	__full_type = str(type(t))
+	__pos_graph = __full_type.find("graphs.")
+	__type_graph = __full_type[__pos_graph + len("graphs."):-2]
+	
+	if __type_graph not in ["free_tree", "rooted_tree"]:
+		print("Error: tree type '%s' is not valid" % __type_graph)
+		return None
+	
+	if __type_graph == "free_tree":
+		return self._branchless_path__is_antenna_free_tree(t)
+	return self._branchless_path__is_antenna_rooted_tree(t)
+
+setattr(branchless_path, is_antenna.__name__, is_antenna)
+
+del is_antenna
 
 # remove unnecessary modules
 del graphs
