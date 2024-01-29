@@ -238,4 +238,5 @@ del types
 # remove unnecessary modules
 del graphs
 del tree_type
+del properties
 %}
