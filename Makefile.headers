@@ -154,8 +154,6 @@ UTILS_DPHDRS		= $(GRAPHS_DPHDRS) \
 
 LAL_DPHDRS			=
 
-# VERSION
-
 VERSION_DPHDRS		= $(LAL_INC_DIR)/lal/lal_version.hpp
 
 else ifeq ($(USER_ENVIRONMENT),distribution)
