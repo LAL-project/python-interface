@@ -9,33 +9,49 @@ The main goal of this library is to provide algorithms with which the library's 
 
 All the features of syntactic dependency trees that can be calculated with the algorithms in this library are gathered in the modules lal.linarr and in lal.properties. These features include, but are not limited to,
 
-- the sum of edge lengths :math:`D` (see ``lal.linarr.sum_edge_lengths``), and the expectation and variance of the sum of edge lengths (see ``lal.properties.exp_sum_edge_lengths`` and ``lal.properties.var_sum_edge_lengths``),
-- the computation of optimal arrangements: unconstrained minimum arrangements with respect to the sum of edge lengths (see ``lal.linarr.min_sum_edge_lengths``), with free choice on the algorithm to be used (see ``lal.linarr.algorithms_Dmin``), and the computation of minimum planar arrangements (see ``lal.linarr.min_sum_edge_lengths_planar``) and of minimum projective arrangements (see ``lal.linarr.min_sum_edge_lengths_projective``).
-- the number of crossings (see ``lal.linarr.num_crossings``), and the expectation and variance of the number of crossings (see ``lal.properties.exp_num_crossings`` and ``lal.properties.var_num_crossings``),
-- any moment of the degree of the vertices of a graph (see ``lal.properties.moment_degree`` and its variants),
-- the mean dependency distance (see ``lal.linarr.mean_dependency_distance``),
-- the mean dependency distance over ensembles of graphs (see  ``lal.linarr.mean_dependency_distance_1level`` and ``lal.linarr.mean_dependency_distance_2level``),
-- the mean hierarchical distance (see ``lal.properties.mean_hierarchical_distance``),
-- the headedness of a tree (see ``lal.linarr.headedness``),
-- the type of syntactic dependency trees according to their projectivity (see  ``lal.linarr.syntactic_dependency_structure_class``).
-- calculation of the centre of a tree (see ``lal.properties.tree_centre``), the centroid of a tree (see ``lal.properties.tree_centroid``), a tree's diameter (see ``lal.properties.tree_diameter``).
+- the sum of edge lengths :math:`D` (@ref lal.linarr.sum_edge_lengths),
+- the expectation and variance of the sum of edge lengths
+	- expectation of :math:`D` in uniformly random unconstrained arrangements (@ref lal.properties.exp_sum_edge_lengths),
+	- variance of :math:`D` in uniformly random unconstrained arrangements (@ref lal.properties.var_sum_edge_lengths),
+	- expectation of :math:`D` in uniformly random bipartite arrangements (@ref lal.properties.exp_sum_edge_lengths_bipartite),
+	- expectation of :math:`D` in uniformly random planar arrangements (@ref lal.properties.exp_sum_edge_lengths_planar),
+	- expectation of :math:`D` in uniformly random projective arrangements (@ref lal.properties.exp_sum_edge_lengths_projective),
+- the computation of optimal arrangements with respect to the sum of edge lengths:
+	- minimum unconstrained arrangements (@ref lal.linarr.min_sum_edge_lengths), with free choice on the algorithm to be used (@ref lal.linarr.algorithms_Dmin),
+	- minimum bipartite arrangements (@ref lal.linarr.min_sum_edge_lengths_bipartite),
+	- minimum planar arrangements (@ref lal.linarr.min_sum_edge_lengths_planar), with free choice on the algorithm to be used (@ref lal.linarr.algorithms_Dmin_planar),
+	- minimum projective arrangements (@ref lal.linarr.min_sum_edge_lengths_projective), with free choice on the algorithm to be used (@ref lal.linarr.algorithms_Dmin_projective),
+	- maximum arrangements with at most one thistle vertex (@ref lal.linarr.max_sum_edge_lengths_1_le_thistle),
+	- maximum arrangements with exactly one thistle vertex (@ref lal.linarr.max_sum_edge_lengths_1_eq_thistle),
+	- maximum bipartite arrangements (@ref lal.linarr.max_sum_edge_lengths_bipartite),
+	- maximum planar arrangements (@ref lal.linarr.max_sum_edge_lengths_planar),
+	- maximum projective arrangements (@ref lal.linarr.max_sum_edge_lengths_projective),
+- the number of crossings (@ref lal.linarr.num_crossings), and the expectation and variance of the number of crossings (see @ref lal.properties.exp_num_crossings and @ref lal.properties.var_num_crossings),
+- any moment of the degree of the vertices of a graph (see @ref lal.properties.moment_degree and its variants),
+- the mean dependency distance (@ref lal.linarr.mean_dependency_distance),
+- the mean dependency distance over ensembles of graphs (@ref lal.linarr.mean_dependency_distance_1level and @ref lal.linarr.mean_dependency_distance_2level),
+- the mean hierarchical distance (@ref lal.properties.mean_hierarchical_distance),
+- the headedness of a tree (@ref lal.linarr.head_initial),
+- the type of syntactic dependency trees according to their projectivity (@ref lal.linarr.syntactic_dependency_tree_classify).
+- calculation of the centre of a tree (@ref lal.properties.tree_centre), the centroid of a tree (@ref lal.properties.tree_centroid), a tree's diameter (@ref lal.properties.tree_diameter).
 
-As extra features, useful for experimentation, are the generation of different types of trees, all of which are available in the  lal.generate module. We have implemented existing techniques (cited accordingly) or made or own to enumerate
+As extra features, useful for experimentation, are the generation of different types of trees, all of which are available in the @ref lal.generate namespace. We have implemented existing techniques (cited accordingly) or made or own to enumerate
+- all labelled (@ref lal.generate.all_lab_free_trees) and unlabelled (@ref lal.generate.all_ulab_free_trees) free trees,
+- all labelled (@ref lal.generate.all_lab_rooted_trees) and unlabelled (@ref lal.generate.all_ulab_rooted_trees) rooted trees,
+- all projective arrangements of rooted trees (@ref lal.generate.all_projective_arrangements),
+- all planar arrangements of free trees (@ref lal.generate.all_planar_arrangements),
 
-- all labelled/unlabelled free trees,
-- all labelled/unlabelled rooted trees,
-- all projective arrangements of rooted trees,
- 
 and to generate uniformly at random
+- labelled (@ref lal.generate.rand_lab_free_trees) and unlabelled (@ref lal.generate.rand_ulab_free_trees) free trees,
+- labelled (@ref lal.generate.rand_lab_rooted_trees) and unlabelled (@ref lal.generate.rand_ulab_rooted_trees) rooted trees,
+- projective arrangements of rooted trees (@ref lal.generate.rand_projective_arrangements),
+- planar arrangements of free trees (@ref lal.generate.rand_planar_arrangements).
 
-- labelled/unlabelled free/rooted trees,
-- projective arrangements of rooted trees.
- 
 The documentation of each class includes usage examples.
 
 This library implements several types of graphs that can be found in the ``lal.graphs`` module.
 
-With LAL, most metrics can be calculated as exact rational numbers (see ``lal.numeric.rational``), but also as floating point values of double precision. For the former, add the suffix '_rational' at the end of the function name. For example, the function @ref lal::properties::var_num_crossings returns the variance of the number of crossings 'C' as a floating point value. By adding the suffix, i.e., ``lal.properties.var_num_crossings_rational``, we obtain said variance as an exact rational value. To see what a rational value is in the context of this library, see the documentation of the module ``lal.numeric``.
+With LAL, most metrics can be calculated as exact rational numbers (see ``lal.numeric.rational``), but also as floating point values of double precision. For the former, add the suffix '_rational' at the end of the function name. For example, the function @ref lal.properties.var_num_crossings returns the variance of the number of crossings 'C' as a floating point value. By adding the suffix, i.e., ``lal.properties.var_num_crossings_rational``, we obtain said variance as an exact rational value. To see what a rational value is in the context of this library, see the documentation of the module ``lal.numeric``.
 
 The basic data structures in this library
 -----------------------------------------
