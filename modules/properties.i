@@ -28,6 +28,9 @@
 
 %module properties
 
+%include std_vector.i
+%include std_pair.i
+
 %import types.i
 %import graphs.i
 %import numeric.i
@@ -39,6 +42,8 @@
 #include <lal/properties.hpp>
 %}
 
+%template(list_vertex_list) std::vector<std::vector<lal::node> >;
+
 %include "lal/properties/C_rla.hpp"
 %include "lal/properties/D_rla.hpp"
 %include "lal/properties/degrees.hpp"
@@ -48,6 +53,7 @@
 %include "lal/properties/tree_centre.hpp"
 %include "lal/properties/tree_centroid.hpp"
 %include "lal/properties/tree_diameter.hpp"
+%include "lal/properties/vertex_orbits.hpp"
 
 namespace lal {
 namespace properties {

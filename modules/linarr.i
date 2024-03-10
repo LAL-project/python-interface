@@ -60,6 +60,7 @@
 
 %template(pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
 %template(pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
+%template(pair_value_list_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
 
 %include "lal/linarr/aggregations/1level.hpp"
 %include "lal/linarr/aggregations/2level.hpp"

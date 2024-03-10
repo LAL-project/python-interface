@@ -146,6 +146,7 @@ PROPERTIES_DPHDRS	= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/properties/tree_centre.hpp \
 					  $(LAL_INC_DIR)/lal/properties/tree_centroid.hpp \
 					  $(LAL_INC_DIR)/lal/properties/tree_diameter.hpp \
+					  $(LAL_INC_DIR)/lal/properties/vertex_orbits.hpp \
 					  $(LAL_INC_DIR)/lal/properties.hpp
 
 UTILS_DPHDRS		= $(GRAPHS_DPHDRS) \
