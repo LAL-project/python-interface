@@ -68,8 +68,14 @@ namespace graphs {
 %ignore free_tree::operator= (free_tree&&) noexcept;
 
 %ignore rooted_tree::rooted_tree(rooted_tree&&) noexcept;
+%ignore rooted_tree::rooted_tree(free_tree&&, node) noexcept;
+%ignore rooted_tree::rooted_tree(free_tree&&, node, bool) noexcept;
+%ignore rooted_tree::rooted_tree(free_tree&&, node, bool, bool) noexcept;
 %ignore rooted_tree::operator= (const rooted_tree&) noexcept;
 %ignore rooted_tree::operator= (rooted_tree&&) noexcept;
+%ignore rooted_tree::init_rooted(free_tree&&, node) noexcept;
+%ignore rooted_tree::init_rooted(free_tree&&, node, bool) noexcept;
+%ignore rooted_tree::init_rooted(free_tree&&, node, bool, bool) noexcept;
 
 } // -- namespace graphs
 } // -- namespace lal
