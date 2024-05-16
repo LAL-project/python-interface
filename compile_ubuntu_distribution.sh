@@ -5,7 +5,7 @@ LAL_LIBRARY="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.8"
+PYTHON_HEADERS="/usr/include/python3.10"
 PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 
 ./compile.sh \
