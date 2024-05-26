@@ -43,6 +43,16 @@
 #include <lal/graphs.hpp>
 %}
 
+
+// making lists of graphs...
+%template(_list_undirected_graph) std::vector<lal::graphs::undirected_graph>;
+%template(_list_directed_graph) std::vector<lal::graphs::directed_graph>;
+%template(_list_free_tree) std::vector<lal::graphs::free_tree>;
+%template(_list_rooted_tree) std::vector<lal::graphs::rooted_tree>;
+
+// making pairs of graphs and node...
+%template(_pair_free_tree_node) std::pair<lal::graphs::free_tree, lal::node>;
+
 namespace lal {
 namespace graphs {
 
@@ -67,6 +77,7 @@ namespace graphs {
 %ignore free_tree::operator= (const free_tree&) noexcept;
 %ignore free_tree::operator= (free_tree&&) noexcept;
 
+%ignore rooted_tree::rooted_tree(directed_graph&&) noexcept;
 %ignore rooted_tree::rooted_tree(rooted_tree&&) noexcept;
 %ignore rooted_tree::rooted_tree(free_tree&&, node) noexcept;
 %ignore rooted_tree::rooted_tree(free_tree&&, node, bool) noexcept;
@@ -143,15 +154,6 @@ namespace graphs {
 
 } // -- namespace graphs
 } // -- namespace lal
-
-// making lists of graphs...
-%template(_list_undirected_graph) std::vector<lal::graphs::undirected_graph>;
-%template(_list_directed_graph) std::vector<lal::graphs::directed_graph>;
-%template(_list_free_tree) std::vector<lal::graphs::free_tree>;
-%template(_list_rooted_tree) std::vector<lal::graphs::rooted_tree>;
-
-// making pairs of graphs and node...
-%template(_pair_free_tree_node) std::pair<lal::graphs::free_tree, lal::node>;
 
 %include "lal/graphs/conversions.hpp"
 
