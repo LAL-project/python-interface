@@ -72,9 +72,41 @@ namespace properties {
 %include "lal/properties/bipartite_graph_colorability.hpp"
 
 %include "lal/properties/branchless_path.hpp"
+namespace lal {
+namespace properties {
+
 // Instantiate the (only) templated function of 'branchless_path'
 %template(__is_antenna_free_tree) lal::properties::branchless_path::is_antenna<lal::graphs::free_tree>;
 %template(__is_antenna_rooted_tree) lal::properties::branchless_path::is_antenna<lal::graphs::rooted_tree>;
+
+} // -- namespace properties
+} // -- namespace lal
+
+%include "lal/properties/connected_components.hpp"
+namespace lal {
+namespace properties {
+
+%template(connected_components_directed_graph) connected_components<lal::graphs::directed_graph>;
+%template(connected_components_undirected_graph) connected_components<lal::graphs::undirected_graph>;
+
+} // -- namespace properties
+} // -- namespace lal
+
+namespace lal {
+	%extend properties::connected_components<graphs::undirected_graph> {
+		const graphs::undirected_graph& __getitem__(unsigned int i) const noexcept {
+			return (*($self))[i];
+		}
+	}
+	
+	%extend properties::connected_components<graphs::directed_graph> {
+		const graphs::directed_graph& __getitem__(unsigned int i) const noexcept {
+			return (*($self))[i];
+		}
+	}
+}
+
+%include "lal/properties/connected_components_compute.hpp"
 
 %pythoncode %{
 __types = types
