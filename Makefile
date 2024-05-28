@@ -252,7 +252,7 @@ else ifeq ($(OS_ID),macos)
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
-	LFLAGS	= -fPIC -O3 -Wl
+	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 endif
 
