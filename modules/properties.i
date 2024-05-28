@@ -58,12 +58,16 @@
 namespace lal {
 namespace properties {
 
-%ignore bipartite_graph_coloring::bipartite_graph_coloring(bipartite_graph_coloring&&) noexcept;
-%ignore bipartite_graph_coloring::operator= (const bipartite_graph_coloring&) noexcept;
-%ignore bipartite_graph_coloring::operator= (bipartite_graph_coloring&&) noexcept;
-%ignore bipartite_graph_coloring::operator[] noexcept;
-%ignore bipartite_graph_coloring::operator[] noexcept;
-%ignore bipartite_graph_coloring::get_color_of(node) noexcept;
+	%ignore bipartite_graph_coloring::bipartite_graph_coloring(bipartite_graph_coloring&&) noexcept;
+	%ignore bipartite_graph_coloring::operator= (const bipartite_graph_coloring&) noexcept;
+	%ignore bipartite_graph_coloring::operator= (bipartite_graph_coloring&&) noexcept;
+	%ignore bipartite_graph_coloring::get_color_of(node) noexcept;
+	
+	%extend bipartite_graph_coloring {
+		uint64_t __getitem__(unsigned int i) const noexcept {
+			return (*($self))[i];
+		}
+	}
 
 } // -- namespace properties
 } // -- namespace lal
@@ -75,9 +79,9 @@ namespace properties {
 namespace lal {
 namespace properties {
 
-// Instantiate the (only) templated function of 'branchless_path'
-%template(__is_antenna_free_tree) lal::properties::branchless_path::is_antenna<lal::graphs::free_tree>;
-%template(__is_antenna_rooted_tree) lal::properties::branchless_path::is_antenna<lal::graphs::rooted_tree>;
+	// Instantiate the (only) templated function of 'branchless_path'
+	%template(__is_antenna_free_tree) branchless_path::is_antenna<graphs::free_tree>;
+	%template(__is_antenna_rooted_tree) branchless_path::is_antenna<graphs::rooted_tree>;
 
 } // -- namespace properties
 } // -- namespace lal
@@ -86,25 +90,23 @@ namespace properties {
 namespace lal {
 namespace properties {
 
-%template(connected_components_directed_graph) connected_components<lal::graphs::directed_graph>;
-%template(connected_components_undirected_graph) connected_components<lal::graphs::undirected_graph>;
+	%template(connected_components_directed_graph) connected_components<graphs::directed_graph>;
+	%template(connected_components_undirected_graph) connected_components<graphs::undirected_graph>;
 
-} // -- namespace properties
-} // -- namespace lal
-
-namespace lal {
-	%extend properties::connected_components<graphs::undirected_graph> {
+	%extend connected_components<graphs::undirected_graph> {
 		const graphs::undirected_graph& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];
 		}
 	}
 	
-	%extend properties::connected_components<graphs::directed_graph> {
+	%extend connected_components<graphs::directed_graph> {
 		const graphs::directed_graph& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];
 		}
 	}
-}
+
+} // -- namespace properties
+} // -- namespace lal
 
 %include "lal/properties/connected_components_compute.hpp"
 
