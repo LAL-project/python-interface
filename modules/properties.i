@@ -46,6 +46,7 @@
 
 %include "lal/properties/C_rla.hpp"
 %include "lal/properties/D_rla.hpp"
+
 %include "lal/properties/degrees.hpp"
 %include "lal/properties/hierarchical_distance.hpp"
 %include "lal/properties/maximum_spanning_trees.hpp"
@@ -61,6 +62,8 @@ namespace properties {
 	%ignore bipartite_graph_coloring::bipartite_graph_coloring(bipartite_graph_coloring&&) noexcept;
 	%ignore bipartite_graph_coloring::operator= (const bipartite_graph_coloring&) noexcept;
 	%ignore bipartite_graph_coloring::operator= (bipartite_graph_coloring&&) noexcept;
+	%ignore bipartite_graph_coloring::operator[] noexcept;
+	%ignore bipartite_graph_coloring::operator[] noexcept;
 	%ignore bipartite_graph_coloring::get_color_of(node) noexcept;
 	
 	%extend bipartite_graph_coloring {
@@ -75,7 +78,16 @@ namespace properties {
 %include "lal/properties/bipartite_graph_coloring.hpp"
 %include "lal/properties/bipartite_graph_colorability.hpp"
 
+namespace lal {
+namespace properties {
+	
+	%ignore branchless_path::operator[];
+	
+} // -- namespace properties
+} // -- namespace lal
+
 %include "lal/properties/branchless_path.hpp"
+
 namespace lal {
 namespace properties {
 
@@ -86,7 +98,18 @@ namespace properties {
 } // -- namespace properties
 } // -- namespace lal
 
+namespace lal {
+namespace properties {
+	
+	%ignore connected_components::operator[];
+	%ignore connected_components::operator[];
+	%ignore connected_components::add_graph;
+	
+} // -- namespace properties
+} // -- namespace lal
+
 %include "lal/properties/connected_components.hpp"
+
 namespace lal {
 namespace properties {
 

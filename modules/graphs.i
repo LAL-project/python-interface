@@ -56,37 +56,37 @@
 namespace lal {
 namespace graphs {
 
-%ignore graph::graph(graph&&) noexcept;
-%ignore graph::operator= (const graph&) noexcept;
-%ignore graph::operator= (graph&&) noexcept;
+	%ignore graph::graph(graph&&) noexcept;
+	%ignore graph::operator= (const graph&) noexcept;
+	%ignore graph::operator= (graph&&) noexcept;
 
-%ignore undirected_graph::undirected_graph(undirected_graph&&) noexcept;
-%ignore undirected_graph::operator= (const undirected_graph&) noexcept;
-%ignore undirected_graph::operator= (undirected_graph&&) noexcept;
+	%ignore undirected_graph::undirected_graph(undirected_graph&&) noexcept;
+	%ignore undirected_graph::operator= (const undirected_graph&) noexcept;
+	%ignore undirected_graph::operator= (undirected_graph&&) noexcept;
 
-%ignore directed_graph::directed_graph(directed_graph&&) noexcept;
-%ignore directed_graph::operator= (const directed_graph&) noexcept;
-%ignore directed_graph::operator= (directed_graph&&) noexcept;
+	%ignore directed_graph::directed_graph(directed_graph&&) noexcept;
+	%ignore directed_graph::operator= (const directed_graph&) noexcept;
+	%ignore directed_graph::operator= (directed_graph&&) noexcept;
 
-%ignore tree::tree(tree&&) noexcept;
-%ignore tree::operator= (const tree&) noexcept;
-%ignore tree::operator= (tree&&) noexcept;
+	%ignore tree::tree(tree&&) noexcept;
+	%ignore tree::operator= (const tree&) noexcept;
+	%ignore tree::operator= (tree&&) noexcept;
 
-%ignore free_tree::free_tree(undirected_graph&&) noexcept;
-%ignore free_tree::free_tree(free_tree&&) noexcept;
-%ignore free_tree::operator= (const free_tree&) noexcept;
-%ignore free_tree::operator= (free_tree&&) noexcept;
+	%ignore free_tree::free_tree(undirected_graph&&) noexcept;
+	%ignore free_tree::free_tree(free_tree&&) noexcept;
+	%ignore free_tree::operator= (const free_tree&) noexcept;
+	%ignore free_tree::operator= (free_tree&&) noexcept;
 
-%ignore rooted_tree::rooted_tree(directed_graph&&) noexcept;
-%ignore rooted_tree::rooted_tree(rooted_tree&&) noexcept;
-%ignore rooted_tree::rooted_tree(free_tree&&, node) noexcept;
-%ignore rooted_tree::rooted_tree(free_tree&&, node, bool) noexcept;
-%ignore rooted_tree::rooted_tree(free_tree&&, node, bool, bool) noexcept;
-%ignore rooted_tree::operator= (const rooted_tree&) noexcept;
-%ignore rooted_tree::operator= (rooted_tree&&) noexcept;
-%ignore rooted_tree::init_rooted(free_tree&&, node) noexcept;
-%ignore rooted_tree::init_rooted(free_tree&&, node, bool) noexcept;
-%ignore rooted_tree::init_rooted(free_tree&&, node, bool, bool) noexcept;
+	%ignore rooted_tree::rooted_tree(directed_graph&&) noexcept;
+	%ignore rooted_tree::rooted_tree(rooted_tree&&) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, node) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, node, bool) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, node, bool, bool) noexcept;
+	%ignore rooted_tree::operator= (const rooted_tree&) noexcept;
+	%ignore rooted_tree::operator= (rooted_tree&&) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, node) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, node, bool) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, node, bool, bool) noexcept;
 
 } // -- namespace graphs
 } // -- namespace lal
@@ -108,49 +108,49 @@ namespace graphs {
 namespace lal {
 namespace graphs {
 
-%extend undirected_graph {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend undirected_graph {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
+		undirected_graph clone() const {
+			return *$self;
+		}
 	}
-	undirected_graph clone() const {
-		return *$self;
-	}
-}
 
-%extend directed_graph {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend directed_graph {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
+		directed_graph clone() const {
+			return *$self;
+		}
 	}
-	directed_graph clone() const {
-		return *$self;
-	}
-}
 
-%extend rooted_tree {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend rooted_tree {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
+		rooted_tree clone() const {
+			return *$self;
+		}
 	}
-	rooted_tree clone() const {
-		return *$self;
-	}
-}
 
-%extend free_tree {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend free_tree {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
+		free_tree clone() const {
+			return *$self;
+		}
 	}
-	free_tree clone() const {
-		return *$self;
-	}
-}
 
 } // -- namespace graphs
 } // -- namespace lal

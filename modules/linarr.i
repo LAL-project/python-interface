@@ -71,20 +71,20 @@
 %include "lal/linarr/head_initial.hpp"
 %include "lal/linarr/formal_constraints.hpp"
 
+// ---------------
+// Dependency flux
+
 namespace lal {
 namespace linarr {
 
-// ignore non-const
-%ignore dependency_flux::get_left_span() noexcept;
-%ignore dependency_flux::get_right_span() noexcept;
-%ignore dependency_flux::get_weight() noexcept;
-%ignore dependency_flux::get_dependencies() noexcept;
+	// ignore non-const
+	%ignore dependency_flux::get_left_span() noexcept;
+	%ignore dependency_flux::get_right_span() noexcept;
+	%ignore dependency_flux::get_weight() noexcept;
+	%ignore dependency_flux::get_dependencies() noexcept;
 
 } // -- namespace linarr
 } // -- namespace lal
-
-// ---------------
-// Dependency flux
 
 %template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
@@ -103,11 +103,12 @@ namespace linarr {
 namespace lal {
 namespace linarr {
 
-// ignore non-const
-%ignore chunk_sequence::get_chunk(std::size_t) noexcept;
+	// ignore non-const
+	%ignore chunk_sequence::get_chunk(std::size_t) noexcept;
 
 } // -- namespace linarr
 } // -- namespace lal
+
 
 %include "lal/linarr/chunking/chunk.hpp"
 %include "lal/linarr/chunking/chunking.hpp"
@@ -118,21 +119,21 @@ namespace linarr {
 namespace lal {
 namespace linarr {
 
-%extend chunk {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend chunk {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
 	}
-}
 
-%extend chunk_sequence {
-	std::string __repr__() const {
-		std::ostringstream out;
-		out << *$self;
-		return out.str();
+	%extend chunk_sequence {
+		std::string __repr__() const {
+			std::ostringstream out;
+			out << *$self;
+			return out.str();
+		}
 	}
-}
 
 } // -- namespace linarr
 } // -- namespace lal
@@ -143,40 +144,40 @@ namespace linarr {
 namespace lal {
 namespace linarr {
 
-%template(__MDD_1level_rational_undirected_graph)	mean_dependency_distance_1level_rational<graphs::undirected_graph>;
-%template(__MDD_1level_rational_directed_graph)		mean_dependency_distance_1level_rational<graphs::directed_graph>;
-%template(__MDD_1level_rational_free_tree)			mean_dependency_distance_1level_rational<graphs::free_tree>;
-%template(__MDD_1level_rational_rooted_tree)		mean_dependency_distance_1level_rational<graphs::rooted_tree>;
+	%template(__MDD_1level_rational_undirected_graph)	mean_dependency_distance_1level_rational<graphs::undirected_graph>;
+	%template(__MDD_1level_rational_directed_graph)		mean_dependency_distance_1level_rational<graphs::directed_graph>;
+	%template(__MDD_1level_rational_free_tree)			mean_dependency_distance_1level_rational<graphs::free_tree>;
+	%template(__MDD_1level_rational_rooted_tree)		mean_dependency_distance_1level_rational<graphs::rooted_tree>;
 
-%template(__MDD_1level_undirected_graph)			mean_dependency_distance_1level<graphs::undirected_graph>;
-%template(__MDD_1level_directed_graph)				mean_dependency_distance_1level<graphs::directed_graph>;
-%template(__MDD_1level_free_tree)					mean_dependency_distance_1level<graphs::free_tree>;
-%template(__MDD_1level_rooted_tree)					mean_dependency_distance_1level<graphs::rooted_tree>;
+	%template(__MDD_1level_undirected_graph)			mean_dependency_distance_1level<graphs::undirected_graph>;
+	%template(__MDD_1level_directed_graph)				mean_dependency_distance_1level<graphs::directed_graph>;
+	%template(__MDD_1level_free_tree)					mean_dependency_distance_1level<graphs::free_tree>;
+	%template(__MDD_1level_rooted_tree)					mean_dependency_distance_1level<graphs::rooted_tree>;
 
-%template(__MDD_2level_rational_undirected_graph)	mean_dependency_distance_2level_rational<graphs::undirected_graph>;
-%template(__MDD_2level_rational_directed_graph)		mean_dependency_distance_2level_rational<graphs::directed_graph>;
-%template(__MDD_2level_rational_free_tree)			mean_dependency_distance_2level_rational<graphs::free_tree>;
-%template(__MDD_2level_rational_rooted_tree)		mean_dependency_distance_2level_rational<graphs::rooted_tree>;
+	%template(__MDD_2level_rational_undirected_graph)	mean_dependency_distance_2level_rational<graphs::undirected_graph>;
+	%template(__MDD_2level_rational_directed_graph)		mean_dependency_distance_2level_rational<graphs::directed_graph>;
+	%template(__MDD_2level_rational_free_tree)			mean_dependency_distance_2level_rational<graphs::free_tree>;
+	%template(__MDD_2level_rational_rooted_tree)		mean_dependency_distance_2level_rational<graphs::rooted_tree>;
 
-%template(__MDD_2level_undirected_graph)			mean_dependency_distance_2level<graphs::undirected_graph>;
-%template(__MDD_2level_directed_graph)				mean_dependency_distance_2level<graphs::directed_graph>;
-%template(__MDD_2level_free_tree)					mean_dependency_distance_2level<graphs::free_tree>;
-%template(__MDD_2level_rooted_tree)					mean_dependency_distance_2level<graphs::rooted_tree>;
+	%template(__MDD_2level_undirected_graph)			mean_dependency_distance_2level<graphs::undirected_graph>;
+	%template(__MDD_2level_directed_graph)				mean_dependency_distance_2level<graphs::directed_graph>;
+	%template(__MDD_2level_free_tree)					mean_dependency_distance_2level<graphs::free_tree>;
+	%template(__MDD_2level_rooted_tree)					mean_dependency_distance_2level<graphs::rooted_tree>;
 
-%template(__is_arrangement_undirected_graph)		is_arrangement<graphs::undirected_graph>;
-%template(__is_arrangement_directed_graph)			is_arrangement<graphs::directed_graph>;
-%template(__is_arrangement_free_tree)				is_arrangement<graphs::free_tree>;
-%template(__is_arrangement_rooted_tree)				is_arrangement<graphs::rooted_tree>;
+	%template(__is_arrangement_undirected_graph)		is_arrangement<graphs::undirected_graph>;
+	%template(__is_arrangement_directed_graph)			is_arrangement<graphs::directed_graph>;
+	%template(__is_arrangement_free_tree)				is_arrangement<graphs::free_tree>;
+	%template(__is_arrangement_rooted_tree)				is_arrangement<graphs::rooted_tree>;
 
-%template(__is_planar_undirected_graph)				is_planar<graphs::undirected_graph>;
-%template(__is_planar_directed_graph)				is_planar<graphs::directed_graph>;
-%template(__is_planar_free_tree)					is_planar<graphs::free_tree>;
-%template(__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
+	%template(__is_planar_undirected_graph)				is_planar<graphs::undirected_graph>;
+	%template(__is_planar_directed_graph)				is_planar<graphs::directed_graph>;
+	%template(__is_planar_free_tree)					is_planar<graphs::free_tree>;
+	%template(__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
 
-%template(__is_bipartite_undirected_graph)			is_bipartite<graphs::undirected_graph>;
-%template(__is_bipartite_directed_graph)			is_bipartite<graphs::directed_graph>;
-%template(__is_bipartite_free_tree)					is_bipartite<graphs::free_tree>;
-%template(__is_bipartite_rooted_tree)				is_bipartite<graphs::rooted_tree>;
+	%template(__is_bipartite_undirected_graph)			is_bipartite<graphs::undirected_graph>;
+	%template(__is_bipartite_directed_graph)			is_bipartite<graphs::directed_graph>;
+	%template(__is_bipartite_free_tree)					is_bipartite<graphs::free_tree>;
+	%template(__is_bipartite_rooted_tree)				is_bipartite<graphs::rooted_tree>;
 
 } // -- namespace linarr
 } // -- namespace lal
