@@ -16,8 +16,6 @@ PYTHON_MINOR=                   # python's minor version (the 'x' in 3.x)
 	--gmp-libs="$GMP_LIBRARY" \
 	--python-headers="$PYTHON_HEADERS" \
 	--python-libs="$PYTHON_LIBRARY" \
-	--python-major="3" \
-	--python-minor="$PYTHON_MINOR" \
 	--build=release
 
 ./compile.sh \
@@ -27,8 +25,6 @@ PYTHON_MINOR=                   # python's minor version (the 'x' in 3.x)
 	--gmp-libs="$GMP_LIBRARY" \
 	--python-headers="$PYTHON_HEADERS" \
 	--python-libs="$PYTHON_LIBRARY" \
-	--python-major="3" \
-	--python-minor="$PYTHON_MINOR" \
 	--build=debug
 
 sudo \

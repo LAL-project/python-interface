@@ -48,21 +48,18 @@ Navigate to a directory of your choice and issue the command
 
 In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
-- the minor version of Python installed in your system,
 - the location of the python binaries and header development files,
-- the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
 
 With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
-	LAL_HEADERS=                        # directory of the header files of LAL
-	LAL_LIBRARY=                        # directory of the binary files of LAL (.so)
-	LAL_PYTHON_WRAPPER_DESTINATION=     # directory where to install LAL's python wrapper
-	GMP_HEADERS=                        # (?) directory of the header files of GMP
-	GMP_LIBRARY=                        # (?) directory of the binary files of GMP (.so)
-	PYTHON_HEADERS=                     # directory of the header (development) files of python
-	PYTHON_LIBRARY=                     # directory of the shared object (development) files of python
-	PYTHON_MINOR=                       # python's minor version (the 'x' in 3.x)
+	LAL_HEADERS=                      # directory of the header files of LAL
+	LAL_LIBRARY=                      # directory of the binary files of LAL (.so)
+	LAL_PYTHON_WRAPPER_DESTINATION=   # directory where to install LAL's python wrapper
+	GMP_HEADERS=                      # (?) directory of the header files of GMP
+	GMP_LIBRARY=                      # (?) directory of the binary files of GMP (.so)
+	PYTHON_HEADERS=                   # directory of the header (development) files of python
+	PYTHON_LIBRARY=                   # directory of the shared object (development) files of python
 
 Check the other [two](https://github.com/LAL-project/python-interface/blob/main/windows_compile_distribution.sh) [script](https://github.com/LAL-project/python-interface/blob/main/windows_install.sh) files to see examples of contents.
 
@@ -81,16 +78,16 @@ To generate the documentation for the Python wrapper files, run the following co
 
 Now, we can actually compile and install in one step the Python interface.
 
-	$ ./sample_script_windows.sh
+	$ ./sample_script.sh
 
 ### Last steps of the installation for `conda`
 
 **Note** These steps assume that the library was compiled and linked against the python development files distributed with conda.
 
-Move the `.dll` files to the appropriate directory within Anaconda/Miniconda, in particular within the directories
+Move the `.dll` files to the appropriate directory within Anaconda, in particular within the directories
 
-	(1) C:/Users/%Username/anaconda3/Lib/site-packages/lal
-	(2) C:/Users/%Username/anaconda3/Lib/site-packages/laloptimized
+	(1) C:/Users/$USER/anaconda3/Lib/site-packages/lal
+	(2) C:/Users/$USER/anaconda3/Lib/site-packages/laloptimized
 
 (replace `anaconda3` with `miniconda3` where appropriate).
 

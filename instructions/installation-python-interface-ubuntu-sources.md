@@ -51,9 +51,7 @@ Navigate to a directory of your choice and issue the command
 
 In order to compile the interface, you have to configure two build scripts (change just a few directories). For this, it is required that you know
 
-- the minor version of Python installed in your system,
 - the location of the python binaries and header development files,
-- the minor version of python installed (the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`)
 - the location where LAL has been installed in the system.
 
 With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
@@ -82,5 +80,5 @@ To generate the documentation for the Python wrapper files, run the following co
 
 Now, we can actually compile and install in one step the Python interface.
 
-	$ ./sample_script_ubuntu.sh
+	$ ./sample_script.sh
 
