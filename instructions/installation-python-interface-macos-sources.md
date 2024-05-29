@@ -2,6 +2,8 @@
 
 **NOTE** *The instructions below will install LAL for anaconda. Therefore, it is assumed that you have [anaconda](https://www.anaconda.com/) installed in your computer.*
 
+**NOTE** *These instructions were written a few years ago for a version of macOS (maybe 10.13?) that may behave differently from newer versions (including yours) and some paths below may have to be different.*
+
 LAL is interfaced to [Python 3](https://www.python.org/) via [SWIG](http://www.swig.org/). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` and `doxygen`.
 
 ## Installing the dependencies
@@ -53,7 +55,7 @@ Navigate to a directory of your choice and issue the command
 
 ## Configuring the _Makefile_
 
-In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, it is required that you know the minor version of Python installed in your system. As stated above, the major version is required to be `3`. The minor version the interface has been tested on is `8` (i.e., we have been using `Python 3.8`), but should work on any version `3.x`. Moreover, one has to know where LAL has been installed in the system. With this information, you have to modify some of the variables in the corresponding Makefiles.
+In order to compile the interface, you have to configure one of the build files (change just a few variables' contents). For this, one has to know where LAL has been installed in the system. With this information, you have to modify some of the variables in the corresponding Makefiles.
 
 ### Location of LAL
 
@@ -71,11 +73,8 @@ First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the loca
 
 ### Location of Python sources and libraries
 
-Secondly, specify the version of Python against which the interface is linked in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `MINOR_VERSION_PYTHON`, `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
+Secondly, specify the version of Python against which the interface is linked in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
 
-	# Python's minor version
-	MINOR_VERSION_PYTHON = 8
-	
 	# Python 3 include dir
 	PYTHON_INC_DIR	= /usr/include/python3.$(MINOR_VERSION_PYTHON)
 	
@@ -84,10 +83,7 @@ Secondly, specify the version of Python against which the interface is linked in
 
 Users who installed *anaconda* may want to change the values for:
 
-    # Python's minor version
-	MINOR_VERSION_PYTHON = 8
-	
-	# Python 3 include dir
+    # Python 3 include dir
 	PYTHON_INC_DIR	= ~/opt/anaconda3/include/python3.$(MINOR_VERSION_PYTHON)
 	
 	# Python3 library directory
