@@ -31,34 +31,32 @@ ifeq ($(OS_ID),windows)
 	# WINDOWS ONLY
 
 	# Python3 linkage
-	ifneq ($(MAJOR_VERSION_PYTHON),"")
-		MAJOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)
-	endif
-	MINOR_PY_LINK	= -lpython$(MAJOR_VERSION_PYTHON)$(MINOR_VERSION_PYTHON)
+	PYTHON_LINK = -lpython3
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
 	
 	# Other flags needed to compile against Python
-	EXTRA_FLAGS		= 
+	PYTHON_EXTRA_LINK = 
 	
 else ifeq ($(OS_ID),linux)
 	# ----------------
 	# LINUX USERS ONLY
 	
 	# Python3 linkage
-	MAJOR_PY_LINK	=
-	MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
+	PYTHON_LINK = -lpython3
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
 	
 	# Other flags needed to compile against Python
-	EXTRA_FLAGS		= 
+	PYTHON_EXTRA_LINK = 
 	
 else ifeq ($(OS_ID),macos)
 	# ----------------
 	# MACOS USERS ONLY
 	
 	# Python3 linkage
-	MAJOR_PY_LINK	=
-	MINOR_PY_LINK	= -lpython3.$(MINOR_VERSION_PYTHON)
+	PYTHON_LINK = -lpython3
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
 	
 	# Other flags needed to compile against Python
-	EXTRA_FLAGS		= -flat_namespace
+	PYTHON_EXTRA_LINK = -flat_namespace
 	
 endif

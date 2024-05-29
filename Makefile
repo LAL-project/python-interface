@@ -156,9 +156,6 @@ endif
 PYTHON_INC_DIR = $(USER_PYTHON_HEADERS)
 PYTHON_LIB_DIR = $(USER_PYTHON_LIBRARY)
 
-MAJOR_VERSION_PYTHON = $(USER_PYTHON_MAJOR_VERSION)
-MINOR_VERSION_PYTHON = $(USER_PYTHON_MINOR_VERSION)
-
 # Directory where LAL's interface will be installed to
 LAL_INSTALLATION_DIR = $(USER_INSTALLATION_DIR)
 
@@ -169,16 +166,12 @@ $(info .    LAL's library extension:  $(LIBRARY_EXTENSION))
 $(info .    Python modules extension: $(SO_EXT))
 
 $(info Python linkage)
-$(info .    Major version of python:    $(MAJOR_VERSION_PYTHON))
-$(info .    Minor version of python:    $(MINOR_VERSION_PYTHON))
-$(info .    Python include directory:   $(PYTHON_INC_DIR))
-ifneq ($(OS_ID),linux)
-$(info .    Python library directory:   $(PYTHON_LIB_DIR))
-$(info .    Linkage flag against major: $(MAJOR_PY_LINK))
-$(info .    Linkage flag against minor: $(MINOR_PY_LINK))
-endif
-$(info .    Installation directory:     $(LAL_INSTALLATION_DIR))
-$(info .    Other linkage flags:        $(EXTRA_FLAGS))
+$(info .    Python include directory: $(PYTHON_INC_DIR))
+$(info .    Python library directory: $(PYTHON_LIB_DIR))
+$(info .    Python linkage flag:      $(PYTHON_LINK))
+$(info .    Python compile flags:     $(PYTHON_FLAGS))
+$(info .    Installation directory:   $(LAL_INSTALLATION_DIR))
+$(info .    Other linkage flags:      $(PYTHON_EXTRA_LINK))
 
 # --------------------------
 # Architecture of the system
@@ -189,12 +182,10 @@ ARCH_DIR 		= $(OS_DIR)/$(ARCH)
 # ---------------
 # SWIG executable
 
-$(info Python linkage)
-
 SWIG_EXE		= swig
 # SWIG flags
 SWIG_FLAGS_32	= -DSWIGWORDSIZE32
-SWIG_FLAGS_64 	= -DSWIGWORDSIZE64
+SWIG_FLAGS_64	= -DSWIGWORDSIZE64
 
 ifeq ($(OS_ID),windows)
 	SWIG_FLAGS	+= $(SWIG_FLAGS_32)
@@ -235,7 +226,7 @@ ifeq ($(OS_ID),windows)
 	# WINDOWS USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),linux)
@@ -243,7 +234,7 @@ else ifeq ($(OS_ID),linux)
 	# LINUX USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),macos)
@@ -251,7 +242,7 @@ else ifeq ($(OS_ID),macos)
 	# MACOS USERS ONLY
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3
+	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 endif
@@ -262,14 +253,12 @@ ifeq ($(USER_BUILD),debug)
 	# compilation flags
 	
 	FLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
-	LFLAGS	+= -DDEBUG -D_GLIBCXX_DEBUG
 	
 else ifeq ($(USER_BUILD),release)
 	# -----------------
 	# compilation flags
 	
 	FLAGS	+= -UDEBUG -DNDEBUG
-	LFLAGS	+= -DNDEBUG -UDEBUG
 	
 endif
 
@@ -333,52 +322,36 @@ LIBS += -lgmp
 
 LIBS += -fopenmp
 LIBS += -lpthread
-LIBS += $(EXTRA_FLAGS)
+LIBS += $(PYTHON_EXTRA_LINK)
 
 ifeq ($(OS_ID),windows)
 
 	ifeq ($(PYTHON_LIB_DIR), )
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += $(MAJOR_PY_LINK)
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += $(MINOR_PY_LINK)
+		ifneq ($(PYTHON_LINK), )
+			LIBS += $(PYTHON_LINK)
 		endif
 	else
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
+		ifneq ($(PYTHON_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(PYTHON_LINK)
 		endif
 	endif
 
 else ifeq ($(OS_ID),macos)
 
 	ifeq ($(PYTHON_LIB_DIR), )
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += $(MAJOR_PY_LINK)
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += $(MINOR_PY_LINK)
+		ifneq ($(PYTHON_LINK), )
+			LIBS += $(PYTHON_LINK)
 		endif
 	else
-		ifneq ($(MAJOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MAJOR_PY_LINK)
-		endif
-		
-		ifneq ($(MINOR_PY_LINK), )
-			LIBS += -L $(PYTHON_LIB_DIR) $(MINOR_PY_LINK)
+		ifneq ($(PYTHON_LINK), )
+			LIBS += -L $(PYTHON_LIB_DIR) $(PYTHON_LINK)
 		endif
 	endif
 
 endif
 
 $(info Compiler)
-$(info .    Path:             $(CXX))
+$(info .    Compiler:         $(CXX))
 $(info .    Flags:            $(FLAGS))
 $(info .    Includes:         $(INCLUDES))
 $(info .    Linked libraries: $(LIBS))
