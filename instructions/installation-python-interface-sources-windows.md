@@ -64,7 +64,7 @@ With this information, you will have to edit the [sample script file](https://gi
 	PYTHON_LIBRARY=                     # directory of the shared object (development) files of python
 	PYTHON_MINOR=                       # python's minor version (the 'x' in 3.x)
 
-Check the other [two](https://github.com/LAL-project/python-interface/blob/main/run_distribution_windows.sh) [script](https://github.com/LAL-project/python-interface/blob/main/run_install_windows.sh) files to see examples of contents.
+Check the other [two](https://github.com/LAL-project/python-interface/blob/main/windows_compile_distribution.sh) [script](https://github.com/LAL-project/python-interface/blob/main/windows_install.sh) files to see examples of contents.
 
 ## Compiling and installing the interface
 
