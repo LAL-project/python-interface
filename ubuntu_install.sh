@@ -12,21 +12,6 @@ if [ -z $1 ]; then
 	--build=debug \
 	--install
 
-# for miniconda users only
-elif [ "$1" == "miniconda" ]; then
-
-miniconda_dir="/home/$USER/miniconda3"
-
-./compile.sh \
-	--destination-directory="$miniconda_dir/lib" \
-	--build=release \
-	--install
-
-./compile.sh \
-	--destination-directory="$miniconda_dir/lib" \
-	--build=debug \
-	--install
-
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 

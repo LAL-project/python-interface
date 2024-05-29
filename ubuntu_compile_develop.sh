@@ -27,29 +27,6 @@ PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 	--python-headers="$PYTHON_HEADERS" \
 	--build=debug
 
-# for miniconda users only
-elif [ "$1" == "miniconda" ]; then
-
-miniconda_dir="/home/$USER/miniconda3"
-
-./compile.sh \
-	--environment=development \
-	--lal-headers="$LAL_HEADERS" \
-	--lal-libs="$LAL_LIBRARY_RELEASE" \
-	--gmp-headers="" \
-	--gmp-libs="" \
-	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=release
-
-./compile.sh \
-	--environment=development \
-	--lal-headers="$LAL_HEADERS" \
-	--lal-libs="$LAL_LIBRARY_DEBUG" \
-	--gmp-headers="" \
-	--gmp-libs="" \
-	--python-headers="$miniconda_dir/include/python3.9" \
-	--build=debug
-
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
 
