@@ -103,18 +103,13 @@ namespace linarr {
 namespace lal {
 namespace linarr {
 
-	// ignore non-const
-	%ignore chunk_sequence::get_chunk(std::size_t) noexcept;
+	%ignore chunk_sequence::operator[];
 
 } // -- namespace linarr
 } // -- namespace lal
 
-
 %include "lal/linarr/chunking/chunk.hpp"
 %include "lal/linarr/chunking/chunking.hpp"
-
-// -------------------------
-// Extendind the C++ classes
 
 namespace lal {
 namespace linarr {
@@ -126,20 +121,21 @@ namespace linarr {
 			return out.str();
 		}
 	}
-
+	
 	%extend chunk_sequence {
 		std::string __repr__() const {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
 		}
+		
+		const chunk& __getitem__(unsigned int i) const noexcept {
+			return (*($self))[i];
+		}
 	}
 
 } // -- namespace linarr
 } // -- namespace lal
-
-// --------------------------------
-// Extending the function templates
 
 namespace lal {
 namespace linarr {
