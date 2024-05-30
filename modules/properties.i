@@ -102,7 +102,6 @@ namespace lal {
 namespace properties {
 	
 	%ignore connected_components::operator[];
-	%ignore connected_components::operator[];
 	%ignore connected_components::add_graph;
 	
 } // -- namespace properties
