@@ -3,6 +3,8 @@ The different algorithms for chunking a syntactic dependency tree.
 
 Chunking is the art of grouping nodes (a.k.a. words) of a syntactic dependency tree in such a way that the resulting groups share common properties. This enumeration lists all the chunking algorithms implemented in this library.
 
+Here we use 'chunking' as an umbrella term for all the algorithms that group nodes in units in a systematic way. Some researchers may not use this term.
+
 The algorithms available in this library are:
 
 Anderson's algorithm
@@ -15,7 +17,9 @@ Value: ``Anderson``.
 Mačutek's algorithm
 -------------------
 
-See [3].
+Mačutek et al. termed chunks as Linear Dependency Sequences (LDSs). For further details see [3].
+
+Note: the implementation of Mačutek's algorithm in LAL does not take clauses into account when computing an LDS.
 
 Value: ``Macutek``. 
 
