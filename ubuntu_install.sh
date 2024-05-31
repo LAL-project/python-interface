@@ -14,9 +14,9 @@ lal_dist_dir="$HOME/Documents/projects/LAL-dev/latest/python-libs"
 	--build=debug \
 	--install
 
-lal_cpp_dir="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
+lal_lib_dir="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
 
-cp -P $lal_cpp_dir/liblal* $lal_dist_dir
+cp -P $lal_lib_dir/liblal*.so* $lal_dist_dir/
 
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
