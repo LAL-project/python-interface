@@ -19,12 +19,12 @@ anaconda_dir="C:/Users/$USER/anaconda3"
 anaconda_package_dir="$anaconda_dir/Lib/site-packages"
 
 ./compile.sh \
-	--destination-directory="$anaconda_dir" \
+	--destination-directory="$anaconda_package_dir" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--destination-directory="$anaconda_dir" \
+	--destination-directory="$anaconda_package_dir" \
 	--build=debug \
 	--install
 
