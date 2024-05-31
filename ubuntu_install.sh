@@ -2,15 +2,21 @@
 
 if [ -z $1 ]; then
 
+lal_dist_dir="$HOME/Documents/projects/LAL-dev/latest/python-libs"
+
 ./compile.sh \
-	--destination-directory="$HOME/Documents/projects/LAL-dev/latest/python-libs" \
+	--destination-directory=$lal_dist_dir \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--destination-directory="$HOME/Documents/projects/LAL-dev/latest/python-libs" \
+	--destination-directory=$lal_dist_dir \
 	--build=debug \
 	--install
+
+lal_cpp_dir="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
+
+cp $lal_cpp_dir/liblal* $lal_dist_dir
 
 # for anaconda users only
 elif [ "$1" == "anaconda" ]; then
