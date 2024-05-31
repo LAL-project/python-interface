@@ -32,8 +32,7 @@ lal_dist_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION"
 lal_cpp_dir="$lal_dist_dir/latest/windows10-c++-libs-msys64"
 
 # lal dlls
-cp $lal_cpp_dir/bin/liblal.dll $anaconda_package_dir/lal
-cp $lal_cpp_dir/bin/liblaloptimized.dll $anaconda_package_dir/laloptimized
+cp $lal_cpp_dir/bin/liblal*.dll $dest_dir/lal
 
 # system dlls
 cp $lal_dist_dir/libgcc_s_seh-1.dll $anaconda_dir
@@ -61,8 +60,7 @@ lal_dist_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION"
 lal_cpp_dir="$lal_dist_dir/latest/windows10-c++-libs-msys64"
 
 # lal dlls
-cp $lal_cpp_dir/bin/liblal.dll $dest_dir/lal
-cp $lal_cpp_dir/bin/liblaloptimized.dll $dest_dir/laloptimized
+cp $lal_cpp_dir/bin/liblal*.dll $dest_dir/lal
 
 # system dlls
 cp $lal_dist_dir/libgcc_s_seh-1.dll $dest_dir
