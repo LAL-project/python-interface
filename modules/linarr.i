@@ -89,6 +89,7 @@ namespace linarr {
 %template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
 %include "lal/linarr/dependency_flux.hpp"
+%include "lal/linarr/dependency_flux_compute.hpp"
 
 // -------------------------
 // syntactic dependency tree
