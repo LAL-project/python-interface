@@ -98,7 +98,7 @@ namespace properties {
 } // -- namespace properties
 } // -- namespace lal
 
-%include "lal/properties/branchless_path_compute.hpp"
+%include "lal/properties/branchless_paths_compute.hpp"
 
 namespace lal {
 namespace properties {
