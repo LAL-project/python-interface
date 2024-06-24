@@ -171,11 +171,6 @@ namespace linarr {
 	%template(__is_planar_free_tree)					is_planar<graphs::free_tree>;
 	%template(__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
 
-	%template(__is_bipartite_undirected_graph)			is_bipartite<graphs::undirected_graph>;
-	%template(__is_bipartite_directed_graph)			is_bipartite<graphs::directed_graph>;
-	%template(__is_bipartite_free_tree)					is_bipartite<graphs::free_tree>;
-	%template(__is_bipartite_rooted_tree)				is_bipartite<graphs::rooted_tree>;
-
 } // -- namespace linarr
 } // -- namespace lal
 
