@@ -51,7 +51,7 @@ doxygen doxyconfig/doxyfile | sed "s/^/    /g"
 ####################################################################
 
 echo -e "\e[1;1;32mParsing XML files with 'doxy2swig.py' to generate some Python documentation\e[0m"
-$PYTHON doxyconfig/doxy2swig.py -c -o -a docshtml/xml/index.xml modules/documentation.i | sed "s/^/    /g"
+$PYTHON doxyconfig/doxy2swig.py -w 80000 -c -o -a docshtml/xml/index.xml modules/documentation.i | sed "s/^/    /g"
 
 ####################################################################
 
