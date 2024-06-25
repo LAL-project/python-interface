@@ -59,8 +59,18 @@ echo -e "\e[1;1;32mClean up documentation.i\e[0m"
 scripts/clean_up_documentationi.sh | sed "s/^/    /g"
 
 if [ ! -z $1 ] && [ "$1" == "interface" ]; then
-	echo -e "\e[1;1;33m    Release\e[0m"
-	make BUILD=release python_interfaces | sed "s/^/        /g"
-	echo -e "\e[1;1;33m    Debug\e[0m"
-	make BUILD=debug python_interfaces | sed "s/^/        /g"
+	LAL_HEADERS="../linear-arrangement-library"
+	LAL_LIBRARY_RELEASE="../linear-arrangement-library/lal-release"
+	LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
+	ENVIRONMENT=development
+	PYTHON_HEADERS="/usr/include/python3.10"
+	
+	OPTIONS="\
+	USER_LAL_INC_DIR=$LAL_HEADERS \
+	USER_LAL_LIB_DIR=$LAL_LIBRARY \
+	USER_INSTALLATION_DIR=$INSTALLATION_DIR \
+	USER_PYTHON_HEADERS=$PYTHON_HEADERS \
+	USER_ENVIRONMENT=$ENVIRONMENT"
+	
+	make $OPTIONS BUILD=release python_interfaces | sed "s/^/        /g"
 fi
