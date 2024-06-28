@@ -126,6 +126,7 @@ LINARR_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/D/Dmin.hpp \
 					  $(SYN_DEP_TREE_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/classify.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/dependency_flux_compute.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/dependency_flux.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/formal_constraints.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/head_initial.hpp \
