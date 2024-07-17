@@ -94,5 +94,4 @@ There are several reasons why a treebank collection or a single treebank file co
 	Returned by:
 	- ``lal.io.treebank_collection_processor``.
 
-};
 """

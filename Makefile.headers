@@ -30,7 +30,8 @@ ifeq ($(USER_ENVIRONMENT),development)
 
 # ENUMERATIONS
 
-TREEBANK_ERR_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_error_type.hpp
+HEAD_VECTOR_ERROR_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/io/head_vector_error_type.hpp
+TREEBANK_FILE_ERROR_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_file_error_type.hpp
 
 TREEBANK_FEATURE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_feature.hpp
 
@@ -94,11 +95,16 @@ IO_DPHDRS			= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/io/basic_output.hpp \
 					  $(LAL_INC_DIR)/lal/io/check_correctness.hpp \
 					  $(LAL_INC_DIR)/lal/io/edge_list.hpp \
-					  $(LAL_INC_DIR)/lal/io/process_treebank_base.hpp \
-					  $(LAL_INC_DIR)/lal/io/report_correctness.hpp \
+					  $(LAL_INC_DIR)/lal/io/head_vector_error_type.hpp \
+					  $(LAL_INC_DIR)/lal/io/head_vector_error.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_collection_processor.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_collection_reader.hpp \
-					  $(LAL_INC_DIR)/lal/io/treebank_error_type.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_collection_report.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_feature.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_file_error_type.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_file_error.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_file_report.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_processor_base.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_processor.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_reader.hpp \
 					  $(LAL_INC_DIR)/lal/io.hpp
@@ -162,7 +168,7 @@ VERSION_DPHDRS		= $(LAL_INC_DIR)/lal/lal_version.hpp
 
 else ifeq ($(USER_ENVIRONMENT),distribution)
 
-TREEBANK_ERR_DPHDRS		=
+TREEBANK_FILE_ERROR_TYPE_DPHDRS		=
 TREEBANK_FEATURE_DPHDRS	=
 SYN_DEP_TREE_DPHDRS		=
 ALG_C_DPHDRS			=
