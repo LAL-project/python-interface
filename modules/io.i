@@ -232,9 +232,7 @@ namespace io {
 %extend head_vector_error {
 
 	std::string __repr__() const noexcept {
-		std::ostringstream out;
-		out << $self->get_error_message();
-		return out.str();
+		return $self->get_error_message();
 	}
 
 }
@@ -264,9 +262,7 @@ namespace io {
 %extend treebank_file_error {
 
 	std::string __repr__() const noexcept {
-		std::ostringstream out;
-		out << $self->get_error_message();
-		return out.str();
+		return $self->get_error_message();
 	}
 
 }
@@ -297,8 +293,109 @@ namespace io {
 
 %include "lal/io/treebank_file_report.hpp"
 
+namespace lal {
+namespace io {
+
+%extend treebank_file_report {
+	
+	std::string __repr__() const noexcept {
+		if ($self->get_treebank_error().is_error()) {
+			return $self->get_treebank_error().get_error_message();
+		}
+		
+		std::ostringstream out;
+		for (const auto& [line_number, hv_error] : $self->get_head_vector_errors()) {
+			out << "At line: " << line_number << " -- " << hv_error.get_error_message() << '\n';
+		}
+		return out.str();
+	}
+	
+}
+
+} // -- namespace io
+} // -- namespace lal
+
+%include "lal/io/treebank_collection_report_location.hpp"
+
+namespace lal {
+namespace io {
+
+%extend treebank_collection_report_location {
+	
+	std::string __repr__() const noexcept {
+		if ($self->report.get_num_errors() == 0) { return ""; }
+		
+		std::ostringstream out;
+		
+		out << "At line "
+			<< $self->line_number
+			<< " of the main file, within treebank "
+			<< $self->treebank_file_name
+			<< " (of id: '"
+			<< $self->treebank_id
+			<< "') we found the following errors:\n";
+		
+		const auto& report = $self->report;
+		if (report.get_treebank_error().is_error()) {
+			out << "    " << report.get_treebank_error().get_error_message() << '\n';
+		}
+		else {
+			for (const auto& [line_number, hv_error] : report.get_head_vector_errors()) {
+				out << "    At line: " << line_number << " -- " << hv_error.get_error_message() << '\n';
+			}
+		}
+		
+		return out.str();
+	}
+	
+}
+
+} // -- namespace io
+} // -- namespace lal
+
+%template(_list__treebank_collection_report_location) std::vector<lal::io::treebank_collection_report_location>;
+
 %include "lal/io/treebank_collection_report.hpp"
-%template(_list__report_location) std::vector<lal::io::report_location>;
+
+namespace lal {
+namespace io {
+
+%extend treebank_collection_report {
+	
+	std::string __repr__() const noexcept {
+		if ($self->get_treebank_error().is_error()) {
+			return $self->get_treebank_error().get_error_message();
+		}
+		
+		std::ostringstream out;
+		for (const auto& location : $self->get_treebank_reports()) {
+		
+			out << "*** At line "
+				<< location.line_number
+				<< " of the main file, within treebank "
+				<< location.treebank_file_name
+				<< " (of id: '"
+				<< location.treebank_id
+				<< "') we found the following errors:\n";
+			
+			const auto& report = location.report;
+			if (report.get_treebank_error().is_error()) {
+				out << "    " << report.get_treebank_error().get_error_message() << '\n';
+			}
+			else {
+				for (const auto& [line_number, hv_error] : report.get_head_vector_errors()) {
+					out << "    At line: " << line_number << " -- " << hv_error.get_error_message() << '\n';
+				}
+			}
+		}
+		
+		return out.str();
+	}
+	
+}
+
+} // -- namespace io
+} // -- namespace lal
 
 %include "lal/io/check_correctness.hpp"
 
