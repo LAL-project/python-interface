@@ -100,7 +100,19 @@ if [ "$line" != "r\"\"\"" ]; then
 	elif [[ "$f" == *"treebank_feature"* ]]; then
 		prepend modules_pydocs/treebank_feature.py $f
 	
-	elif [[ "$f" == *"treebank_error_type"* ]]; then
-		prepend modules_pydocs/treebank_error_type.py $f
+	elif [[ "$f" == *"treebank_file_error_type"* ]]; then
+		prepend modules_pydocs/treebank_file_error_type.py $f
+	
+	elif [[ "$f" == *"head_vector_error_type"* ]]; then
+		prepend modules_pydocs/head_vector_error_type.py $f
+	
+	elif [[ "$f" == *"syntactic_dependency_tree"* ]]; then
+		prepend modules_pydocs/syntactic_dependency_tree.py $f
+	
+	elif [[ "$f" == *"types"* ]]; then
+		prepend modules_pydocs/types.py $f
+	
+	else
+		echo -e "\e[1;1;31m! Unhandled file '$f'\e[0m"
 	fi
 fi
