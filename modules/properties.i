@@ -105,6 +105,8 @@ namespace properties {
 	
 	%ignore connected_components::operator[];
 	%ignore connected_components::add_graph;
+	%ignore connected_components::begin;
+	%ignore connected_components::end;
 	
 } // -- namespace properties
 } // -- namespace lal
@@ -116,7 +118,7 @@ namespace properties {
 
 	%template(connected_components_directed_graph) connected_components<graphs::directed_graph>;
 	%template(connected_components_undirected_graph) connected_components<graphs::undirected_graph>;
-
+	
 	%extend connected_components<graphs::undirected_graph> {
 		const graphs::undirected_graph& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];

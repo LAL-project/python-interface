@@ -103,8 +103,13 @@ namespace linarr {
 
 namespace lal {
 namespace linarr {
-
+	
+	%ignore chunk::begin;
+	%ignore chunk::end;
+	
 	%ignore chunk_sequence::operator[];
+	%ignore chunk_sequence::begin;
+	%ignore chunk_sequence::end;
 
 } // -- namespace linarr
 } // -- namespace lal
