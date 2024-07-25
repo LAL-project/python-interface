@@ -58,9 +58,9 @@
 #include <lal/properties.hpp>
 %}
 
-%template(pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
-%template(pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
-%template(pair_value_list_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
+%template(_pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
+%template(_pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
+%template(_pair_value_list_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
 
 %include "lal/linarr/aggregations/1level.hpp"
 %include "lal/linarr/aggregations/2level.hpp"
@@ -86,7 +86,7 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
-%template(list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
+%template(_list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
 %include "lal/linarr/dependency_flux.hpp"
 %include "lal/linarr/dependency_flux_compute.hpp"
@@ -94,7 +94,7 @@ namespace linarr {
 // -------------------------
 // syntactic dependency tree
 
-%template(array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
+%template(_array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
 
 %include "lal/linarr/syntactic_dependency_tree/classify.hpp"
 
@@ -110,13 +110,15 @@ namespace linarr {
 } // -- namespace lal
 
 %include "lal/linarr/chunking/chunk.hpp"
-%include "lal/linarr/chunking/chunking.hpp"
+%template (_list_chunks) std::vector<lal::linarr::chunk>;
+
+%include "lal/linarr/chunking/chunk_sequence.hpp"
 
 namespace lal {
 namespace linarr {
-
+	
 	%extend chunk {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
@@ -124,7 +126,7 @@ namespace linarr {
 	}
 	
 	%extend chunk_sequence {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
@@ -134,9 +136,11 @@ namespace linarr {
 			return (*($self))[i];
 		}
 	}
-
+	
 } // -- namespace linarr
 } // -- namespace lal
+
+%include "lal/linarr/chunking/chunking.hpp"
 
 namespace lal {
 namespace linarr {
