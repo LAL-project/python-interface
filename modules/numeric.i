@@ -28,9 +28,10 @@
 
 %module numeric
 
-%include documentation.i
+%include stdint.i
+%include std_string.i
 
-%import types.i
+%include documentation.i
 
 %{
 // C++ includes
@@ -153,8 +154,6 @@ namespace numeric {
 } // -- namespace lal
 
 %pythoncode %{
-__types = types
-del types
 
 def __radd__(self, k):
 	return self + k
