@@ -59,9 +59,9 @@
 #include <lal/linarr.hpp>
 %}
 
-%template (_pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
-%template (_pair_vector_value) std::pair<std::vector<uint64_t>, uint64_t>;
-%template (_pair_value_vector_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
+%template (_pair_uint64_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
+%template (_pair_vector_uint64_uint64) std::pair<std::vector<uint64_t>, uint64_t>;
+%template (_pair_uint64_vector_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
 
 %include "lal/linarr/aggregations/1level.hpp"
 %include "lal/linarr/aggregations/2level.hpp"
