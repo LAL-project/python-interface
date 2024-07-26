@@ -42,7 +42,7 @@
 #include <lal/properties.hpp>
 %}
 
-%template(list_vertex_list) std::vector<std::vector<lal::node> >;
+%template (_vector_vector_node) std::vector<std::vector<lal::node> >;
 
 %include "lal/properties/C_rla.hpp"
 %include "lal/properties/D_rla.hpp"
@@ -91,9 +91,10 @@ namespace properties {
 namespace lal {
 namespace properties {
 
-	// Instantiate the (only) templated function of 'branchless_path'
-	%template(__is_antenna_free_tree) branchless_path::is_antenna<graphs::free_tree>;
-	%template(__is_antenna_rooted_tree) branchless_path::is_antenna<graphs::rooted_tree>;
+	// Instantiate the (only) templated function of 'branchless_path'.
+	// This function is added to the classes at the end of the file.
+	%template (__is_antenna_free_tree) branchless_path::is_antenna<graphs::free_tree>;
+	%template (__is_antenna_rooted_tree) branchless_path::is_antenna<graphs::rooted_tree>;
 
 } // -- namespace properties
 } // -- namespace lal
@@ -116,8 +117,8 @@ namespace properties {
 namespace lal {
 namespace properties {
 
-	%template(connected_components_directed_graph) connected_components<graphs::directed_graph>;
-	%template(connected_components_undirected_graph) connected_components<graphs::undirected_graph>;
+	%template (connected_components_directed_graph) connected_components<graphs::directed_graph>;
+	%template (connected_components_undirected_graph) connected_components<graphs::undirected_graph>;
 	
 	%extend connected_components<graphs::undirected_graph> {
 		const graphs::undirected_graph& __getitem__(unsigned int i) const noexcept {

@@ -74,22 +74,22 @@ namespace numeric {
 namespace lal {
 namespace numeric {
 
-	%template(integer) integer::integer<int64_t,std::enable_if_t<true, bool> = true>;
-	%template(set_number) integer::set_number<int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__eq__) integer::operator== <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__neq__) integer::operator!= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__lt__) integer::operator< <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__le__) integer::operator<= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__gt__) integer::operator> <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__ge__) integer::operator>= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__add__) integer::operator+ <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__sub__) integer::operator- <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__mul__) integer::operator* <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__truediv__) integer::operator/ <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__iadd__) integer::operator+= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__isub__) integer::operator-= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__imul__) integer::operator*= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__itruediv__) integer::operator/= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (integer) integer::integer<int64_t,std::enable_if_t<true, bool> = true>;
+	%template (set_number) integer::set_number<int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__eq__) integer::operator== <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__neq__) integer::operator!= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__lt__) integer::operator< <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__le__) integer::operator<= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__gt__) integer::operator> <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__ge__) integer::operator>= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__add__) integer::operator+ <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__sub__) integer::operator- <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__mul__) integer::operator* <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__truediv__) integer::operator/ <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__iadd__) integer::operator+= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__isub__) integer::operator-= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__imul__) integer::operator*= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__itruediv__) integer::operator/= <int64_t,std::enable_if_t<true, bool> = true>;
 	
 } // -- namespace numeric
 } // -- namespace lal
@@ -111,22 +111,22 @@ namespace numeric {
 namespace lal {
 namespace numeric {
 
-	%template(rational) rational::rational<int64_t,std::enable_if_t<true, bool> = true>;
-	%template(set_number) rational::set_number<int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__eq__) rational::operator== <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__neq__) rational::operator!= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__lt__) rational::operator< <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__le__) rational::operator<= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__gt__) rational::operator> <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__ge__) rational::operator>= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__add__) rational::operator+ <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__sub__) rational::operator- <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__mul__) rational::operator* <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__truediv__) rational::operator/ <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__iadd__) rational::operator+= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__isub__) rational::operator-= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__imul__) rational::operator*= <int64_t,std::enable_if_t<true, bool> = true>;
-	%template(__itruediv__) rational::operator/= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (rational) rational::rational<int64_t,std::enable_if_t<true, bool> = true>;
+	%template (set_number) rational::set_number<int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__eq__) rational::operator== <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__neq__) rational::operator!= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__lt__) rational::operator< <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__le__) rational::operator<= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__gt__) rational::operator> <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__ge__) rational::operator>= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__add__) rational::operator+ <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__sub__) rational::operator- <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__mul__) rational::operator* <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__truediv__) rational::operator/ <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__iadd__) rational::operator+= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__isub__) rational::operator-= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__imul__) rational::operator*= <int64_t,std::enable_if_t<true, bool> = true>;
+	%template (__itruediv__) rational::operator/= <int64_t,std::enable_if_t<true, bool> = true>;
 
 } // -- namespace numeric
 } // -- namespace lal

@@ -131,8 +131,8 @@ namespace generate {
 // This is a base class of all tree generators. It must be put before
 // all other classes.
 %include "lal/generate/tree_generator.hpp"
-%template(free_tree_gen) lal::generate::_tree_generator<lal::graphs::free_tree>;
-%template(rooted_tree_gen) lal::generate::_tree_generator<lal::graphs::rooted_tree>;
+%template (free_tree_gen) lal::generate::_tree_generator<lal::graphs::free_tree>;
+%template (rooted_tree_gen) lal::generate::_tree_generator<lal::graphs::rooted_tree>;
 
 %include "lal/generate/all_lab_free_trees.hpp"
 %include "lal/generate/all_lab_rooted_trees.hpp"
@@ -151,8 +151,8 @@ namespace generate {
 
 %include "lal/generate/all_bipartite_arrangements.hpp"
 // Instantiate the templated constructors of 'all_bipartite_arrangements'
-%template(all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::undirected_graph>;
-%template(all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::directed_graph>;
+%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::undirected_graph>;
+%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::directed_graph>;
 
 %include "lal/generate/all_planar_arrangements.hpp"
 %include "lal/generate/all_projective_arrangements.hpp"

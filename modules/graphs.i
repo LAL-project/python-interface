@@ -45,13 +45,13 @@
 %}
 
 // making lists of graphs...
-%template(_list_undirected_graph) std::vector<lal::graphs::undirected_graph>;
-%template(_list_directed_graph) std::vector<lal::graphs::directed_graph>;
-%template(_list_free_tree) std::vector<lal::graphs::free_tree>;
-%template(_list_rooted_tree) std::vector<lal::graphs::rooted_tree>;
+%template (_vector_undirected_graph) std::vector<lal::graphs::undirected_graph>;
+%template (_vector_directed_graph) std::vector<lal::graphs::directed_graph>;
+%template (_vector_free_tree) std::vector<lal::graphs::free_tree>;
+%template (_vector_rooted_tree) std::vector<lal::graphs::rooted_tree>;
 
 // making pairs of graphs and node...
-%template(_pair_free_tree_node) std::pair<lal::graphs::free_tree, lal::node>;
+%template (_pair_free_tree_node) std::pair<lal::graphs::free_tree, lal::node>;
 
 namespace lal {
 namespace graphs {

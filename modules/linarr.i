@@ -59,9 +59,9 @@
 #include <lal/properties.hpp>
 %}
 
-%template(_pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
-%template(_pair_list_value) std::pair<std::vector<uint64_t>, uint64_t>;
-%template(_pair_value_list_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
+%template (_pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
+%template (_pair_vector_value) std::pair<std::vector<uint64_t>, uint64_t>;
+%template (_pair_value_vector_arrangements) std::pair<uint64_t, std::vector<lal::linear_arrangement>>;
 
 %include "lal/linarr/aggregations/1level.hpp"
 %include "lal/linarr/aggregations/2level.hpp"
@@ -87,7 +87,7 @@ namespace linarr {
 } // -- namespace linarr
 } // -- namespace lal
 
-%template(_list_dependency_flux) std::vector<lal::linarr::dependency_flux>;
+%template (_vector_dependency_flux) std::vector<lal::linarr::dependency_flux>;
 
 %include "lal/linarr/dependency_flux.hpp"
 %include "lal/linarr/dependency_flux_compute.hpp"
@@ -95,7 +95,7 @@ namespace linarr {
 // -------------------------
 // syntactic dependency tree
 
-%template(_array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
+%template (_array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
 
 %include "lal/linarr/syntactic_dependency_tree/classify.hpp"
 
@@ -116,7 +116,7 @@ namespace linarr {
 } // -- namespace lal
 
 %include "lal/linarr/chunking/chunk.hpp"
-%template (_list_chunks) std::vector<lal::linarr::chunk>;
+%template (_vector_chunks) std::vector<lal::linarr::chunk>;
 
 %include "lal/linarr/chunking/chunk_sequence.hpp"
 
@@ -151,35 +151,35 @@ namespace linarr {
 namespace lal {
 namespace linarr {
 
-	%template(__MDD_1level_rational_undirected_graph)	mean_dependency_distance_1level_rational<graphs::undirected_graph>;
-	%template(__MDD_1level_rational_directed_graph)		mean_dependency_distance_1level_rational<graphs::directed_graph>;
-	%template(__MDD_1level_rational_free_tree)			mean_dependency_distance_1level_rational<graphs::free_tree>;
-	%template(__MDD_1level_rational_rooted_tree)		mean_dependency_distance_1level_rational<graphs::rooted_tree>;
+	%template (__MDD_1level_rational_undirected_graph)	mean_dependency_distance_1level_rational<graphs::undirected_graph>;
+	%template (__MDD_1level_rational_directed_graph)		mean_dependency_distance_1level_rational<graphs::directed_graph>;
+	%template (__MDD_1level_rational_free_tree)			mean_dependency_distance_1level_rational<graphs::free_tree>;
+	%template (__MDD_1level_rational_rooted_tree)		mean_dependency_distance_1level_rational<graphs::rooted_tree>;
 
-	%template(__MDD_1level_undirected_graph)			mean_dependency_distance_1level<graphs::undirected_graph>;
-	%template(__MDD_1level_directed_graph)				mean_dependency_distance_1level<graphs::directed_graph>;
-	%template(__MDD_1level_free_tree)					mean_dependency_distance_1level<graphs::free_tree>;
-	%template(__MDD_1level_rooted_tree)					mean_dependency_distance_1level<graphs::rooted_tree>;
+	%template (__MDD_1level_undirected_graph)			mean_dependency_distance_1level<graphs::undirected_graph>;
+	%template (__MDD_1level_directed_graph)				mean_dependency_distance_1level<graphs::directed_graph>;
+	%template (__MDD_1level_free_tree)					mean_dependency_distance_1level<graphs::free_tree>;
+	%template (__MDD_1level_rooted_tree)					mean_dependency_distance_1level<graphs::rooted_tree>;
 
-	%template(__MDD_2level_rational_undirected_graph)	mean_dependency_distance_2level_rational<graphs::undirected_graph>;
-	%template(__MDD_2level_rational_directed_graph)		mean_dependency_distance_2level_rational<graphs::directed_graph>;
-	%template(__MDD_2level_rational_free_tree)			mean_dependency_distance_2level_rational<graphs::free_tree>;
-	%template(__MDD_2level_rational_rooted_tree)		mean_dependency_distance_2level_rational<graphs::rooted_tree>;
+	%template (__MDD_2level_rational_undirected_graph)	mean_dependency_distance_2level_rational<graphs::undirected_graph>;
+	%template (__MDD_2level_rational_directed_graph)		mean_dependency_distance_2level_rational<graphs::directed_graph>;
+	%template (__MDD_2level_rational_free_tree)			mean_dependency_distance_2level_rational<graphs::free_tree>;
+	%template (__MDD_2level_rational_rooted_tree)		mean_dependency_distance_2level_rational<graphs::rooted_tree>;
 
-	%template(__MDD_2level_undirected_graph)			mean_dependency_distance_2level<graphs::undirected_graph>;
-	%template(__MDD_2level_directed_graph)				mean_dependency_distance_2level<graphs::directed_graph>;
-	%template(__MDD_2level_free_tree)					mean_dependency_distance_2level<graphs::free_tree>;
-	%template(__MDD_2level_rooted_tree)					mean_dependency_distance_2level<graphs::rooted_tree>;
+	%template (__MDD_2level_undirected_graph)			mean_dependency_distance_2level<graphs::undirected_graph>;
+	%template (__MDD_2level_directed_graph)				mean_dependency_distance_2level<graphs::directed_graph>;
+	%template (__MDD_2level_free_tree)					mean_dependency_distance_2level<graphs::free_tree>;
+	%template (__MDD_2level_rooted_tree)					mean_dependency_distance_2level<graphs::rooted_tree>;
 
-	%template(__is_arrangement_undirected_graph)		is_arrangement<graphs::undirected_graph>;
-	%template(__is_arrangement_directed_graph)			is_arrangement<graphs::directed_graph>;
-	%template(__is_arrangement_free_tree)				is_arrangement<graphs::free_tree>;
-	%template(__is_arrangement_rooted_tree)				is_arrangement<graphs::rooted_tree>;
+	%template (__is_arrangement_undirected_graph)		is_arrangement<graphs::undirected_graph>;
+	%template (__is_arrangement_directed_graph)			is_arrangement<graphs::directed_graph>;
+	%template (__is_arrangement_free_tree)				is_arrangement<graphs::free_tree>;
+	%template (__is_arrangement_rooted_tree)				is_arrangement<graphs::rooted_tree>;
 
-	%template(__is_planar_undirected_graph)				is_planar<graphs::undirected_graph>;
-	%template(__is_planar_directed_graph)				is_planar<graphs::directed_graph>;
-	%template(__is_planar_free_tree)					is_planar<graphs::free_tree>;
-	%template(__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
+	%template (__is_planar_undirected_graph)				is_planar<graphs::undirected_graph>;
+	%template (__is_planar_directed_graph)				is_planar<graphs::directed_graph>;
+	%template (__is_planar_free_tree)					is_planar<graphs::free_tree>;
+	%template (__is_planar_rooted_tree)					is_planar<graphs::rooted_tree>;
 
 } // -- namespace linarr
 } // -- namespace lal

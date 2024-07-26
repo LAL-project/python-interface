@@ -49,10 +49,10 @@
 // renaming of C++ templates
 // (C++ types)
 
-%template(_list_uint32) std::vector<uint32_t>;
-%template(_list_uint64) std::vector<uint64_t>;
-%template(_list_bool) std::vector<bool>;
-%template(_list_string) std::vector<std::string>;
+%template (_vector_uint32) std::vector<uint32_t>;
+%template (_vector_uint64) std::vector<uint64_t>;
+%template (_vector_bool) std::vector<bool>;
+%template (_vector_string) std::vector<std::string>;
 
 // ----------------
 // ignore operators
@@ -86,16 +86,16 @@ namespace lal {
 // renaming of C++ templates
 // (lal types)
 
-%template(_edge) std::pair<lal::node, lal::node>;
-%template(_edge_pair) std::pair<lal::edge, lal::edge>;
+%template (_edge) std::pair<lal::node, lal::node>;
+%template (_edge_pair) std::pair<lal::edge, lal::edge>;
 
-%template(_list_edge) std::vector<lal::edge>;
-%template(_list_edge_pair) std::vector<lal::edge_pair>;
+%template (_vector_edge) std::vector<lal::edge>;
+%template (_vector_edge_pair) std::vector<lal::edge_pair>;
 
 namespace lal {
 
-%template(node_t) node_t::node_t<uint64_t, std::enable_if_t<true, bool> = true>;
-%template(position_t) position_t::position_t<uint64_t, std::enable_if_t<true, bool> = true>;
+%template (node_t) node_t::node_t<uint64_t, std::enable_if_t<true, bool> = true>;
+%template (position_t) position_t::position_t<uint64_t, std::enable_if_t<true, bool> = true>;
 
 } // -- namespace lal
 
@@ -103,10 +103,10 @@ namespace lal {
 
 namespace lal {
 
-%template(assign) linear_arrangement::assign<node, position, std::enable_if_t<true, bool> = true>;
+%template (assign) linear_arrangement::assign<node, position, std::enable_if_t<true, bool> = true>;
 
-%template(_swap_nodes) linear_arrangement::swap<node_t, std::enable_if_t<true, bool> = true>;
-%template(_swap_positions) linear_arrangement::swap<position_t, std::enable_if_t<true, bool> = true>;
+%template (_swap_nodes) linear_arrangement::swap<node_t, std::enable_if_t<true, bool> = true>;
+%template (_swap_positions) linear_arrangement::swap<position_t, std::enable_if_t<true, bool> = true>;
 
 } // -- namespace lal
 

@@ -50,21 +50,21 @@
 #include <lal/graphs.hpp>
 #include <lal/io.hpp>
 
-template<class T>
+template <class T>
 struct _optional {
 	std::optional<T> m_opt;
 	inline bool has_contents() const noexcept { return (m_opt ? true : false); }
 	inline T contents() const noexcept { return *m_opt; }
 };
 
-template<class T> _optional<T> read_edge_list
+template <class T> _optional<T> read_edge_list
 (const std::string& filename, bool norm = true, bool check = true) {
 	_optional<T> r;
 	r.m_opt = lal::io::read_edge_list<T>(filename, norm, check);
 	return r;
 }
 
-template<class T> _optional<T> read_head_vector
+template <class T> _optional<T> read_head_vector
 (const std::string& filename, bool norm = true, bool check = true) {
 	_optional<T> r;
 	r.m_opt = lal::io::read_head_vector<T>(filename, norm, check);
@@ -75,7 +75,7 @@ template<class T> _optional<T> read_head_vector
 
 /* ---------- WRAP _optional ------------- */
 
-template<class T>
+template <class T>
 struct _optional {
 	std::optional<T> m_opt;
 	bool has_contents() const noexcept { return (m_opt ? true : false); }
@@ -84,22 +84,22 @@ struct _optional {
 
 // ---------- INSTANTIATE _optional
 
-%template(_optional_directed_graph) _optional<lal::graphs::directed_graph>;
-%template(_optional_undirected_graph) _optional<lal::graphs::undirected_graph>;
-%template(_optional_free_tree) _optional<lal::graphs::free_tree>;
-%template(_optional_rooted_tree) _optional<lal::graphs::rooted_tree>;
+%template (_optional_directed_graph) _optional<lal::graphs::directed_graph>;
+%template (_optional_undirected_graph) _optional<lal::graphs::undirected_graph>;
+%template (_optional_free_tree) _optional<lal::graphs::free_tree>;
+%template (_optional_rooted_tree) _optional<lal::graphs::rooted_tree>;
 
 /* ---------- WRAP read_edge_list ------------- */
 
-template<class T> _optional<T> read_edge_list
+template <class T> _optional<T> read_edge_list
 (const std::string& filename, bool norm = true, bool check = true);
 
 // ---------- INSTANTIATE read_edge_list
 
-%template(read_edge_list_directed_graph) read_edge_list<lal::graphs::directed_graph>;
-%template(read_edge_list_undirected_graph) read_edge_list<lal::graphs::undirected_graph>;
-%template(read_edge_list_free_tree) read_edge_list<lal::graphs::free_tree>;
-%template(read_edge_list_rooted_tree) read_edge_list<lal::graphs::rooted_tree>;
+%template (read_edge_list_directed_graph) read_edge_list<lal::graphs::directed_graph>;
+%template (read_edge_list_undirected_graph) read_edge_list<lal::graphs::undirected_graph>;
+%template (read_edge_list_free_tree) read_edge_list<lal::graphs::free_tree>;
+%template (read_edge_list_rooted_tree) read_edge_list<lal::graphs::rooted_tree>;
 
 /* ---------- CALL read_edge_list ------------- */
 
@@ -148,13 +148,13 @@ def read_edge_list(gtype, filename, norm = True, check = True):
 
 /* ---------- WRAP read_head_vector ------------- */
 
-template<class T> _optional<T> read_head_vector
+template <class T> _optional<T> read_head_vector
 (const std::string& filename, bool norm = true, bool check = true);
 
 // ---------- INSTANTIATE read_head_vector
 
-%template(read_head_vector_free_tree) read_head_vector<lal::graphs::free_tree>;
-%template(read_head_vector_rooted_tree) read_head_vector<lal::graphs::rooted_tree>;
+%template (read_head_vector_free_tree) read_head_vector<lal::graphs::free_tree>;
+%template (read_head_vector_rooted_tree) read_head_vector<lal::graphs::rooted_tree>;
 
 /* ---------- CALL read_edge_list ------------- */
 
@@ -240,9 +240,9 @@ namespace io {
 } // -- namespace io
 } // -- namespace lal
 
-%template(_list__head_vector_error) std::vector<lal::io::head_vector_error>;
-%template(_pair__uint64__head_vector_error) std::pair<uint64_t,lal::io::head_vector_error>;
-%template(_list__uint64__head_vector_error) std::vector<std::pair<uint64_t,lal::io::head_vector_error>>;
+%template (_vector__head_vector_error) std::vector<lal::io::head_vector_error>;
+%template (_pair__uint64__head_vector_error) std::pair<uint64_t,lal::io::head_vector_error>;
+%template (_vector__uint64__head_vector_error) std::vector<std::pair<uint64_t,lal::io::head_vector_error>>;
 
 namespace lal {
 namespace io {
@@ -353,7 +353,7 @@ namespace io {
 } // -- namespace io
 } // -- namespace lal
 
-%template(_list__treebank_collection_report_location) std::vector<lal::io::treebank_collection_report_location>;
+%template (_vector__treebank_collection_report_location) std::vector<lal::io::treebank_collection_report_location>;
 
 %include "lal/io/treebank_collection_report.hpp"
 
