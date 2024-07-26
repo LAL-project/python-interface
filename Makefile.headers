@@ -160,7 +160,9 @@ PROPERTIES_DPHDRS	= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/properties/tree_centroid.hpp \
 					  $(LAL_INC_DIR)/lal/properties/tree_diameter.hpp \
 					  $(LAL_INC_DIR)/lal/properties/vertex_orbits.hpp \
-					  $(LAL_INC_DIR)/lal/properties.hpp
+					  $(LAL_INC_DIR)/lal/properties.hpp \
+					  auxiliary_classes/generic_iterator.hpp \
+					  auxiliary_classes/properties/connected_components_iterator.hpp
 
 UTILS_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/utilities/tree_isomorphism.hpp \

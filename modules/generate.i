@@ -35,9 +35,13 @@
 %import properties.i
 
 %{
+// lal includes
 #include <lal/graphs.hpp>
 #include <lal/properties.hpp>
 #include <lal/generate.hpp>
+
+// custom includes
+#include "auxiliary_classes/generic_iterator.hpp"
 %}
 
 %include stdint.i

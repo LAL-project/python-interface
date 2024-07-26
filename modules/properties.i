@@ -38,9 +38,26 @@
 %import numeric.i
 
 %{
+// lal includes
 #include <lal/graphs.hpp>
 #include <lal/properties.hpp>
+
+// custom includes
+#include "auxiliary_classes/generic_iterator.hpp"
+#include "auxiliary_classes/properties/connected_components_iterator.hpp"
 %}
+
+%include "auxiliary_classes/generic_iterator.hpp"
+
+%exception {
+	try {
+		$action
+	}
+	catch (StopIteration) {
+		PyErr_SetString(PyExc_StopIteration, "End of iterator");
+		return nullptr;
+	}
+}
 
 %template (_vector_vector_node) std::vector<std::vector<lal::node> >;
 
@@ -114,21 +131,48 @@ namespace properties {
 
 %include "lal/properties/connected_components.hpp"
 
+%template (connected_components_directed_graph) 
+	lal::properties::connected_components<lal::graphs::directed_graph>;
+%template (connected_components_undirected_graph)
+	lal::properties::connected_components<lal::graphs::undirected_graph>;
+
+%template (_connected_components_dg_iterator) 
+	generic_iterator<
+		lal::properties::connected_components<lal::graphs::directed_graph>,
+		lal::graphs::directed_graph
+	>;
+%template (_connected_components_ug_iterator) 
+	generic_iterator<
+		lal::properties::connected_components<lal::graphs::undirected_graph>,
+		lal::graphs::undirected_graph
+	>;
+%include "auxiliary_classes/properties/connected_components_iterator.hpp"
+
+%template (connected_components_dg_iterator)
+	connected_components_iterator<lal::graphs::directed_graph>;
+%template (connected_components_ug_iterator)
+	connected_components_iterator<lal::graphs::undirected_graph>;
+
 namespace lal {
 namespace properties {
-
-	%template (connected_components_directed_graph) connected_components<graphs::directed_graph>;
-	%template (connected_components_undirected_graph) connected_components<graphs::undirected_graph>;
 	
 	%extend connected_components<graphs::undirected_graph> {
 		const graphs::undirected_graph& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];
+		}
+		
+		connected_components_ug_iterator __iter__() noexcept {
+			return connected_components_ug_iterator($self->begin(), $self->end());
 		}
 	}
 	
 	%extend connected_components<graphs::directed_graph> {
 		const graphs::directed_graph& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];
+		}
+		
+		connected_components_dg_iterator __iter__() noexcept {
+			return connected_components_dg_iterator($self->begin(), $self->end());
 		}
 	}
 
