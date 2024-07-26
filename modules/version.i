@@ -31,6 +31,7 @@
 %include documentation.i
 
 %{
+// lal includes
 #include <lal/lal_version.hpp>
 %}
 

@@ -33,6 +33,7 @@
 %import graphs.i
 
 %{
+// lal includes
 #include <lal/graphs.hpp>
 #include <lal/utilities.hpp>
 %}
