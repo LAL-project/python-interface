@@ -26,16 +26,16 @@
  *
  *************************************************************************/
 
-%module treebank_feature
+%module syntactic_dependency_tree_type
 
 %{
-#include <lal/io/treebank_feature.hpp>
+#include <lal/linarr/syntactic_dependency_tree/type.hpp>
 %}
-%include "lal/io/treebank_feature.hpp"
+%include "lal/linarr/syntactic_dependency_tree/type.hpp"
 
 %pythoncode %{
-__mod_name = "treebank_feature"
-__to_replace = "treebank_feature_"
+__mod_name = "syntactic_dependency_tree_type"
+__to_replace = "syntactic_dependency_tree_type_"
 %}
 
 %include rename_enum_contents.i

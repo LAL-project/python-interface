@@ -31,11 +31,11 @@
 %include std_vector.i
 %include std_pair.i
 
+%include documentation.i
+
 %import types.i
 %import graphs.i
 %import numeric.i
-
-%include documentation.i
 
 %{
 #include <lal/graphs.hpp>

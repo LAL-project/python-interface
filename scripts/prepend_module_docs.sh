@@ -97,8 +97,8 @@ if [ "$line" != "r\"\"\"" ]; then
 	elif [[ "$f" == *"tree_type"* ]]; then
 		prepend modules_pydocs/tree_type.py $f
 	
-	elif [[ "$f" == *"treebank_feature"* ]]; then
-		prepend modules_pydocs/treebank_feature.py $f
+	elif [[ "$f" == *"treebank_feature_type"* ]]; then
+		prepend modules_pydocs/treebank_feature_type.py $f
 	
 	elif [[ "$f" == *"treebank_file_error_type"* ]]; then
 		prepend modules_pydocs/treebank_file_error_type.py $f
@@ -106,8 +106,8 @@ if [ "$line" != "r\"\"\"" ]; then
 	elif [[ "$f" == *"head_vector_error_type"* ]]; then
 		prepend modules_pydocs/head_vector_error_type.py $f
 	
-	elif [[ "$f" == *"syntactic_dependency_tree"* ]]; then
-		prepend modules_pydocs/syntactic_dependency_tree.py $f
+	elif [[ "$f" == *"syntactic_dependency_tree_type"* ]]; then
+		prepend modules_pydocs/syntactic_dependency_tree_type.py $f
 	
 	elif [[ "$f" == *"types"* ]]; then
 		prepend modules_pydocs/types.py $f

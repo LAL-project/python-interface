@@ -28,10 +28,10 @@
 
 %module iterators
 
+%include documentation.i
+
 %import types.i
 %import graphs.i
-
-%include documentation.i
 
 %{
 #include <lal/graphs.hpp>

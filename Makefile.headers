@@ -33,9 +33,9 @@ ifeq ($(USER_ENVIRONMENT),development)
 HEAD_VECTOR_ERROR_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/io/head_vector_error_type.hpp
 TREEBANK_FILE_ERROR_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_file_error_type.hpp
 
-TREEBANK_FEATURE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_feature.hpp
+TREEBANK_FEATURE_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/io/treebank_feature_type.hpp
 
-SYN_DEP_TREE_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/type.hpp
+SYN_DEP_TREE_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/type.hpp
 
 TREE_TYPE_DPHDRS	= $(LAL_INC_DIR)/lal/graphs/tree_type.hpp
 
@@ -100,7 +100,7 @@ IO_DPHDRS			= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/io/treebank_collection_processor.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_collection_reader.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_collection_report.hpp \
-					  $(LAL_INC_DIR)/lal/io/treebank_feature.hpp \
+					  $(LAL_INC_DIR)/lal/io/treebank_feature_type.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_file_error_type.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_file_error.hpp \
 					  $(LAL_INC_DIR)/lal/io/treebank_file_report.hpp \
@@ -131,7 +131,7 @@ LINARR_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/D/D.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/D/DMax.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/D/Dmin.hpp \
-					  $(SYN_DEP_TREE_DPHDRS) \
+					  $(SYN_DEP_TREE_TYPE_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/syntactic_dependency_tree/classify.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/dependency_flux_compute.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/dependency_flux.hpp \
@@ -170,8 +170,8 @@ VERSION_DPHDRS		= $(LAL_INC_DIR)/lal/lal_version.hpp
 else ifeq ($(USER_ENVIRONMENT),distribution)
 
 TREEBANK_FILE_ERROR_TYPE_DPHDRS		=
-TREEBANK_FEATURE_DPHDRS	=
-SYN_DEP_TREE_DPHDRS		=
+TREEBANK_FEATURE_TYPE_DPHDRS		=
+SYN_DEP_TREE_TYPE_DPHDRS			=
 ALG_C_DPHDRS			=
 ALG_DMIN_DPHDRS			=
 TREE_TYPE_DPHDRS		=

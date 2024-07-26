@@ -31,13 +31,13 @@
 %include std_string.i
 %include std_vector.i
 
+%include documentation.i
+
 %import types.i
 %import graphs.i
 %import enums/head_vector_error_type.i
 %import enums/treebank_file_error_type.i
-%import enums/treebank_feature.i
-
-%include documentation.i
+%import enums/treebank_feature_type.i
 
 %{
 

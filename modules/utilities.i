@@ -28,10 +28,9 @@
 
 %module utilities
 
-%import types.i
-%import graphs.i
-
 %include documentation.i
+
+%import graphs.i
 
 %{
 #include <lal/graphs.hpp>

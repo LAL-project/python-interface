@@ -28,6 +28,11 @@
 
 %module types
 
+%include stdint.i
+%include std_vector.i
+%include std_string.i
+%include std_pair.i
+
 %include documentation.i
 
 %{
@@ -39,14 +44,6 @@
 #include <lal/basic_types.hpp>
 #include <lal/linear_arrangement.hpp>
 %}
-
-// --------------
-// C++ interfaces
-
-%include stdint.i
-%include std_vector.i
-%include std_string.i
-%include std_pair.i
 
 // -------------------------
 // renaming of C++ templates

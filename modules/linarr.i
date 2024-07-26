@@ -32,21 +32,22 @@
 %include std_array.i
 %include std_pair.i
 
+%include documentation.i
+
 %implicitconv lal::linear_arrangement;
 
-%import types.i // this is necessary for the wrapper
-%import enums/syntactic_dependency_tree.i
+%import types.i
+%import enums/syntactic_dependency_tree_type.i
 %import enums/algorithms_C.i
 %import enums/algorithms_chunking.i
 %import enums/algorithms_Dmin.i
 %import enums/algorithms_Dmin_planar.i
 %import enums/algorithms_Dmin_projective.i
+
 // these are necessary for the wrapper
 %import graphs.i
 %import numeric.i
 %import properties.i
-
-%include documentation.i
 
 %{
 // C++ includes

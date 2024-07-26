@@ -28,9 +28,9 @@
 
 %module numeric
 
-%import types.i
-
 %include documentation.i
+
+%import types.i
 
 %{
 // C++ includes
