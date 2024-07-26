@@ -122,6 +122,7 @@ LINARR_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/C/C.hpp \
 					  $(ALG_CHUNKING_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/chunking/chunk.hpp \
+					  $(LAL_INC_DIR)/lal/linarr/chunking/chunk_sequence.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/chunking/chunking.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/chunking/output.hpp \
 					  $(ALG_DMIN_DPHDRS) \
