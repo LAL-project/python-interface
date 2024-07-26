@@ -32,6 +32,7 @@
 %include std_pair.i
 
 %include documentation.i
+
 %import types.i
 %import enums/tree_type.i
 
@@ -42,7 +43,6 @@
 // lal includes
 #include <lal/graphs.hpp>
 %}
-
 
 // making lists of graphs...
 %template(_list_undirected_graph) std::vector<lal::graphs::undirected_graph>;
@@ -109,45 +109,45 @@ namespace lal {
 namespace graphs {
 
 	%extend undirected_graph {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
 		}
-		undirected_graph clone() const {
+		undirected_graph clone() const noexcept {
 			return *$self;
 		}
 	}
 
 	%extend directed_graph {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
 		}
-		directed_graph clone() const {
+		directed_graph clone() const noexcept {
 			return *$self;
 		}
 	}
 
 	%extend rooted_tree {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
 		}
-		rooted_tree clone() const {
+		rooted_tree clone() const noexcept {
 			return *$self;
 		}
 	}
 
 	%extend free_tree {
-		std::string __repr__() const {
+		std::string __repr__() const noexcept {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
 		}
-		free_tree clone() const {
+		free_tree clone() const noexcept {
 			return *$self;
 		}
 	}
