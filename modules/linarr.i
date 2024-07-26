@@ -31,6 +31,7 @@
 %include std_vector.i
 %include std_array.i
 %include std_pair.i
+%include exception.i
 
 %include documentation.i
 
@@ -57,7 +58,24 @@
 #include <lal/numeric.hpp>
 #include <lal/properties.hpp>
 #include <lal/linarr.hpp>
+
+// custom includes
+#include "auxiliary_classes/generic_iterator.hpp"
+#include "auxiliary_classes/linarr/chunk_iterator.hpp"
+#include "auxiliary_classes/linarr/chunk_sequence_iterator.hpp"
 %}
+
+%include "auxiliary_classes/generic_iterator.hpp"
+
+%exception {
+	try {
+		$action
+	}
+	catch (StopIteration) {
+		PyErr_SetString(PyExc_StopIteration, "End of iterator");
+		return nullptr;
+	}
+}
 
 %template (_pair_uint64_arrangement) std::pair<uint64_t, lal::linear_arrangement>;
 %template (_pair_vector_uint64_uint64) std::pair<std::vector<uint64_t>, uint64_t>;
@@ -117,8 +135,12 @@ namespace linarr {
 
 %include "lal/linarr/chunking/chunk.hpp"
 %template (_vector_chunks) std::vector<lal::linarr::chunk>;
+%template (_chunk_iterator) generic_iterator<lal::linarr::chunk, lal::node>;
+%include "auxiliary_classes/linarr/chunk_iterator.hpp"
 
 %include "lal/linarr/chunking/chunk_sequence.hpp"
+%template (_chunk_sequence_iterator) generic_iterator<lal::linarr::chunk_sequence, lal::linarr::chunk>;
+%include "auxiliary_classes/linarr/chunk_sequence_iterator.hpp"
 
 namespace lal {
 namespace linarr {
@@ -128,6 +150,10 @@ namespace linarr {
 			std::ostringstream out;
 			out << *$self;
 			return out.str();
+		}
+		
+		chunk_iterator __iter__() noexcept {
+			return chunk_iterator($self->begin(), $self->end());
 		}
 	}
 	
@@ -140,6 +166,10 @@ namespace linarr {
 		
 		const chunk& __getitem__(unsigned int i) const noexcept {
 			return (*($self))[i];
+		}
+		
+		chunk_sequence_iterator __iter__() noexcept {
+			return chunk_sequence_iterator($self->begin(), $self->end());
 		}
 	}
 	

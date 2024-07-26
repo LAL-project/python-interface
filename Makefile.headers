@@ -137,7 +137,9 @@ LINARR_DPHDRS		= $(GRAPHS_DPHDRS) \
 					  $(LAL_INC_DIR)/lal/linarr/dependency_flux.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/formal_constraints.hpp \
 					  $(LAL_INC_DIR)/lal/linarr/head_initial.hpp \
-					  $(LAL_INC_DIR)/lal/linarr.hpp
+					  $(LAL_INC_DIR)/lal/linarr.hpp \
+					  auxiliary_classes/generic_iterator.hpp \
+					  auxiliary_classes/linarr/chunk_iterator.hpp
 
 PROPERTIES_DPHDRS	= $(GRAPHS_DPHDRS) \
 					  $(NUMERIC_DPHDRS) \

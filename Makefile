@@ -283,6 +283,8 @@ endif
 # ----------------------
 # complete include flags
 
+INCLUDES += -I .
+
 ifneq ($(LAL_INC_DIR), )
 	INCLUDES += -I $(LAL_INC_DIR)
 	
