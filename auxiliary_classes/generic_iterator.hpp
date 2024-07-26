@@ -62,7 +62,7 @@ public:
 	contained_t __next__() {
 		const std::optional<contained_t> r = next();
 		if (r.has_value()) {
-			return *r;
+			return std::move(*r);
 		}
 		throw StopIteration();
 	}
