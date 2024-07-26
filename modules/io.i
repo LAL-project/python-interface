@@ -33,14 +33,14 @@
 
 %include documentation.i
 
-%import types.i
-%import graphs.i
 %import enums/head_vector_error_type.i
 %import enums/treebank_file_error_type.i
 %import enums/treebank_feature_type.i
 
-%{
+%import types.i
+%import graphs.i
 
+%{
 // C++ includes
 #include <optional>
 #include <sstream>

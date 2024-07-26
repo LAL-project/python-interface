@@ -36,7 +36,6 @@
 
 %implicitconv lal::linear_arrangement;
 
-%import types.i
 %import enums/syntactic_dependency_tree_type.i
 %import enums/algorithms_C.i
 %import enums/algorithms_chunking.i
@@ -44,7 +43,7 @@
 %import enums/algorithms_Dmin_planar.i
 %import enums/algorithms_Dmin_projective.i
 
-// these are necessary for the wrapper
+%import types.i
 %import graphs.i
 %import numeric.i
 %import properties.i
@@ -55,8 +54,9 @@
 
 // lal includes
 #include <lal/graphs.hpp>
-#include <lal/linarr.hpp>
+#include <lal/numeric.hpp>
 #include <lal/properties.hpp>
+#include <lal/linarr.hpp>
 %}
 
 %template (_pair_value_arrangement) std::pair<uint64_t, lal::linear_arrangement>;

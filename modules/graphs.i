@@ -33,8 +33,9 @@
 
 %include documentation.i
 
-%import types.i
 %import enums/tree_type.i
+
+%import types.i
 
 %{
 // C++ includes

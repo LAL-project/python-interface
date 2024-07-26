@@ -36,8 +36,8 @@
 
 %{
 #include <lal/graphs.hpp>
+#include <lal/properties.hpp>
 #include <lal/generate.hpp>
-#include <lal/properties/bipartite_graph_coloring.hpp>
 %}
 
 %include stdint.i
