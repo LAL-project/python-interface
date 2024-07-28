@@ -17,27 +17,33 @@ The different types of trees.
 
 	A linear tree has only two leaves, and the rest of the vertices have degree exactly two. This is, precisely, a path graph.
 
-- ``two_linear`` 2-linear trees.
+- ``bistar`` Bi-star trees
 
-	A 2-linear tree is a tree in which there are at most two vertices of degree 3 or larger; the other vertices have degree 2 or 1 [4].
-	
-	It can also be seen as the connection of two independent trees :math:`T_1` and :math:`T_2` where each tree is either a spider tree or a linear tree. If one of :math:`T_1` or :math:`T_2` is a spider tree, the path must be incident to the spider's hub vertex.
-
-- ``spider`` Spider trees
-
-	A spider tree has a unique vertex of degree greater than or equal to 3. The other vertices have degree 2 or 1 [1], [3].
-
-- ``star`` Star trees
-
-	Also star graphs, trees where all vertices but one have degree 1.
+	These trees have two vertex hubs, \f$h_1\f$ and \f$h_2\f$, which are the
+	only vertices that can have degree \f$\ge 2\f$.
+	- If :math:`deg(h_1) = 1` then the tree is an instance of a lal.graphs.tree_type.star tree.
+	- If :math:`deg(h_1) = 2` then the tree is an instance of a lal.graphs.tree_type.quasistar
+	tree.
 
 - ``quasistar`` Quasi star trees
 
-	Also quasi star graphs, trees where all vertices but two have degree 1. One of these two vertices has degree exactly two, the other has degree at least two.
+	A @ref lal.graphs.tree_type.bistar tree where :math:`deg(h_1) = 2:. These are a specific instance of lal.graphs.tree_type.caterpillar trees and lal.graphs.tree_type.spider trees.
 
-- ``bistar`` Bi-star trees
+- ``star`` Star trees
 
-	These trees are made of two star trees joined by an edge at their centers.
+	A @ref lal.graphs.tree_type.bistar tree where :math:`deg(h_1) = 1`. These are a specific instance of @ref lal.graphs.tree_type.quasistar trees, lal.graphs.tree_type.caterpillar trees and lal.graphs.tree_type.spider trees.
+
+- ``spider`` Spider trees
+
+	A tree where one vertex (the hub) has degree :math:`\ge 3` and the rest have degree :math:`\le 2` [1] [3]. This type of trees have as particular instances:
+	- lal.graphs.tree_type.star tree
+	- lal.graphs.tree_type.quasistar tree
+
+- ``two_linear`` 2-linear trees.
+
+	Trees that have exactly two vertices of degree \f$\ge 3\f$ [4]. Equivalently, these trees are two lal.graphs.tree_type.spider trees whose hubs are joined with a lal.graphs.tree_type.linear tree by the hubs.
+	
+	These trees have as specific instance lal.graphs.tree_type.bistar trees, but not lal.graphs.tree_type.star or lal.graphs.tree_type.quasistar trees.
 
 - ``unknown``
 
