@@ -48,10 +48,10 @@
 
 // ignore operators and constructors
 
+/* TREE GENERATORS */
+
 namespace lal {
 namespace generate {
-
-	// TREE GENERATING CLASSES
 
 	// BASE CLASS
 
@@ -75,6 +75,10 @@ namespace generate {
 	%ignore all_ulab_rooted_trees::all_ulab_rooted_trees(all_ulab_rooted_trees&&) noexcept;
 	%ignore all_ulab_rooted_trees::operator= (const all_ulab_rooted_trees&) noexcept;
 	%ignore all_ulab_rooted_trees::operator= (all_ulab_rooted_trees&&) noexcept;
+
+	%ignore all_ulab_free_bistar_trees::all_ulab_free_bistar_trees(all_ulab_free_bistar_trees&&) noexcept;
+	%ignore all_ulab_free_bistar_trees::operator= (const all_ulab_free_bistar_trees&) noexcept;
+	%ignore all_ulab_free_bistar_trees::operator= (all_ulab_free_bistar_trees&&) noexcept;
 
 	// -- RANDOM
 
@@ -110,25 +114,6 @@ namespace generate {
 	%ignore rand_ulab_rooted_trees::operator= (const rand_ulab_rooted_trees&) noexcept;
 	%ignore rand_ulab_rooted_trees::operator= (rand_ulab_rooted_trees&&) noexcept;
 
-	// ARRANGEMENT GENERATING CLASSES
-
-	// -- EXHAUSTIVE
-
-	%ignore all_arrangements::all_arrangements(all_arrangements&&) noexcept;
-	%ignore all_bipartite_arrangements::all_bipartite_arrangements(all_bipartite_arrangements&&) noexcept;
-	%ignore all_bipartite_arrangements::all_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
-	%ignore all_planar_arrangements::all_planar_arrangements(all_planar_arrangements&&) noexcept;
-	%ignore all_projective_arrangements::all_projective_arrangements(all_projective_arrangements&&) noexcept;
-
-	// -- RANDOM
-
-	%ignore rand_arrangements::rand_arrangements(rand_arrangements&&) noexcept;
-	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(rand_bipartite_arrangements&&) noexcept;
-	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
-	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&, uint64_t) noexcept;
-	%ignore rand_planar_arrangements::rand_planar_arrangements(rand_planar_arrangements&&) noexcept;
-	%ignore rand_projective_arrangements::rand_projective_arrangements(rand_projective_arrangements&&) noexcept;
-
 } // -- namespace generate
 } // -- namespace lal
 
@@ -138,10 +123,16 @@ namespace generate {
 %template (free_tree_gen) lal::generate::_tree_generator<lal::graphs::free_tree>;
 %template (rooted_tree_gen) lal::generate::_tree_generator<lal::graphs::rooted_tree>;
 
+ // Exhaustive enumeration
+
 %include "lal/generate/all_lab_free_trees.hpp"
 %include "lal/generate/all_lab_rooted_trees.hpp"
 %include "lal/generate/all_ulab_free_trees.hpp"
 %include "lal/generate/all_ulab_rooted_trees.hpp"
+
+%include "lal/generate/all_ulab_free_bistar_trees.hpp"
+
+// Random enumeration
 
 // This is a base class! It needs to be put before 'rand_lab_free_trees'.
 %include "lal/generate/rand_ulab_rooted_trees.hpp"
@@ -149,21 +140,6 @@ namespace generate {
 %include "lal/generate/rand_lab_free_trees.hpp"
 %include "lal/generate/rand_lab_rooted_trees.hpp"
 %include "lal/generate/rand_ulab_free_trees.hpp"
-
-
-%include "lal/generate/all_arrangements.hpp"
-
-%include "lal/generate/all_bipartite_arrangements.hpp"
-// Instantiate the templated constructors of 'all_bipartite_arrangements'
-%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::undirected_graph>;
-%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::directed_graph>;
-
-%include "lal/generate/all_planar_arrangements.hpp"
-%include "lal/generate/all_projective_arrangements.hpp"
-%include "lal/generate/rand_arrangements.hpp"
-%include "lal/generate/rand_bipartite_arrangements.hpp"
-%include "lal/generate/rand_planar_arrangements.hpp"
-%include "lal/generate/rand_projective_arrangements.hpp"
 
 namespace lal {
 namespace generate {
@@ -218,6 +194,45 @@ namespace generate {
 
 } // -- namespace generate
 } // -- namespace lal
+
+/* ARRANGEMENT GENERATORS */
+
+namespace lal {
+namespace generate {
+
+	// -- EXHAUSTIVE
+
+	%ignore all_arrangements::all_arrangements(all_arrangements&&) noexcept;
+	%ignore all_bipartite_arrangements::all_bipartite_arrangements(all_bipartite_arrangements&&) noexcept;
+	%ignore all_bipartite_arrangements::all_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
+	%ignore all_planar_arrangements::all_planar_arrangements(all_planar_arrangements&&) noexcept;
+	%ignore all_projective_arrangements::all_projective_arrangements(all_projective_arrangements&&) noexcept;
+
+	// -- RANDOM
+
+	%ignore rand_arrangements::rand_arrangements(rand_arrangements&&) noexcept;
+	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(rand_bipartite_arrangements&&) noexcept;
+	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
+	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&, uint64_t) noexcept;
+	%ignore rand_planar_arrangements::rand_planar_arrangements(rand_planar_arrangements&&) noexcept;
+	%ignore rand_projective_arrangements::rand_projective_arrangements(rand_projective_arrangements&&) noexcept;
+
+} // -- namespace generate
+} // -- namespace lal
+
+%include "lal/generate/all_arrangements.hpp"
+
+%include "lal/generate/all_bipartite_arrangements.hpp"
+// Instantiate the templated constructors of 'all_bipartite_arrangements'
+%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::undirected_graph>;
+%template (all_bipartite_arrangements) lal::generate::all_bipartite_arrangements::all_bipartite_arrangements<lal::graphs::directed_graph>;
+
+%include "lal/generate/all_planar_arrangements.hpp"
+%include "lal/generate/all_projective_arrangements.hpp"
+%include "lal/generate/rand_arrangements.hpp"
+%include "lal/generate/rand_bipartite_arrangements.hpp"
+%include "lal/generate/rand_planar_arrangements.hpp"
+%include "lal/generate/rand_projective_arrangements.hpp"
 
 %pythoncode %{
 __types = types
