@@ -275,17 +275,17 @@ namespace io {
 
 %ignore treebank_file_report::treebank_file_report(treebank_file_report&&) noexcept;
 %ignore treebank_file_report::treebank_file_report(treebank_file_error&&) noexcept;
-%ignore treebank_file_report::treebank_file_report(uint64_t, head_vector_error&&) noexcept;
+%ignore treebank_file_report::treebank_file_report(const uint64_t, head_vector_error&&) noexcept;
 %ignore treebank_file_report::operator= (const treebank_file_report&) noexcept;
 %ignore treebank_file_report::operator= (treebank_file_report&&) noexcept;
-%ignore treebank_file_report::add_error(uint64_t, head_vector_error&&) noexcept;
+%ignore treebank_file_report::add_error(const uint64_t, head_vector_error&&) noexcept;
 %ignore treebank_file_report::set_treebank_error(treebank_file_error&&) noexcept;
 
 %ignore treebank_collection_report::treebank_collection_report(treebank_collection_report&&) noexcept;
 %ignore treebank_collection_report::treebank_collection_report(treebank_file_error&&) noexcept;
 %ignore treebank_collection_report::operator= (const treebank_collection_report&) noexcept;
 %ignore treebank_collection_report::operator= (treebank_collection_report&&) noexcept;
-%ignore treebank_collection_report::add_report(uint64_t, treebank_file_report&&) noexcept;
+%ignore treebank_collection_report::add_report(const uint64_t, treebank_file_report&&) noexcept;
 %ignore treebank_collection_report::set_treebank_error(treebank_file_error&&) noexcept;
 
 } // -- namespace io
