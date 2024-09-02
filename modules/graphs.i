@@ -80,14 +80,14 @@ namespace graphs {
 
 	%ignore rooted_tree::rooted_tree(directed_graph&&) noexcept;
 	%ignore rooted_tree::rooted_tree(rooted_tree&&) noexcept;
-	%ignore rooted_tree::rooted_tree(free_tree&&, node) noexcept;
-	%ignore rooted_tree::rooted_tree(free_tree&&, node, bool) noexcept;
-	%ignore rooted_tree::rooted_tree(free_tree&&, node, bool, bool) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, const node) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, const node, const bool) noexcept;
+	%ignore rooted_tree::rooted_tree(free_tree&&, const node, const bool, const bool) noexcept;
 	%ignore rooted_tree::operator= (const rooted_tree&) noexcept;
 	%ignore rooted_tree::operator= (rooted_tree&&) noexcept;
-	%ignore rooted_tree::init_rooted(free_tree&&, node) noexcept;
-	%ignore rooted_tree::init_rooted(free_tree&&, node, bool) noexcept;
-	%ignore rooted_tree::init_rooted(free_tree&&, node, bool, bool) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, const node) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, const node, const bool) noexcept;
+	%ignore rooted_tree::init_rooted(free_tree&&, const node, const bool, const bool) noexcept;
 
 } // -- namespace graphs
 } // -- namespace lal

@@ -213,7 +213,7 @@ namespace generate {
 	%ignore rand_arrangements::rand_arrangements(rand_arrangements&&) noexcept;
 	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(rand_bipartite_arrangements&&) noexcept;
 	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&) noexcept;
-	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&, uint64_t) noexcept;
+	%ignore rand_bipartite_arrangements::rand_bipartite_arrangements(properties::bipartite_graph_coloring&&, const uint64_t) noexcept;
 	%ignore rand_planar_arrangements::rand_planar_arrangements(rand_planar_arrangements&&) noexcept;
 	%ignore rand_projective_arrangements::rand_projective_arrangements(rand_projective_arrangements&&) noexcept;
 
