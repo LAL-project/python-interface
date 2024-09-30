@@ -2,7 +2,7 @@
 
 if [ -z $1 ]; then
 
-lal_dist_dir="$HOME/Documents/projects/LAL-dev/latest/python-libs"
+lal_dist_dir="$HOME/Documents/projects/LAL-dev/24.10/python-libs"
 
 ./compile.sh \
 	--destination-directory="$lal_dist_dir" \
@@ -14,7 +14,7 @@ lal_dist_dir="$HOME/Documents/projects/LAL-dev/latest/python-libs"
 	--build=debug \
 	--install
 
-lal_lib_dir="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
+lal_lib_dir="$HOME/Documents/projects/LAL-dev/24.10/c++-libs/lib"
 
 cp -P $lal_lib_dir/liblal*.so* $lal_dist_dir/
 

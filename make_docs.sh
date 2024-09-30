@@ -1,7 +1,7 @@
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
-#    Copyright (C) 2021-2023 LAL-project developers
+#    Copyright (C) 2021 - 2024 LAL-project developers
 #         Lluís Alemany Puig
 #
 #    This program is free software: you can redistribute it and/or modify

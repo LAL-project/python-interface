@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LAL_HEADERS="$HOME/Documents/projects/LAL-dev/latest/c++-libs/include"
-LAL_LIBRARY="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
+LAL_HEADERS="$HOME/Documents/projects/LAL-dev/24.10/c++-libs/include"
+LAL_LIBRARY="$HOME/Documents/projects/LAL-dev/24.10/c++-libs/lib"
 
 if [ -z $1 ]; then
 

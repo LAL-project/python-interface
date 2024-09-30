@@ -6,7 +6,7 @@ We first describe the basic setup of the system for the compilation of the pytho
 
 ## Necessary tools and basic setup of the system
 
-We recommend installing the [`MSYS2`](https://www.msys2.org/) subsystem for simplicity. This can be done following the 7 steps in their webpage. These consist of downloading and executing the installer and executing some very well-explained commands. With a fast internet connection it should take no more than 15 minutes. If you already did it when install [LAL from sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md), you may skip this step.
+We recommend installing the [`MSYS2`](https://www.msys2.org/) subsystem for simplicity. This can be done following the 7 steps in their webpage. These consist of downloading and executing the installer and executing some very well-explained commands. With a fast internet connection it should take no more than 15 minutes. If you already did it when install [LAL from sources](https://github.com/LAL-project/linear-arrangement-library/tree/24.10/instructions/installation-library-sources-windows.md), you may skip this step.
 
 ## Installing the dependencies
 
@@ -36,7 +36,7 @@ The following command will install `epstopdf` and `ghostscript` and other softwa
 
 ### LAL
 
-Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/blob/master/README.md)) of that project.
+Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/tree/24.10/README.md)) of that project.
 
 ## Download the source code of the python interface
 
@@ -51,7 +51,7 @@ In order to compile the interface, you have to configure two build scripts (chan
 - the location of the python binaries and header development files,
 - the location where LAL has been installed in the system.
 
-With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
+With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/tree/24.10/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
 	LAL_HEADERS=                      # directory of the header files of LAL
 	LAL_LIBRARY=                      # directory of the binary files of LAL (.so)
@@ -61,7 +61,7 @@ With this information, you will have to edit the [sample script file](https://gi
 	PYTHON_HEADERS=                   # directory of the header (development) files of python
 	PYTHON_LIBRARY=                   # directory of the shared object (development) files of python
 
-Check the other [two](https://github.com/LAL-project/python-interface/blob/main/windows_compile_distribution.sh) [script](https://github.com/LAL-project/python-interface/blob/main/windows_install.sh) files to see examples of contents.
+Check the other [two](https://github.com/LAL-project/python-interface/tree/24.10/windows_compile_distribution.sh) [script](https://github.com/LAL-project/python-interface/tree/24.10/windows_install.sh) files to see examples of contents.
 
 ## Compiling and installing the interface
 
@@ -104,7 +104,7 @@ In our most recent build, these were:
 	C:/msys64/mingw64/bin/libstdc++-6.dll
 	C:/msys64/mingw64/bin/libwinpthread-1.dll
 
-Copy the dll files to both directories `lal` and `laloptimized` within conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/blob/master/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
+Copy the dll files to both directories `lal` and `laloptimized` within conda installation. Also, if the files generated during the [debug and release compilation of LAL's sources](https://github.com/LAL-project/linear-arrangement-library/tree/24.10/instructions/installation-library-sources-windows.md) are not accessible in the path, then move the files
 
 - `liblal.dll` into `lal` (within conda), and
 - `liblaloptimized.dll` into `laloptimized` (within conda).

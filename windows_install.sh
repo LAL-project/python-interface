@@ -29,7 +29,7 @@ anaconda_package_dir="$anaconda_dir/Lib/site-packages"
 	--install
 
 lal_dist_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION"
-lal_cpp_dir="$lal_dist_dir/latest/windows10-c++-libs-msys64"
+lal_cpp_dir="$lal_dist_dir/24.10/windows10-c++-libs-msys64"
 
 # lal dlls
 cp $lal_cpp_dir/bin/liblal*.dll $dest_dir/lal
@@ -44,7 +44,7 @@ cp $lal_dist_dir/libwinpthread-1.dll $anaconda_dir
 # for developers only
 elif [ "$1" == "package" ]; then
 
-dest_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-python3-libs-anaconda"
+dest_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/24.10/windows10-python3-libs-anaconda"
 
 ./compile.sh \
 	--destination-directory="$dest_dir" \
@@ -57,7 +57,7 @@ dest_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION/latest/windows10-python3-libs-
 	--install
 
 lal_dist_dir="C:/Users/$USER/Desktop/LAL-DISTRIBUTION"
-lal_cpp_dir="$lal_dist_dir/latest/windows10-c++-libs-msys64"
+lal_cpp_dir="$lal_dist_dir/24.10/windows10-c++-libs-msys64"
 
 # lal dlls
 cp $lal_cpp_dir/bin/liblal.dll $dest_dir/lal

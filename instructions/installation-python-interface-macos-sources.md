@@ -20,7 +20,7 @@ Users need to install the following dependencies.
 
 ### LAL
 
-Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/blob/master/README.md)).
+Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/tree/24.10/README.md)).
 
 ### Python3 
 
@@ -59,7 +59,7 @@ In order to compile the interface, you have to configure one of the build files 
 
 ### Location of LAL
 
-First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the location of LAL's header files and LAL's binary files in [`Makefile.lalsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.lalsource). For example,
+First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the location of LAL's header files and LAL's binary files in [`Makefile.lalsource`](https://github.com/LAL-project/python-interface/tree/24.10/Makefile.lalsource). For example,
 
 	# ----------------
 	# MACOS USERS ONLY
@@ -73,7 +73,7 @@ First of all, modify the variables `LAL_INC_DIR` and `LAL_LIB_DIR` with the loca
 
 ### Location of Python sources and libraries
 
-Secondly, specify the version of Python against which the interface is linked in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource). Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
+Secondly, specify the version of Python against which the interface is linked in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/tree/24.10/Makefile.pythonsource). Indicate where Python's header files are located at, and where to find the binaries. To do this, modify the variables `PYTHON_INC_DIR` and `PYTHON_LIB_DIR`. The default values are the following
 
 	# Python 3 include dir
 	PYTHON_INC_DIR	= /usr/include/python3.$(MINOR_VERSION_PYTHON)
@@ -91,7 +91,7 @@ Users who installed *anaconda* may want to change the values for:
 
 ### Destination of LAL's python wrapper
 
-Also in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/blob/main/Makefile.pythonsource), users can also choose the destination directory of LAL's python interface by modifing the variable `LAL_PY_DEST`. The default value is
+Also in [`Makefile.pythonsource`](https://github.com/LAL-project/python-interface/tree/24.10/Makefile.pythonsource), users can also choose the destination directory of LAL's python interface by modifing the variable `LAL_PY_DEST`. The default value is
 
 	# Directory where LAL's interface will be installed to
 	LAL_PY_DEST		= /usr/local/lib/python3.$(MINOR_VERSION_PYTHON)/dist-packages
@@ -103,7 +103,7 @@ Users who wish to install LAL into *anaconda*'s installation directory may want 
 
 ### Compiler
 
-Last but not least, users must specify which compiler is to be used in [`Makefile`](https://github.com/LAL-project/python-interface/blob/main/Makefile). One requirement is that the compiler used must have support for `C++17`'s standard.
+Last but not least, users must specify which compiler is to be used in [`Makefile`](https://github.com/LAL-project/python-interface/tree/24.10/Makefile). One requirement is that the compiler used must have support for `C++17`'s standard.
 
 	CXX			= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
 	

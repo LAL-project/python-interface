@@ -24,7 +24,7 @@ All the instructions below require the use of a command-line terminal. Head over
 
 ### LAL
 
-Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/blob/master/README.md)) of that project.
+Install LAL either from binaries or sources (see the [main README file](https://github.com/LAL-project/linear-arrangement-library/tree/24.10/README.md)) of that project.
 
 ### Python3 
 
@@ -54,7 +54,7 @@ In order to compile the interface, you have to configure two build scripts (chan
 - the location of the python binaries and header development files,
 - the location where LAL has been installed in the system.
 
-With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/blob/main/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
+With this information, you will have to edit the [sample script file](https://github.com/LAL-project/python-interface/tree/24.10/sample_script.sh). Fill in the values of the variables named in upper case. Those variables with '(?)' to their right can be left empty.
 	
 	LAL_HEADERS=                        # directory of the header files of LAL
 	LAL_LIBRARY=                        # directory of the binary files of LAL (.so)
@@ -63,7 +63,7 @@ With this information, you will have to edit the [sample script file](https://gi
 	GMP_LIBRARY=                        # (?) directory of the binary files of GMP (.so)
 	PYTHON_HEADERS=                     # directory of the header (development) files of python
 
-Check the other [two](https://github.com/LAL-project/python-interface/blob/main/run_distribution_ubuntu.sh) [script](https://github.com/LAL-project/python-interface/blob/main/run_install_ubuntu.sh) files to see examples of contents.
+Check the other [two](https://github.com/LAL-project/python-interface/tree/24.10/run_distribution_ubuntu.sh) [script](https://github.com/LAL-project/python-interface/tree/24.10/run_install_ubuntu.sh) files to see examples of contents.
 
 ## Compiling and installing the interface
 
