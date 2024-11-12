@@ -28,6 +28,8 @@
 
 %module version
 
+%include std_string_view.i
+
 %include documentation.i
 
 %{
