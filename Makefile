@@ -226,7 +226,7 @@ ifeq ($(OS_ID),windows)
 	# WINDOWS USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
+	FLAGS	= -std=c++23 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),linux)
@@ -234,7 +234,7 @@ else ifeq ($(OS_ID),linux)
 	# LINUX USERS ONLY
 	
 	CXX		= g++
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
+	FLAGS	= -std=c++23 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 else ifeq ($(OS_ID),macos)
@@ -242,7 +242,7 @@ else ifeq ($(OS_ID),macos)
 	# MACOS USERS ONLY
 	
 	CXX		= /usr/local/Cellar/gcc/11.2.0/bin/g++-11
-	FLAGS	= -std=c++17 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
+	FLAGS	= -std=c++23 -fPIC -fopenmp -O3 $(PYTHON_FLAGS)
 	LFLAGS	= -fPIC -O3 -Wl,-O3
 	
 endif
