@@ -195,7 +195,7 @@ else ifeq ($(OS_ID),macos)
 	SWIG_FLAGS	+= 
 endif
 
-SWIG_FLAGS += -D__LAL_SWIG_PYTHON
+SWIG_FLAGS += -DLAL_SWIG_PYTHON
 
 ifeq ($(USER_BUILD),debug)
 	SWIG_FLAGS	+= -DDEBUG
