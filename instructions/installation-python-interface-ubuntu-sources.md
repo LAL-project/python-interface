@@ -1,6 +1,6 @@
 # Installation of the interface for Python (Ubuntu)
 
-LAL is interfaced to [Python 3](https://www.python.org/) via [SWIG](http://www.swig.org/). In order to compile the interface, you need to have `python3`, `SWIG` and `make` tools installed in your system. Optionally, you may install `bibtex` and `doxygen`.
+LAL is interfaced to [Python 3](https://www.python.org/) via [SWIG](http://www.swig.org/). In order to compile the interface, you need to have `python 3.12`, `SWIG 4.4.1` and `make` tools installed in your system. Optionally, you may install `bibtex` and `doxygen`.
 
 All the instructions below require the use of a command-line terminal. Head over to [this basic tutorial](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) if you think you would like to feel more comfortable in using the terminal.
 

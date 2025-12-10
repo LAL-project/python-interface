@@ -30,7 +30,7 @@ The following command will install `epstopdf` and `ghostscript` and other softwa
 
 	$ pacman -S mingw-w64-x86_64-doxygen
 
-### [SWIG](https://www.swig.org/)
+### [SWIG 4.4.1](https://www.swig.org/)
 
 	$ pacman -S mingw-w64-x86_64-swig
 
