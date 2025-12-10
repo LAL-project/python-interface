@@ -6,7 +6,7 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.10"
+PYTHON_HEADERS="/usr/include/python3.12"
 
 ./compile.sh \
 	--environment=development \
@@ -37,7 +37,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--lal-libs="$LAL_LIBRARY_RELEASE" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
+	--python-headers="$anaconda_dir/include/python3.12" \
 	--build=release
 
 ./compile.sh \
@@ -46,7 +46,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--lal-libs="$LAL_LIBRARY_DEBUG" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
+	--python-headers="$anaconda_dir/include/python3.12" \
 	--build=debug
 
 fi

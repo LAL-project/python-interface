@@ -6,7 +6,7 @@ LAL_LIBRARY_DEBUG="../linear-arrangement-library/lal-debug"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="C:/msys64/mingw64/include/python3.11"
+PYTHON_HEADERS="C:/msys64/mingw64/include/python3.12"
 PYTHON_LIBRARY=""
 
 ./compile.sh \

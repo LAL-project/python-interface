@@ -5,7 +5,7 @@ LAL_LIBRARY="$HOME/Documents/projects/LAL-dev/latest/c++-libs/lib"
 
 if [ -z $1 ]; then
 
-PYTHON_HEADERS="/usr/include/python3.10"
+PYTHON_HEADERS="/usr/include/python3.12"
 PYTHON_LIBRARY="/usr/lib/x86_64-linux-gnu/"
 
 ./compile.sh \
@@ -37,7 +37,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--lal-libs="$LAL_LIBRARY" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
+	--python-headers="$anaconda_dir/include/python3.12" \
 	--build=release
 
 ./compile.sh \
@@ -46,7 +46,7 @@ anaconda_dir="/home/$USER/anaconda3"
 	--lal-libs="$LAL_LIBRARY" \
 	--gmp-headers="" \
 	--gmp-libs="" \
-	--python-headers="$anaconda_dir/include/python3.9" \
+	--python-headers="$anaconda_dir/include/python3.12" \
 	--build=debug
 
 fi

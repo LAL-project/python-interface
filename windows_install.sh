@@ -3,12 +3,12 @@
 if [ -z $1 ]; then
 
 ./compile.sh \
-	--destination-directory="C:/msys64/mingw64/lib/python3.10/site-packages" \
+	--destination-directory="C:/msys64/mingw64/lib/python3.12/site-packages" \
 	--build=release \
 	--install
 
 ./compile.sh \
-	--destination-directory="C:/msys64/mingw64/lib/python3.10/site-packages" \
+	--destination-directory="C:/msys64/mingw64/lib/python3.12/site-packages" \
 	--build=debug \
 	--install
 
