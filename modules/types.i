@@ -80,6 +80,8 @@ namespace lal {
 
 } // -- namespace lal
 
+%ignore operator<=>;
+
 %include "lal/basic_types.hpp"
 
 // -------------------------
@@ -94,8 +96,75 @@ namespace lal {
 
 namespace lal {
 
-%template (node_t) node_t::node_t<uint64_t, std::enable_if_t<true, bool> = true>;
-%template (position_t) position_t::position_t<uint64_t, std::enable_if_t<true, bool> = true>;
+%template (node_t) node_t::node_t<uint64_t>;
+%rename (__eq__) node_t::operator==(const node_t&) const;
+%template (__add__) node_t::operator+ <int64_t>;
+%template (__sub__) node_t::operator- <int64_t>;
+%template (__iadd__) node_t::operator+= <int64_t>;
+%template (__isub__) node_t::operator-= <int64_t>;
+
+%extend node_t {
+	bool __le__(const node_t& n) const noexcept {
+		return *$self <= n;
+	}
+	bool __lt__(const node_t& n) const noexcept {
+		return *$self < n;
+	}
+	bool __ge__(const node_t& n) const noexcept {
+		return *$self >= n;
+	}
+	bool __gt__(const node_t& n) const noexcept {
+		return *$self > n;
+	}
+	
+	bool __le__(uint64_t i) const noexcept {
+		return *$self <= i;
+	}
+	bool __lt__(uint64_t i) const noexcept {
+		return *$self < i;
+	}
+	bool __ge__(uint64_t i) const noexcept {
+		return *$self >= i;
+	}
+	bool __gt__(uint64_t i) const noexcept {
+		return *$self > i;
+	}
+}
+
+%template (position_t) position_t::position_t<uint64_t>;
+%rename (__eq__) position_t::operator==(const position_t&) const;
+%template (__add__) position_t::operator+ <int64_t>;
+%template (__sub__) position_t::operator- <int64_t>;
+%template (__iadd__) position_t::operator+= <int64_t>;
+%template (__isub__) position_t::operator-= <int64_t>;
+
+%extend position_t {
+	bool __le__(const position_t& n) const noexcept {
+		return *$self <= n;
+	}
+	bool __lt__(const position_t& n) const noexcept {
+		return *$self < n;
+	}
+	bool __ge__(const position_t& n) const noexcept {
+		return *$self >= n;
+	}
+	bool __gt__(const position_t& n) const noexcept {
+		return *$self >= n;
+	}
+	
+	bool __le__(uint64_t i) const noexcept {
+		return *$self <= i;
+	}
+	bool __lt__(uint64_t i) const noexcept {
+		return *$self < i;
+	}
+	bool __ge__(uint64_t i) const noexcept {
+		return *$self >= i;
+	}
+	bool __gt__(uint64_t i) const noexcept {
+		return *$self > i;
+	}
+}
 
 } // -- namespace lal
 
@@ -107,10 +176,6 @@ namespace lal {
 
 %template (_swap_nodes) linear_arrangement::swap<node_t, std::enable_if_t<true, bool> = true>;
 %template (_swap_positions) linear_arrangement::swap<position_t, std::enable_if_t<true, bool> = true>;
-
-} // -- namespace lal
-
-namespace lal {
 
 %extend linear_arrangement {
 
@@ -141,6 +206,19 @@ namespace lal {
 
 %pythoncode %{
 
+def __radd__(self, k):
+	return self + k
+def __rsub__(self, k):
+	return -self + k
+
+setattr(node_t, __radd__.__name__, __radd__)
+setattr(node_t, __rsub__.__name__, __rsub__)
+setattr(position_t, __radd__.__name__, __radd__)
+setattr(position_t, __rsub__.__name__, __rsub__)
+
+del __radd__
+del __rsub__
+
 def swap_nodes(self, u,v):
 	r"""
 	Swaps the two nodes passed as parameters.
@@ -148,7 +226,7 @@ def swap_nodes(self, u,v):
 	Parameters
 	----------
 	* `u` :  
-		Pne of the nodes
+		One of the nodes
 	* `v` :  
 		The other node
 	"""
