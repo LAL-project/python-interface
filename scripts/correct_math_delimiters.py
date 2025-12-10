@@ -40,7 +40,7 @@ f.close()
 last_match_end = 0
 new_file = ""
 
-p = re.compile('\$([^\$]*)\$', re.IGNORECASE)
+p = re.compile('$([^$]*)$', re.IGNORECASE)
 iterator = p.finditer(whole_file)
 for match in iterator:
 	begin,end = match.span()
