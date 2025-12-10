@@ -48,16 +48,16 @@ with open(argv[1], 'r') as f:
 	for line in f: whole_file += line
 	f.close()
 
-correct_expressions = re.compile('\$([^\$]*)\$', re.IGNORECASE)
+correct_expressions = re.compile('$([^$]*)$', re.IGNORECASE)
 iterator_expressions = correct_expressions.finditer(whole_file)
 all_expressions = []
 for expression in iterator_expressions:
 	begin,end = expression.span()
 	all_expressions.append(whole_file[begin:end])
 
-space_begin = re.compile('\$ +([^\$]*)\$', re.IGNORECASE)
-space_beginend = re.compile('\$ +([^\$]*)\ +\$', re.IGNORECASE)
-space_end = re.compile('\$([^\$]*)\ +\$', re.IGNORECASE)
+space_begin = re.compile('$ +([^$]*)$', re.IGNORECASE)
+space_beginend = re.compile('$ +([^$]*) +$', re.IGNORECASE)
+space_end = re.compile('$([^$]*)\ +$', re.IGNORECASE)
 
 found1 = find_matching_strings(all_expressions, space_begin)
 found2 = find_matching_strings(all_expressions, space_beginend)
