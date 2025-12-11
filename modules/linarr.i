@@ -113,7 +113,7 @@ namespace linarr {
 // -------------------------
 // syntactic dependency tree
 
-%template (_array_of_bools_tree_structure_type) std::array<bool, lal::linarr::__syntactic_dependency_tree_size>;
+%template (_array_of_bools_tree_structure_type) std::array<bool, lal::linarr::_syntactic_dependency_tree_size>;
 
 %include "lal/linarr/syntactic_dependency_tree/classify.hpp"
 

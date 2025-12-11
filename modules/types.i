@@ -98,6 +98,7 @@ namespace lal {
 
 %template (node_t) node_t::node_t<uint64_t>;
 %rename (__eq__) node_t::operator==(const node_t&) const;
+%template (__eq__) node_t::operator== <uint64_t>;
 %template (__add__) node_t::operator+ <int64_t>;
 %template (__sub__) node_t::operator- <int64_t>;
 %template (__iadd__) node_t::operator+= <int64_t>;
@@ -129,10 +130,17 @@ namespace lal {
 	bool __gt__(uint64_t i) const noexcept {
 		return *$self > i;
 	}
+	
+	std::string __repr__() const {
+		std::ostringstream out;
+		out << $self->value;
+		return out.str();
+	}
 }
 
 %template (position_t) position_t::position_t<uint64_t>;
 %rename (__eq__) position_t::operator==(const position_t&) const;
+%template (__eq__) position_t::operator== <uint64_t>;
 %template (__add__) position_t::operator+ <int64_t>;
 %template (__sub__) position_t::operator- <int64_t>;
 %template (__iadd__) position_t::operator+= <int64_t>;
@@ -149,7 +157,7 @@ namespace lal {
 		return *$self >= n;
 	}
 	bool __gt__(const position_t& n) const noexcept {
-		return *$self >= n;
+		return *$self > n;
 	}
 	
 	bool __le__(uint64_t i) const noexcept {
@@ -163,6 +171,12 @@ namespace lal {
 	}
 	bool __gt__(uint64_t i) const noexcept {
 		return *$self > i;
+	}
+	
+	std::string __repr__() const {
+		std::ostringstream out;
+		out << $self->value;
+		return out.str();
 	}
 }
 

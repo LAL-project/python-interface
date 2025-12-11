@@ -44,8 +44,8 @@
 %pythoncode %{
 cvar = _version.cvar
 
-major = cvar.__lal_major_verno
-patch = cvar.__lal_patch_verno
+major = cvar._lal_major_verno
+patch = cvar._lal_patch_verno
 
 version = (major, patch)
 %}

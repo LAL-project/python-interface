@@ -41,30 +41,24 @@
 #include <lal/numeric.hpp>
 %}
 
-namespace lal {
-namespace numeric {
-
 %ignore operator<<;
-%ignore integer::operator-();
-%ignore rational::operator-();
-%ignore integer::operator=;
-%ignore rational::operator=;
+%ignore operator<=>;
 
 %rename(__mod__) operator% (uint64_t) const noexcept;
 %rename(__mod__) operator% (const integer&) const noexcept;
-%rename(__pow__) power (uint64_t) const noexcept;
+%rename(__pow__) power (const uint64_t) const noexcept;
 %rename(__pow__) power (const integer&) const noexcept;
-
-} // -- namespace numeric
-} // -- namespace lal
+%ignore powt;
 
 namespace lal {
 namespace numeric {
 
-	%ignore integer::integer(mpz_t&&) noexcept;
-	%ignore integer::integer(integer&&) noexcept;
-	%ignore integer::operator=;
-	
+%ignore integer::integer(mpz_t&&) noexcept;
+%ignore integer::integer(integer&&) noexcept;
+%ignore integer::set_integer(integer&&) noexcept;
+%ignore integer::operator=;
+%ignore integer::operator-();
+
 } // -- namespace numeric
 } // -- namespace lal
 
@@ -73,34 +67,63 @@ namespace numeric {
 namespace lal {
 namespace numeric {
 
-	%template (integer) integer::integer<const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (set_number) integer::set_number<const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__eq__) integer::operator== <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__neq__) integer::operator!= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__lt__) integer::operator< <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__le__) integer::operator<= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__gt__) integer::operator> <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__ge__) integer::operator>= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__add__) integer::operator+ <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__sub__) integer::operator- <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__mul__) integer::operator* <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__truediv__) integer::operator/ <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__iadd__) integer::operator+= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__isub__) integer::operator-= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__imul__) integer::operator*= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__itruediv__) integer::operator/= <const int64_t, std::enable_if_t<true, bool> = true>;
+%template (integer) integer::integer<const int64_t>;
+%template (set_number) integer::set_number<const int64_t>;
+%template (__eq__) integer::operator== <const int64_t>;
+%template (__add__) integer::operator+ <const int64_t>;
+%template (__sub__) integer::operator- <const int64_t>;
+%template (__mul__) integer::operator* <const int64_t>;
+%template (__truediv__) integer::operator/ <const int64_t>;
+%template (__iadd__) integer::operator+= <const int64_t>;
+%template (__isub__) integer::operator-= <const int64_t>;
+%template (__imul__) integer::operator*= <const int64_t>;
+%template (__itruediv__) integer::operator/= <const int64_t>;
+
+%extend integer {
+	bool __le__(const integer& n) const noexcept {
+		return *$self <= n;
+	}
+	bool __lt__(const integer& n) const noexcept {
+		return *$self < n;
+	}
+	bool __ge__(const integer& n) const noexcept {
+		return *$self >= n;
+	}
+	bool __gt__(const integer& n) const noexcept {
+		return *$self > n;
+	}
 	
+	bool __le__(int64_t i) const noexcept {
+		return *$self <= i;
+	}
+	bool __lt__(int64_t i) const noexcept {
+		return *$self < i;
+	}
+	bool __ge__(int64_t i) const noexcept {
+		return *$self >= i;
+	}
+	bool __gt__(int64_t i) const noexcept {
+		return *$self > i;
+	}
+	
+	std::string __repr__() const {
+		return $self->to_string();
+	}
+}
+
 } // -- namespace numeric
 } // -- namespace lal
 
 namespace lal {
 namespace numeric {
 
-	%ignore rational::rational(integer&&) noexcept;
-	%ignore rational::rational(integer&&, integer&&) noexcept;
-	%ignore rational::rational(rational&&) noexcept;
-	%ignore rational::operator=;
-	
+%ignore rational::rational(integer&&) noexcept;
+%ignore rational::rational(integer&&, integer&&) noexcept;
+%ignore rational::rational(rational&&) noexcept;
+%ignore rational::set_integer(integer&& n, integer&& d) noexcept;
+%ignore rational::operator=;
+%ignore rational::operator-();
+
 } // -- namespace numeric
 } // -- namespace lal
 
@@ -109,38 +132,57 @@ namespace numeric {
 namespace lal {
 namespace numeric {
 
-	%template (rational) rational::rational<const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (set_number) rational::set_number<const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__eq__) rational::operator== <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__neq__) rational::operator!= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__lt__) rational::operator< <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__le__) rational::operator<= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__gt__) rational::operator> <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__ge__) rational::operator>= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__add__) rational::operator+ <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__sub__) rational::operator- <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__mul__) rational::operator* <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__truediv__) rational::operator/ <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__iadd__) rational::operator+= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__isub__) rational::operator-= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__imul__) rational::operator*= <const int64_t, std::enable_if_t<true, bool> = true>;
-	%template (__itruediv__) rational::operator/= <const int64_t, std::enable_if_t<true, bool> = true>;
-
-} // -- namespace numeric
-} // -- namespace lal
-
-namespace lal {
-namespace numeric {
-
-%extend integer {
-
-	std::string __repr__() const {
-		return $self->to_string();
-	}
-
-}
+%template (rational) rational::rational<const int64_t>;
+%template (set_number) rational::set_number<const int64_t>;
+%template (__eq__) rational::operator== <const int64_t>;
+%template (__add__) rational::operator+ <const int64_t>;
+%template (__sub__) rational::operator- <const int64_t>;
+%template (__mul__) rational::operator* <const int64_t>;
+%template (__truediv__) rational::operator/ <const int64_t>;
+%template (__iadd__) rational::operator+= <const int64_t>;
+%template (__isub__) rational::operator-= <const int64_t>;
+%template (__imul__) rational::operator*= <const int64_t>;
+%template (__itruediv__) rational::operator/= <const int64_t>;
 
 %extend rational {
+	bool __le__(const rational& n) const noexcept {
+		return *$self <= n;
+	}
+	bool __lt__(const rational& n) const noexcept {
+		return *$self < n;
+	}
+	bool __ge__(const rational& n) const noexcept {
+		return *$self >= n;
+	}
+	bool __gt__(const rational& n) const noexcept {
+		return *$self > n;
+	}
+	
+	bool __le__(const integer& n) const noexcept {
+		return *$self <= n;
+	}
+	bool __lt__(const integer& n) const noexcept {
+		return *$self < n;
+	}
+	bool __ge__(const integer& n) const noexcept {
+		return *$self >= n;
+	}
+	bool __gt__(const integer& n) const noexcept {
+		return *$self > n;
+	}
+	
+	bool __le__(int64_t i) const noexcept {
+		return *$self <= i;
+	}
+	bool __lt__(int64_t i) const noexcept {
+		return *$self < i;
+	}
+	bool __ge__(int64_t i) const noexcept {
+		return *$self >= i;
+	}
+	bool __gt__(int64_t i) const noexcept {
+		return *$self > i;
+	}
 
 	std::string __repr__() const {
 		return $self->to_string();
@@ -160,9 +202,21 @@ def __rsub__(self, k):
 def __rmul__(self, k):
 	return self * k
 def __rtruediv__(self, k):
-	return k/self.to_int()
+	r = rational(integer(k), self)
+	if r.get_denominator() == 1:
+		return r.get_numerator()
+	return r
 def __rpow__(self, k):
-	return k**self.to_int()
+	if k == 0:
+		return integer(0)
+	if self == 0:
+		return integer(1)
+	
+	if self < 0:
+		self_pos = -self
+		return rational(integer(1), integer(k)**self_pos)
+	
+	return integer(k)**self
 
 setattr(integer, __radd__.__name__, __radd__)
 setattr(integer, __rsub__.__name__, __rsub__)
@@ -187,7 +241,9 @@ def __rtruediv__(self, k):
 	copyself.invert()
 	return k*copyself
 def __rpow__(self, k):
-	return (k**self.get_numerator())**(1.0/(self.get_denominator().to_int()))
+	base = (k**self.get_numerator()).to_double()
+	deno = self.get_denominator().to_int()
+	return base**(1.0/deno)
 
 setattr(rational, __radd__.__name__, __radd__)
 setattr(rational, __rsub__.__name__, __rsub__)
