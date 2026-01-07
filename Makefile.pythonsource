@@ -1,7 +1,7 @@
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
-#    Copyright (C) 2021 - 2024 Lluís Alemany Puig
+#    Copyright (C) 2021 - 2026 Lluís Alemany Puig
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -32,7 +32,7 @@ ifeq ($(OS_ID),windows)
 
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000 -DLAL_COMPILE_PYTHON
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = 
@@ -43,7 +43,7 @@ else ifeq ($(OS_ID),linux)
 	
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000 -DLAL_COMPILE_PYTHON
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = 
@@ -54,7 +54,7 @@ else ifeq ($(OS_ID),macos)
 	
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000 -DLAL_COMPILE_PYTHON
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = -flat_namespace

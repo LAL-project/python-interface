@@ -1,7 +1,7 @@
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
-#    Copyright (C) 2021 - 2024 Lluís Alemany Puig
+#    Copyright (C) 2021 - 2026 Lluís Alemany Puig
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -195,7 +195,7 @@ else ifeq ($(OS_ID),macos)
 	SWIG_FLAGS	+= 
 endif
 
-SWIG_FLAGS += -DLAL_PYTHON -Wall
+SWIG_FLAGS += -DLAL_INTERFACE_PYTHON -Wall
 
 ifeq ($(USER_BUILD),debug)
 	SWIG_FLAGS	+= -DDEBUG

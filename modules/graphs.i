@@ -1,7 +1,7 @@
 /**************************************************************************
  *
  * SWIG-generated python wrapper for the Linear Arrangement Library
- * Copyright (C) 2021 - 2024 Lluís Alemany Puig
+ * Copyright (C) 2021 - 2026 Lluís Alemany Puig
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -118,6 +118,21 @@ namespace graphs {
 		undirected_graph clone() const noexcept {
 			return *$self;
 		}
+		
+		lal::utilities::decorator<lal::graphs::undirected_graph> __radd__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::undirected_graph>{
+				.prefix = w,
+				.value = $self,
+				.suffix = ""
+			};
+		}
+		lal::utilities::decorator<lal::graphs::undirected_graph> __add__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::undirected_graph>{
+				.prefix = "",
+				.value = $self,
+				.suffix = w
+			};
+		}
 	}
 
 	%extend directed_graph {
@@ -128,6 +143,21 @@ namespace graphs {
 		}
 		directed_graph clone() const noexcept {
 			return *$self;
+		}
+		
+		lal::utilities::decorator<lal::graphs::directed_graph> __radd__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::directed_graph>{
+				.prefix = w,
+				.value = $self,
+				.suffix = ""
+			};
+		}
+		lal::utilities::decorator<lal::graphs::directed_graph> __add__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::directed_graph>{
+				.prefix = "",
+				.value = $self,
+				.suffix = w
+			};
 		}
 	}
 
@@ -140,6 +170,21 @@ namespace graphs {
 		rooted_tree clone() const noexcept {
 			return *$self;
 		}
+		
+		lal::utilities::decorator<lal::graphs::rooted_tree> __radd__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::rooted_tree>{
+				.prefix = w,
+				.value = $self,
+				.suffix = ""
+			};
+		}
+		lal::utilities::decorator<lal::graphs::rooted_tree> __add__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::rooted_tree>{
+				.prefix = "",
+				.value = $self,
+				.suffix = w
+			};
+		}
 	}
 
 	%extend free_tree {
@@ -150,6 +195,21 @@ namespace graphs {
 		}
 		free_tree clone() const noexcept {
 			return *$self;
+		}
+		
+		lal::utilities::decorator<lal::graphs::free_tree> __radd__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::free_tree>{
+				.prefix = w,
+				.value = $self,
+				.suffix = ""
+			};
+		}
+		lal::utilities::decorator<lal::graphs::free_tree> __add__(const std::string& w) const {
+			return lal::utilities::decorator<lal::graphs::free_tree>{
+				.prefix = "",
+				.value = $self,
+				.suffix = w
+			};
 		}
 	}
 
