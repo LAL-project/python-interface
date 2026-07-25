@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###########################################################################
 #
 #    SWIG-generated python wrapper for the Linear Arrangement Library
@@ -26,8 +28,6 @@
 #            Webpage: https://cqllab.upc.edu/people/lalemany/
 #
 ###########################################################################
-
-#!/bin/bash
 
 PYTHON=""
 if command -v python3 &> /dev/null
