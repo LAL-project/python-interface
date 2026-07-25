@@ -32,7 +32,7 @@ ifeq ($(OS_ID),windows)
 
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = 
@@ -43,7 +43,7 @@ else ifeq ($(OS_ID),linux)
 	
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = 
@@ -54,7 +54,7 @@ else ifeq ($(OS_ID),macos)
 	
 	# Python3 linkage
 	PYTHON_LINK = -lpython3
-	PYTHON_FLAGS = -DPy_LIMITED_API=0x03040000
+	PYTHON_FLAGS = -DPy_LIMITED_API=0x03050000
 	
 	# Other flags needed to compile against Python
 	PYTHON_EXTRA_LINK = -flat_namespace
